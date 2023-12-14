@@ -57,10 +57,10 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  /* :root {
+  :root {
     color: #213547;
     background-color: #ffffff;
-  } */
+  }
   a:hover {
     color: #747bff;
   }
@@ -145,3 +145,29 @@ button:focus-visible {
   overflow: hidden;
 }
 
+/* restaurants */
+.restaurant-a {
+  color: black;
+}
+#restaurant-expense {
+  color: darkgreen;
+  /* text-shadow: 0px 0px 0px darkgreen; */
+  font-weight: bold;
+  font-style: italic;
+}
+#restaurant-description {
+  font-size: small;
+  font-style: italic;
+}
+#rest-check {
+  color: green;
+}
+#rest-x {
+  color: darkred;
+}
+#rest-refill {
+  color: #763076;
+}
+#rest-server {
+  color: rgb(213, 154, 77);
+}

@@ -16,8 +16,6 @@ export default function RatingCard({ rating }) {
 
 	const navigate = useNavigate()
 
-	console.log(newStarRating)
-
 	const getRestaurantDetails = async () => {
 
 		const { data } = await axios.get(`/api/restaurant/id/${rating.restaurant.restaurantId}`)
@@ -56,7 +54,7 @@ export default function RatingCard({ rating }) {
 
   return (
 		<Col>
-    <Card style={{ width: '10rem' }} >
+    <Card style={{ width: '14rem' }} >
 			<Card.Img 
 				variant="top" 
 				src={rating.restaurant.img} 
