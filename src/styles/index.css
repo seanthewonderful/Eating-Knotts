@@ -15,9 +15,10 @@
   height: 100vh;
 }
 
-main {
+#main {
   box-sizing: border-box;
   width: 100vw;
+  padding: 0;
 }
 
 a {
@@ -138,11 +139,20 @@ button:focus-visible {
 /* rating cards */
 .card {
   background-color: rgb(255, 209, 255);
+  padding: 0;
+  overflow: hidden;
+  transition: .2s;
+}
+.restaurant-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.card:active {
+  transform: scale(1.05);
 }
 .rating-card-img {
   height: 10rem;
   width: auto;
-  overflow: hidden;
 }
 
 /* restaurants */
@@ -151,12 +161,8 @@ button:focus-visible {
 }
 #restaurant-expense {
   color: darkgreen;
-  /* text-shadow: 0px 0px 0px darkgreen; */
+  font-size: large;
   font-weight: bold;
-  font-style: italic;
-}
-#restaurant-description {
-  font-size: small;
   font-style: italic;
 }
 #rest-check {
@@ -170,4 +176,51 @@ button:focus-visible {
 }
 #rest-server {
   color: rgb(213, 154, 77);
+}
+#all-restaurants {
+  margin-top: 2%;
+}
+#r-c-i {
+  width: 20rem;
+  height: 15rem;
+  overflow: hidden;
+}
+.restaurant-card-img {
+  width: 100%;
+  padding: 1px;
+  border-radius: 2%;
+  height: auto;
+  top: -25%;
+  position: relative;
+  /* border: 2px solid brown; */
+}
+.restaurant-page-container {
+  background-color: rgb(255, 209, 255);
+  padding: 0;
+  overflow: hidden;
+  transition: .2s;
+
+}
+#r-p-i {
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+}
+.restaurant-page-img {
+  width: 100%;
+  padding: 1px;
+  border-radius: 2%;
+  height: auto;
+  top: -25%;
+  position: relative;
+}
+#rest-page-link {
+  color: #7f4c7f;
+  font-weight: 300;
+}
+#rest-page-link:hover {
+  color: blue;
+}
+#rest-page-p {
+  font-size: small;
 }

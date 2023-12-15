@@ -1,4 +1,4 @@
-import { Col, Card, Button, Form } from "react-bootstrap"
+import { Row, Col, Card, Button, Form } from "react-bootstrap"
 import { calculateAvgStars, notify, showStarAvg } from "../assets/funx"
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -62,17 +62,23 @@ export default function RatingCard({ rating }) {
 				/>
 			<Card.Body>
 				<Card.Subtitle><em>{rating.restaurant.name}</em></Card.Subtitle>
-				<Card.Text>
-					<StarAvg starAvg={avgStars} /> <small>({avgStars})</small>
-				</Card.Text>
-				<Button 
-					variant="primary"
-					size="sm"
-					className="mb-4"
-					onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
+				<Row
+					className="justify-content-between"
 					>
-						Visit
-				</Button>
+					<Col>
+					<p><StarAvg starAvg={avgStars} /> <small>({avgStars})</small></p>
+					</Col>
+					<Col>
+					<Button 
+						variant="primary"
+						size="sm"
+						className="mb-4"
+						onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
+						>
+							Visit
+					</Button>
+				</Col>
+				</Row>
 				<Card.Text>
 					<Form>
 						<Form.Group className="mb-2" controlId="formStars" >

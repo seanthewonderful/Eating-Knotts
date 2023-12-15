@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useLoaderData, NavLink } from 'react-router-dom'
-import Restaurant from '../components/Restaurant.jsx'
+import RestaurantCard from '../components/RestaurantCard.jsx'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default function AllRestaurants() {
@@ -8,12 +8,19 @@ export default function AllRestaurants() {
     const { restaurants } = useLoaderData()
 
     const allRestaurants = restaurants.map(restaurant => {
-      return <Restaurant key={restaurant.restaurantId} restaurant={restaurant} />
+      return <RestaurantCard 
+              key={restaurant.restaurantId} 
+              restaurant={restaurant} 
+              />
     })
 
   return (
-    <Container className='restaurants-div'>
-      <Row>
+    <Container fluid className='restaurants-div text-center'>
+      <Row 
+        id='all-restaurants'
+        className='justify-content-center'
+        >
+          <h3>Knott's Berry Farm Restaurants</h3>
       {allRestaurants}
       </Row>
     </Container>

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import { Button } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
 import { notify } from '../assets/funx.js'
 
 export default function Navbar() {
@@ -139,9 +139,9 @@ export default function Navbar() {
           theme="light"
         />
 
-      <main>
+      <Container fluid id='main'>
         <Outlet />
-      </main>
+      </Container>
     </div>
   )
 }

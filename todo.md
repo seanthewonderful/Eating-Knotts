@@ -88,6 +88,7 @@ Create user profile page
 - [x]See all ratings left
   - [x]Edit Review button
 - [x]Navbar display username and avatar
+- []Offcanvas display info edit
 
 Restaurant page(s)
 - [] Allow for user ratings
