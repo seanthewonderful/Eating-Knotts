@@ -1,11 +1,15 @@
-import React from "react";
-import RestaurantCard from "../components/RestaurantCard";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, useLoaderData } from "react-router-dom";
-import { Card, Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import utensilsSolid from "../../public/icons/utensilsSolid.svg";
+import { calculateAvgStars } from "../assets/funx";
+import StarAvg from "../components/StarAvg";
+import RestaurantRate from "../components/RestaurantRate";
+import UserRating from "../components/UserRating";
 
 export default function RestaurantPage() {
+  const [avgStars, setAvgStars] = useState(0);
   const { restaurant } = useLoaderData();
 
   const cuisines = restaurant.cuisines.map((cuisine) => {
@@ -14,6 +18,18 @@ export default function RestaurantPage() {
         {cuisine.name}
       </NavLink>
     );
+  });
+
+  const ratings = restaurant.ratings.map((rating) => {
+    return <UserRating rating={rating} />;
+  });
+
+  const calculateStarAvg = () => {
+    setAvgStars(calculateAvgStars(restaurant));
+  };
+
+  useEffect(() => {
+    calculateStarAvg();
   });
 
   return (
@@ -65,28 +81,37 @@ export default function RestaurantPage() {
           </Row>
           <Row className="text-start">
             <span id="rest-page-p">
+              <i id="rest-server" className="bi bi-person-walking"></i>
               {restaurant.fullService ? (
                 <i id="rest-check" className="bi bi-check-lg"></i>
               ) : (
                 <i id="rest-x" className="bi bi-x"></i>
               )}
-              Full service{" "}
-              <i id="rest-server" className="bi bi-person-walking"></i>
-              <br />
+              Full service <br />
+              <i id="rest-refill" className="bi bi-cup-straw"></i>
               {restaurant.refills ? (
                 <i id="rest-check" className="bi bi-check-lg"></i>
               ) : (
                 <i id="rest-x" className="bi bi-x"></i>
               )}
-              Refills <i id="rest-refill" className="bi bi-cup-straw"></i>
+              Refills
               <br />
               <p>
                 <img src={utensilsSolid} alt="" /> {cuisines}
               </p>
             </span>
           </Row>
+          <Row className="text-start">
+            <Col>
+              <span id="rest-page-p">
+                Guest ratings: <StarAvg starAvg={avgStars} />({avgStars})
+              </span>
+            </Col>
+          </Row>
         </Col>
       </Row>
+      <Row>user rating component</Row>
+      <Row>{ratings}</Row>
     </Container>
   );
 }
