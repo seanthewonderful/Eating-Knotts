@@ -54,7 +54,7 @@ export default function UserRating({ rating, restaurant, user }) {
           <img src={ratingUser.img} style={{ height: "1.5em" }} /> You rated{" "}
           {restaurant.name}:
         </p>
-        <Form>
+        <Form id="restaurant-page-ratings">
           <Form.Group className="mb-2" controlId="formStars">
             <Form.Label>Stars:</Form.Label>
             <Form.Select onChange={(e) => setNewStarRating(e.target.value)}>

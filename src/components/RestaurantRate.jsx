@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +10,7 @@ export default function RestaurantRate({ restaurant }) {
   const [starRating, setStarRating] = useState("5");
   const [review, setReview] = useState("");
 
-  console.log(starRating);
+  console.log(rated);
 
   const handleSave = () => {
     const bodyObj = {
@@ -42,9 +42,9 @@ export default function RestaurantRate({ restaurant }) {
   }, []);
 
   return user ? (
-    <div id="rated">
+    <Col className="">
       {!rated ? (
-        <Form>
+        <Form id="restaurant-page-ratings">
           <Form.Label>Rate this place!</Form.Label>
           <Form.Group className="mb-2" controlId="formStars">
             <Form.Label>Stars:</Form.Label>
@@ -67,7 +67,7 @@ export default function RestaurantRate({ restaurant }) {
           </Button>
         </Form>
       ) : null}
-    </div>
+    </Col>
   ) : (
     <Button size="sm" style={{ width: "50%" }}>
       <NavLink to={"/login"}>Log in to rate this restaurant!</NavLink>

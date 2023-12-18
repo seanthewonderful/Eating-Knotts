@@ -225,3 +225,6 @@ button:focus-visible {
 #rest-page-p {
   font-size: small;
 }
+#restaurant-page-ratings {
+  width: 50%;
+}

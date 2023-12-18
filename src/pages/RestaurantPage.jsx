@@ -115,20 +115,23 @@ export default function RestaurantPage() {
           <Row className="text-start">
             <Col>
               <span id="rest-page-p">
-                Guest ratings: <StarAvg starAvg={avgStars} />({avgStars})
+                Guest ratings: <StarAvg starAvg={avgStars} />(
+                {restaurant.ratings.length})
               </span>
             </Col>
           </Row>
         </Col>
       </Row>
-      <Row className="justify-content-center">
+      <Row className="justify-content-start">
         <RestaurantRate
           notRated={notRated}
           restaurant={restaurant}
           user={user}
         />
       </Row>
-      <Row>{ratings}</Row>
+      <Row className="justify-content-start text-start" id="ratings-div">
+        {ratings}
+      </Row>
     </Container>
   );
 }

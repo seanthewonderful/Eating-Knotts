@@ -97,12 +97,13 @@ Create user profile page
 
 Restaurant page(s)
 
-- [] Allow for user ratings
-  - [] Logic if no ratings
-  - [] display total ratings and avg stars
-- [] Endpoint to grab all ratings sans user
-- [] Display user's rating from user obj.
+- [x] Allow for user ratings
+  - [x] Logic if no ratings
+  - [x] display total ratings and avg stars
+- [x] Endpoint to grab all ratings sans user
+- [x] Display user's rating from user obj.
 - [] Remember where user was upon login re-route back
+  - https://stackoverflow.com/questions/72163183/how-can-i-redirect-to-previous-page-after-login-in-react-router
 
 Create Admin page
 
