@@ -102,6 +102,7 @@ Restaurant page(s)
   - [] display total ratings and avg stars
 - [] Endpoint to grab all ratings sans user
 - [] Display user's rating from user obj.
+- [] Remember where user was upon login re-route back
 
 Create Admin page
 

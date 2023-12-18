@@ -15,8 +15,6 @@ export default function RestaurantPage() {
   const { restaurant } = useLoaderData();
   const user = useSelector((state) => state.user);
 
-  console.log(user);
-
   const cuisines = restaurant.cuisines.map((cuisine) => {
     return (
       <NavLink to={`#`} id="rest-page-link">
@@ -26,7 +24,11 @@ export default function RestaurantPage() {
   });
 
   const ratings = restaurant.ratings.map((rating) => {
-    rating.userId === user.userId ?? setNotRated(true);
+    try {
+      rating.userId === user.userId ?? setNotRated(true);
+    } catch (error) {
+      console.log(error);
+    }
     return (
       <UserRating
         key={rating.ratingId}
@@ -48,11 +50,7 @@ export default function RestaurantPage() {
   return (
     <Container className="restaurant-page-container text-center" fluid>
       <Row className="justify-content-center">
-        <Col
-          xxs={12}
-          sm={6}
-          // id='r-p-i'
-        >
+        <Col xs={12} sm={6}>
           <Image
             src={restaurant.img}
             className="restaurant-page-img"
@@ -60,7 +58,7 @@ export default function RestaurantPage() {
             fluid
           />
         </Col>
-        <Col xxs={12} sm={6}>
+        <Col xs={12} sm={6}>
           <Row>
             <h2>{restaurant.name}</h2>
           </Row>
@@ -124,7 +122,11 @@ export default function RestaurantPage() {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <RestaurantRate notRated={notRated} />
+        <RestaurantRate
+          notRated={notRated}
+          restaurant={restaurant}
+          user={user}
+        />
       </Row>
       <Row>{ratings}</Row>
     </Container>
