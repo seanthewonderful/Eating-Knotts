@@ -7,10 +7,15 @@ import { calculateAvgStars } from "../assets/funx";
 import StarAvg from "../components/StarAvg";
 import RestaurantRate from "../components/RestaurantRate";
 import UserRating from "../components/UserRating";
+import { useSelector } from "react-redux";
 
 export default function RestaurantPage() {
   const [avgStars, setAvgStars] = useState(0);
+  const [notRated, setNotRated] = useState(false);
   const { restaurant } = useLoaderData();
+  const user = useSelector((state) => state.user);
+
+  console.log(user);
 
   const cuisines = restaurant.cuisines.map((cuisine) => {
     return (
@@ -21,7 +26,15 @@ export default function RestaurantPage() {
   });
 
   const ratings = restaurant.ratings.map((rating) => {
-    return <UserRating rating={rating} />;
+    rating.userId === user.userId ?? setNotRated(true);
+    return (
+      <UserRating
+        key={rating.ratingId}
+        rating={rating}
+        restaurant={restaurant}
+        user={user}
+      />
+    );
   });
 
   const calculateStarAvg = () => {
@@ -110,7 +123,9 @@ export default function RestaurantPage() {
           </Row>
         </Col>
       </Row>
-      <Row>user rating component</Row>
+      <Row className="justify-content-center">
+        <RestaurantRate notRated={notRated} />
+      </Row>
       <Row>{ratings}</Row>
     </Container>
   );
