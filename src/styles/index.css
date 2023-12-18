@@ -15,9 +15,10 @@
   height: 100vh;
 }
 
-main {
+#main {
   box-sizing: border-box;
   width: 100vw;
+  padding: 0;
 }
 
 a {
@@ -57,10 +58,10 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  /* :root {
+  :root {
     color: #213547;
     background-color: #ffffff;
-  } */
+  }
   a:hover {
     color: #747bff;
   }
@@ -113,7 +114,7 @@ button:focus-visible {
 #login-form {
   margin-top: 2%;
   background-color: #763076;
-  color: white
+  color: white;
 }
 
 #register-form {
@@ -131,17 +132,99 @@ button:focus-visible {
 }
 
 /* star images styles */
-.bi-star, .bi-star-fill, .bi-star-half {
+.bi-star,
+.bi-star-fill,
+.bi-star-half {
   color: rgb(222, 189, 0);
 }
 
 /* rating cards */
 .card {
   background-color: rgb(255, 209, 255);
+  padding: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.restaurant-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.card:active {
+  transform: scale(1.05);
 }
 .rating-card-img {
   height: 10rem;
   width: auto;
-  overflow: hidden;
 }
 
+/* restaurants */
+.restaurant-a {
+  color: black;
+}
+#restaurant-expense {
+  color: darkgreen;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+}
+#rest-check {
+  color: green;
+}
+#rest-x {
+  color: darkred;
+}
+#rest-refill {
+  color: #763076;
+}
+#rest-server {
+  color: rgb(213, 154, 77);
+}
+#all-restaurants {
+  margin-top: 2%;
+}
+#r-c-i {
+  width: 20rem;
+  height: 15rem;
+  overflow: hidden;
+}
+.restaurant-card-img {
+  width: 100%;
+  padding: 1px;
+  border-radius: 2%;
+  height: auto;
+  top: -25%;
+  position: relative;
+  /* border: 2px solid brown; */
+}
+.restaurant-page-container {
+  background-color: rgb(255, 209, 255);
+  padding: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
+#r-p-i {
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+}
+.restaurant-page-img {
+  width: 100%;
+  padding: 1px;
+  border-radius: 2%;
+  height: auto;
+  /* top: -25%; */
+  position: relative;
+}
+#rest-page-link {
+  color: #7f4c7f;
+  font-weight: 300;
+}
+#rest-page-link:hover {
+  color: blue;
+}
+#rest-page-p {
+  font-size: small;
+}
+#restaurant-page-ratings {
+  width: 50%;
+}

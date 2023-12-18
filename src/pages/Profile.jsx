@@ -56,7 +56,7 @@ export default function Profile() {
   const avatars = [
 		{imgSrc: "/proficons/default.png", id: 1},
 		{imgSrc: "/proficons/charlie.png", id: 2},
-		{imgSrc: "/proficons/linus.gif", id: 3},
+		{imgSrc: "/proficons/linus.png", id: 3},
 		{imgSrc: "/proficons/lucy.png", id: 4},
 		{imgSrc: "/proficons/marcie.png", id: 5},
 		{imgSrc: "/proficons/patty.png", id: 6},
@@ -66,9 +66,9 @@ export default function Profile() {
 		{imgSrc: "/proficons/sally.png", id: 10},
 		{imgSrc: "/proficons/schroeder.png", id: 11},
 		{imgSrc: "/proficons/snoopy.png", id: 12},
-		{imgSrc: "/proficons/olaf.webp", id: 13},
-		{imgSrc: "/proficons/belle.jpeg", id: 14},
-		{imgSrc: "/proficons/spike.webp", id: 15},
+		{imgSrc: "/proficons/olaf.png", id: 13},
+		{imgSrc: "/proficons/belle.png", id: 14},
+		{imgSrc: "/proficons/spike.png", id: 15},
 		{imgSrc: "/proficons/woodstock.png", id: 16},
 	]
 	const avatarOptions = avatars.map(avatar => {
@@ -179,7 +179,7 @@ export default function Profile() {
           </Row>
 
       <Row
-        className='row-cols-auto'
+        className='row-cols-auto text-center'
         >
         {userRatings}
       </Row>
