@@ -27,34 +27,19 @@ app.use(
 
 // Authentication
 const { sessionCheck, login, adminLogin, logout } = authHandlers;
-app.get("/api/session-check", sessionCheck);
-app.post("/api/login", login);
-app.post("/api/login/admin", adminLogin);
-app.get("/api/logout", logout);
-
-// Users
+//Users
 const {
   getUserById,
   getUserByUsername,
   createUser,
   updateUser,
+  adminUpdateUser,
   updateUserPassword,
   deleteUser,
 } = userHandlers;
-app.get("/api/user/id/:userId", getUserById);
-app.get("/api/user/username/:username", getUserByUsername);
-app.post("/api/user/create", createUser);
-app.put("/api/user/update/:userId", updateUser);
-app.put("/api/user/update/password/:userId", updateUserPassword);
-app.delete("/api/user/delete/:userId", deleteUser);
-
 // Admins
-const { getAdminById, createAdmin, updateAdmin, deleteAdmin } = adminHandlers;
-app.get("/api/admin/id/:adminId", getAdminById);
-app.post("/api/admin/create", createAdmin);
-app.put("/api/admin/update/:adminId", updateAdmin);
-app.delete("/api/admin/delete/:adminId", deleteAdmin);
-
+const { getEverything, getAdminById, createAdmin, updateAdmin, deleteAdmin } =
+  adminHandlers;
 // Restaurants
 const {
   getAllRestaurants,
@@ -67,6 +52,38 @@ const {
   updateRestaurant,
   deleteRestaurant,
 } = restaurantHandlers;
+// Ratings
+const {
+  getUserRatings,
+  getUserRatingOfRestaurant,
+  createRating,
+  updateRating,
+  deleteRating,
+} = ratingHandlers;
+
+// Authentication
+app.get("/api/session-check", sessionCheck);
+app.post("/api/login", login);
+app.post("/api/login/admin", adminLogin);
+app.get("/api/logout", logout);
+
+// Users
+app.get("/api/user/id/:userId", getUserById);
+app.get("/api/user/username/:username", getUserByUsername);
+app.post("/api/user/create", createUser);
+app.put("/api/user/update/:userId", updateUser);
+app.put("/api/user/admin-update/:userId", adminUpdateUser);
+app.put("/api/user/update/password/:userId", updateUserPassword);
+app.delete("/api/user/delete/:userId", deleteUser);
+
+// Admins
+app.get("/api/admin/id/:adminId", getAdminById);
+app.get("/api/admin/access/:adminId", getEverything);
+app.post("/api/admin/create", createAdmin);
+app.put("/api/admin/update/:adminId", updateAdmin);
+app.delete("/api/admin/delete/:adminId", deleteAdmin);
+
+// Restaurants
 app.get("/api/restaurants/all", getAllRestaurants);
 app.get("/api/restaurants/land/:landId", getRestaurantsByLand);
 app.get("/api/restaurants/name", getRestaurantsByName);
@@ -78,13 +95,6 @@ app.put("/api/restaurant/update/:restaurantId", updateRestaurant);
 app.delete("/api/restaurant/delete/:restaurantId", deleteRestaurant);
 
 // Ratings
-const {
-  getUserRatings,
-  getUserRatingOfRestaurant,
-  createRating,
-  updateRating,
-  deleteRating,
-} = ratingHandlers;
 app.get("/api/ratings/user-ratings/:userId", getUserRatings);
 app.get(
   "/api/rating/user-restaurant/:userId/:restaurantId",

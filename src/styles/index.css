@@ -228,3 +228,21 @@ button:focus-visible {
 #restaurant-page-ratings {
   width: 50%;
 }
+
+/* admin page */
+table tr {
+  border: 1px solid black;
+  font-size: small;
+}
+thead,
+tfoot {
+  background-color: #594259;
+  color: white;
+  font-size: small;
+}
+td {
+  font-size: small;
+}
+.admin-display {
+  font-size: small;
+}

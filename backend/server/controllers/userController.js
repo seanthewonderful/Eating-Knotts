@@ -1,218 +1,250 @@
 import { User, Restaurant, Rating, db } from "../../database/model.js";
-import bcryptjs from 'bcryptjs'
+import bcryptjs from "bcryptjs";
 
 const userHandlers = {
+  getUserById: async (req, res) => {
+    const user = await User.findByPk(req.params.userId, {
+      include: {
+        model: Rating,
+        include: {
+          model: Restaurant,
+        },
+      },
+    });
 
-	getUserById: async (req, res) => {
+    if (!user) {
+      res.status(400).send({
+        message: "Not found",
+        user: null,
+      });
+    } else {
+      res.status(200).send({
+        message: "User found",
+        user: user,
+      });
+    }
+  },
 
-		const user = await User.findByPk(req.params.userId, {
-			include: {
-				model: Rating,
-				include: {
-					model: Restaurant
-				}
-			}
-		})
+  getUserByUsername: async (req, res) => {
+    const { username } = req.params;
 
-		if (!user) {
-			res.status(400).send({
-				message: "Not found",
-				user: null
-			})
-		} else {
-			res.status(200).send({
-				message: "User found",
-				user: user
-			})
-		}
-	},
+    const user = await User.findOne({
+      where: {
+        username: username,
+      },
+      include: [
+        {
+          model: Rating,
+          include: {
+            model: Restaurant,
+          },
+        },
+      ],
+    });
 
-	getUserByUsername: async (req, res) => {
+    if (!user) {
+      res.status(400).send({
+        message: "No user found",
+        user: null,
+      });
+    } else {
+      res.status(200).send({
+        message: "User found",
+        user: user,
+      });
+    }
+  },
 
-		const { username } = req.params
+  createUser: async (req, res) => {
+    const { username, password, email, name, img } = req.body;
 
-		const user = await User.findOne({
-			where: {
-				username: username
-			},
-			include: [
-				{ 
-					model: Rating,
-					include: {
-						model: Restaurant
-					} 
-				}
-			]
-		})
+    if (await User.findOne({ where: { username } })) {
+      res.status(400).send({
+        message: "Username already in use",
+        userId: null,
+      });
+      return;
+    } else if (await User.findOne({ where: { email } })) {
+      res.status(400).send({
+        message: "Email address already in use",
+        userId: null,
+      });
+      return;
+    }
 
-		if (!user) {
-			res.status(400).send({
-				message: "No user found",
-				user: null,
-			})
-		} else {
-			res.status(200).send({
-				message: "User found",
-				user: user,
-			})
-		}
-	},
+    await User.create({
+      username,
+      password,
+      email,
+      firstName: name.fName,
+      lastName: name.lName,
+      img,
+    });
 
-	createUser: async (req, res) => {
+    const user = await User.findOne({
+      where: {
+        username,
+      },
+      include: {
+        model: Rating,
+        include: {
+          model: Restaurant,
+        },
+      },
+    });
 
-		const { username, password, email, name, img } = req.body
+    req.session.userId = user.userId;
 
-		if (await User.findOne({ where: { username } })) {
-			res.status(400).send({
-				message: "Username already in use",
-				userId: null
-			})
-			return
-		} else if (await User.findOne({ where: { email } })) {
-			res.status(400).send({
-				message: "Email address already in use",
-				userId: null
-			})
-			return
-		}
+    res.status(200).send({
+      message: "User created and logged in",
+      userId: user.userId,
+      user: user,
+    });
+  },
 
-		await User.create({
-			username,
-			password,
-			email,
-			firstName: name.fName,
-			lastName: name.lName,
-			img,
-		})
+  updateUser: async (req, res) => {
+    if (!req.session.userId) {
+      res.status(401).send({
+        message: "You must be logged in to do this",
+      });
+      return;
+    }
 
-		const user = await User.findOne({
-			where: {
-				username
-			},
-			include: {
-				model: Rating,
-				include: {
-					model: Restaurant
-				}
-			}
-		})
+    const { email, firstName, lastName, img } = req.body;
 
-		req.session.userId = user.userId
+    const user = await User.findByPk(req.session.userId, {
+      include: {
+        model: Rating,
+        include: {
+          model: Restaurant,
+        },
+      },
+    });
 
-		res.status(200).send({
-			message: "User created and logged in",
-			userId: user.userId,
-			user: user,
-		})
-	},
+    if (user.email !== email) {
+      if (await User.findOne({ where: { email } })) {
+        res.status(401).send({
+          message: "Email already in use",
+        });
+        return;
+      }
+    }
 
-	updateUser: async (req, res) => {
+    // if (!bcryptjs.compareSync(password, user.password)) {
+    // 	res.status(401).send({
+    // 		message: "Password incorrect"
+    // 	})
+    // 	return
+    // }
 
-		if (!req.session.userId) {
-			res.status(401).send({
-				message: "You must be logged in to do this"
-			})
-			return
-		}
+    await user.update({
+      email: email ?? user.email,
+      firstName: firstName ?? user.firstName,
+      lastName: lastName ?? user.lastName,
+      img: img ?? user.img,
+    });
 
-		const { email, firstName, lastName, img } = req.body
+    res.status(200).send({
+      message: "User details updated",
+      user: user,
+    });
+  },
 
-		const user = await User.findByPk(req.session.userId, {
-			include: {
-				model: Rating,
-				include: {
-					model: Restaurant
-				}
-			}
-		})
+  adminUpdateUser: async (req, res) => {
+    if (!req.session.adminId) {
+      res.status(401).send({
+        message: "You must be logged in to do this",
+      });
+      return;
+    }
 
-		if (user.email !== email) {
-			if (await User.findOne({ where: { email }})) {
-				res.status(401).send({
-					message: "Email already in use"
-				})
-				return
-			}
-		}
+    const { userId } = req.params;
+    const { username, email, firstName, lastName, img } = req.body;
 
-		// if (!bcryptjs.compareSync(password, user.password)) {
-		// 	res.status(401).send({
-		// 		message: "Password incorrect"
-		// 	})
-		// 	return
-		// }
+    const existingUser = await User.findByPk(userId);
 
-		await user.update({
-			email: email ?? user.email,
-			firstName: firstName ?? user.firstName,
-			lastName: lastName ?? user.lastName,
-			img: img ?? user.img,
-		})
+    if (existingUser.email !== email) {
+      if (await User.findOne({ where: { email } })) {
+        res.status(401).send({
+          message: "New email already in use",
+        });
+        return;
+      }
+    }
 
-		res.status(200).send({
-			message: "User details updated",
-			user: user,
-		})
-	},
+    await existingUser.update({
+      username: username ?? existingUser.username,
+      email: email ?? existingUser.email,
+      firstName: firstName ?? existingUser.firstName,
+      lastName: lastName ?? existingUser.lastName,
+      img: img ?? existingUser.img,
+    });
 
-	updateUserPassword: async (req, res) => {
+    res.status(200).send({
+      message: "User details updated",
+      user: existingUser,
+    });
+  },
 
-		if (!req.session.userId) {
-				res.status(401).send({
-						message: "You must be logged in to do this"
-				})
-				return
-		}
+  updateUserPassword: async (req, res) => {
+    if (!req.session.userId) {
+      res.status(401).send({
+        message: "You must be logged in to do this",
+      });
+      return;
+    }
 
-		const user = await User.scope('withPassword').findByPk(req.session.userId)
-		
-		const { oldPassword, newPassword } = req.body
+    const user = await User.scope("withPassword").findByPk(req.session.userId);
 
-		if (!bcryptjs.compareSync(oldPassword, user.password)) {
-				res.status(401).send({
-						message: "Current password incorrect"
-				})
-				return
-		}
+    const { oldPassword, newPassword } = req.body;
 
-		const hashedPassword = bcryptjs.hashSync(newPassword, bcryptjs.genSaltSync(5))
+    if (!bcryptjs.compareSync(oldPassword, user.password)) {
+      res.status(401).send({
+        message: "Current password incorrect",
+      });
+      return;
+    }
 
-		await user.update({
-				password: hashedPassword,
-		})
+    const hashedPassword = bcryptjs.hashSync(
+      newPassword,
+      bcryptjs.genSaltSync(5)
+    );
 
-		res.status(200).send({
-				message: "Hey, nice new password. I bet no one will crack it this time!"
-		})
-	},
+    await user.update({
+      password: hashedPassword,
+    });
 
-	deleteUser: async (req, res) => {
+    res.status(200).send({
+      message: "Hey, nice new password. I bet no one will crack it this time!",
+    });
+  },
 
-		if (!req.session.userId) {
-				res.status(401).send({
-						message: "You must be logged in to do this"
-				})
-				return
-		}
+  deleteUser: async (req, res) => {
+    if (!req.session.userId) {
+      res.status(401).send({
+        message: "You must be logged in to do this",
+      });
+      return;
+    }
 
-		const user = await User.findByPk(req.params.userId)
+    const user = await User.findByPk(req.params.userId);
 
-		const { password } = req.body
+    const { password } = req.body;
 
-		if (!bcryptjs.compareSync(password, user.password)) {
-				res.status(401).send({
-						message: "Password incorrect"
-				})
-				return
-		}
+    if (!bcryptjs.compareSync(password, user.password)) {
+      res.status(401).send({
+        message: "Password incorrect",
+      });
+      return;
+    }
 
-		await user.destroy()
-		req.session.userId = null
+    await user.destroy();
+    req.session.userId = null;
 
-		res.status(200).send({
-				message: "User deleted and logged out"
-		})
-	}
-}
+    res.status(200).send({
+      message: "User deleted and logged out",
+    });
+  },
+};
 
-export default userHandlers
+export default userHandlers;
