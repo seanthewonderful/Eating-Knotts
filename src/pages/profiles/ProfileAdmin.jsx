@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import AdminTable from "../../components/admins/AdminTable";
 import UserTable from "../../components/admins/UserTable";
 import RestaurantTable from "../../components/admins/RestaurantTable";
+import RatingTable from "../../components/admins/RatingTable";
 
 export default function ProfileAdmin() {
   const { admin } = useLoaderData();
@@ -55,7 +56,7 @@ export default function ProfileAdmin() {
             {<RestaurantTable allRestaurants={allRestaurants} />}
           </Tab>
           <Tab eventKey="ratings" title="All Ratings">
-            Tab content for all ratings
+            {<RatingTable allRatings={allRatings} />}
           </Tab>
         </Tabs>
       </Row>

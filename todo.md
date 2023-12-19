@@ -110,10 +110,12 @@ Create Admin page
 - [] Navbar dynamically render for admin page
 - [] What can admins do?
   - [] Create new admin
+  - [] edit/delete admins
   - [] Create new user
   - [] New restaurant
-  - [] Edit restaurant details
-  - [] Edit/Delete user ratings
+  - [x] Edit restaurant details
+  - [x] Edit/Delete user ratings
+  - [] Edit/delete users
 
 Create Leaflet map
 

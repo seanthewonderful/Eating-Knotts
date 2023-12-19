@@ -23,9 +23,7 @@ const adminHandlers = {
     const allUsers = await User.findAll();
     const allRestaurants = await Restaurant.findAll();
     const allRatings = await Rating.findAll({
-      include: {
-        model: User,
-      },
+      include: [{ model: User }, { model: Restaurant }],
     });
 
     console.log("All Restaurants", allRestaurants);

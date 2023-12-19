@@ -68,7 +68,11 @@ export default function RestaurantDisplay({ restaurant }) {
         />
       </td>
       <td>
-        <select onChange={(e) => setExpense(e.target.value)}>
+        <select
+          name="expense"
+          value={expense}
+          onChange={(e) => setExpense(e.target.value)}
+        >
           <option value="$">$</option>
           <option value="$$">$$</option>
           <option value="$$$">$$$</option>
