@@ -9,6 +9,7 @@ export default function AdminTable({ allAdmins }) {
     <table>
       <thead>
         <tr>
+          <th>Admin ID</th>
           <th>Admin name</th>
           <th>Email</th>
           <th>First name</th>

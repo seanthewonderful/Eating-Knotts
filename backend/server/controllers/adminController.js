@@ -7,6 +7,7 @@ import {
   MealType,
   db,
 } from "../../database/model.js";
+import bcryptjs from "bcryptjs";
 
 const adminHandlers = {
   getEverything: async (req, res) => {
@@ -122,11 +123,21 @@ const adminHandlers = {
       });
     }
 
-    const admin = await Admin.findByPk(req.session.adminId);
+    const adminInSession = await Admin.scope("withPassword").findByPk(
+      req.session.adminId
+    );
 
-    const { password } = req.body;
+    console.log(adminInSession);
 
-    if (!bcryptjs.compareSync(password, admin.password)) {
+    const { adminId } = req.params;
+
+    const admin = await Admin.findByPk(adminId);
+
+    const { pass } = req.body;
+
+    console.log("REQ>BODY", req.body);
+
+    if (!bcryptjs.compareSync(pass, adminInSession.password)) {
       res.status(401).send({
         message: "Password incorrect",
       });
@@ -134,7 +145,6 @@ const adminHandlers = {
     }
 
     await admin.destroy();
-    req.session.adminId = null;
 
     res.status(200).send({
       message: "Admin deleted",
