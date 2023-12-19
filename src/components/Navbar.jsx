@@ -84,6 +84,8 @@ export default function Navbar() {
                 <NavLink to={`/admin/${admin.adminId}`}>Admin</NavLink>
               </Button>
 
+              <img src={admin.img} alt="user-icon" id="nav-profile-icon" />
+
               <Button className="nav-btn">
                 <NavLink to={"/"} onClick={logout}>
                   Logout

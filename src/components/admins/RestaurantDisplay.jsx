@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { notify } from "../../assets/funx";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 export default function RestaurantDisplay({ restaurant }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -13,11 +13,9 @@ export default function RestaurantDisplay({ restaurant }) {
   const [xCoord, setXCoord] = useState(restaurant.xCoord);
   const [yCoord, setYCoord] = useState(restaurant.yCoord);
 
-  console.log(fullService);
+  const [show, setShow] = useState(false);
 
-  const editMode = () => {
-    setIsEditing(true);
-  };
+  const editMode = () => setIsEditing(true);
 
   const handleSave = () => {
     const bodyObj = {
@@ -50,6 +48,21 @@ export default function RestaurantDisplay({ restaurant }) {
     setXCoord(restaurant.xCoord);
     setYCoord(restaurant.yCoord);
     setIsEditing(false);
+  };
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleDelete = () => {
+    axios
+      .delete(`/api/restaurant/delete/${restaurant.restaurantId}`)
+      .then((res) => {
+        notify("success", res.data.message);
+      })
+      .catch((err) => notify("danger", err.response.data.message));
+
+    setShow(false);
+    window.location.reload();
   };
 
   return isEditing ? (
@@ -122,19 +135,43 @@ export default function RestaurantDisplay({ restaurant }) {
       </td>
     </tr>
   ) : (
-    <tr>
-      <td>{name}</td>
-      <td>{description}</td>
-      <td id="restaurant-expense">{expense}</td>
-      <td>{fullService ? "true" : "false"}</td>
-      <td>{refills ? "true" : "false"}</td>
-      <td>{xCoord}</td>
-      <td>{yCoord}</td>
-      <td>
-        <Button variant="secondary" size="sm" onClick={editMode}>
-          Edit
-        </Button>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>{name}</td>
+        <td>{description}</td>
+        <td id="restaurant-expense">{expense}</td>
+        <td>{fullService ? "true" : "false"}</td>
+        <td>{refills ? "true" : "false"}</td>
+        <td>{xCoord}</td>
+        <td>{yCoord}</td>
+        <td>
+          <Button variant="secondary" size="sm" onClick={editMode}>
+            Edit
+          </Button>
+          <Button
+            className="ms-2"
+            variant="outline-danger"
+            size="sm"
+            onClick={handleShow}
+          >
+            Delete
+          </Button>
+        </td>
+      </tr>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          Are you sure you want to delete this restaurant? This cannot be
+          undone.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Yes, Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
