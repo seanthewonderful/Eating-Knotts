@@ -119,7 +119,7 @@ Create Admin page
   - [x] Edit restaurant details
   - [] delete restaurant
   - [x] Edit user ratings
-  - [] delete user ratings
+  - [x] delete user ratings
 
 Create Leaflet map
 

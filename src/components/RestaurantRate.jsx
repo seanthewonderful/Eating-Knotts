@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { Button, Form, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { notify } from "../assets/funx";
 import axios from "axios";
 
 export default function RestaurantRate({ restaurant }) {
   const user = useSelector((state) => state.user);
-  const [rated, setRated] = useState(false);
+  const [rated, setRated] = useState(true);
   const [starRating, setStarRating] = useState("5");
   const [review, setReview] = useState("");
-
-  console.log(rated);
 
   const handleSave = () => {
     const bodyObj = {
@@ -20,10 +19,12 @@ export default function RestaurantRate({ restaurant }) {
     axios
       .post(`/api/rating/create/${restaurant.restaurantId}`, bodyObj)
       .then((res) => {
-        console.log(res.data);
+        notify("success", res.data.message);
+        setRated(true);
       })
       .catch((err) => {
-        console.log(err);
+        notify("warning", err.response.data.message);
+        setRated(true);
       });
   };
 
@@ -32,14 +33,16 @@ export default function RestaurantRate({ restaurant }) {
       for (let rating of user.ratings) {
         if (rating.restaurantId === restaurant.restaurantId) {
           setRated(true);
+          return;
         }
       }
+      setRated(false);
     }
   };
 
   useEffect(() => {
     figureIfRated();
-  }, []);
+  }, [rated, setRated]);
 
   return user ? (
     <Col className="">
@@ -66,7 +69,9 @@ export default function RestaurantRate({ restaurant }) {
             Save
           </Button>
         </Form>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </Col>
   ) : (
     <Button size="sm" style={{ width: "50%" }}>

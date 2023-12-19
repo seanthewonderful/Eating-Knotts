@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 
 export default function RestaurantPage() {
   const [avgStars, setAvgStars] = useState(0);
-  const [notRated, setNotRated] = useState(false);
   const { restaurant } = useLoaderData();
   const user = useSelector((state) => state.user);
 
@@ -24,13 +23,6 @@ export default function RestaurantPage() {
   });
 
   const ratings = restaurant.ratings.map((rating) => {
-    try {
-      if (rating.userId === user.userId) {
-        setNotRated(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
     return (
       <UserRating
         key={rating.ratingId}
@@ -125,11 +117,7 @@ export default function RestaurantPage() {
         </Col>
       </Row>
       <Row className="justify-content-start">
-        <RestaurantRate
-          notRated={notRated}
-          restaurant={restaurant}
-          user={user}
-        />
+        <RestaurantRate restaurant={restaurant} user={user} />
       </Row>
       <Row className="justify-content-start text-start" id="ratings-div">
         {ratings}
