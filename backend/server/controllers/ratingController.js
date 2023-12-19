@@ -90,14 +90,23 @@ const ratingHandlers = {
   },
 
   deleteRating: async (req, res) => {
+    const rating = await Rating.findByPk(req.params.ratingId);
+
+    if (req.session.adminId) {
+      await rating.destroy();
+
+      res.status(200).send({
+        message: "Rating deleted",
+      });
+      return;
+    }
+
     if (!req.session.userId) {
       res.status(401).send({
         message: "You must be logged in to do that",
       });
       return;
     }
-
-    const rating = await Rating.findByPk(req.params.ratingId);
 
     if (rating.userId !== +req.session.userId) {
       res.status(401).send({

@@ -1,127 +1,142 @@
-import { User, Admin, Rating, Restaurant, db } from '../../database/model.js'
-import bcryptjs from 'bcryptjs'
+import { User, Admin, Rating, Restaurant, db } from "../../database/model.js";
+import bcryptjs from "bcryptjs";
 
 const authHandlers = {
+  sessionCheck: async (req, res) => {
+    if (req.session.userId) {
+      const user = await User.findByPk(req.session.userId, {
+        include: [
+          {
+            model: Rating,
+            include: {
+              model: Restaurant,
+            },
+          },
+        ],
+      });
+      res.status(200).send({
+        message: "User in session",
+        userId: req.session.userId,
+        user: user,
+        admin: null,
+      });
+    } else if (req.session.adminId) {
+      const admin = await Admin.findByPk(req.session.adminId);
 
-	sessionCheck: async (req, res) => {
+      if (admin) {
+        res.status(200).send({
+          message: "Admin in session",
+          userId: null,
+          user: null,
+          admin: admin,
+        });
+      } else {
+        res.status(400).send({
+          message: "Admin in session but not in db",
+          userId: null,
+          user: null,
+          admin: admin,
+        });
+      }
+    } else {
+      res.status(200).send({
+        message: "No user in session",
+        userId: null,
+        user: null,
+        admin: null,
+      });
+    }
+  },
 
-		if (req.session.userId) {
-			const user = await User.findByPk(req.session.userId, {
-				include: [
-					{ 
-						model: Rating,
-						include: {
-							model: Restaurant
-						} 
-					}
-				]
-			})
-			res.status(200).send({
-				message: "User in session",
-				userId: req.session.userId,
-				user: user
-			})
-		} else {
-			res.status(200).send({
-				message: "No user in session",
-				userId: null,
-				user: null
-			})
-		}
-	},
+  login: async (req, res) => {
+    const { username, password } = req.body;
 
-	login: async (req, res) => {
+    const user = await User.scope("withPassword").findOne({
+      where: {
+        username: username,
+      },
+      include: {
+        model: Rating,
+        include: {
+          model: Restaurant,
+        },
+      },
+    });
 
-		const { username, password } = req.body
+    if (!user) {
+      res.status(401).send({
+        message: "Username not found",
+      });
+      return;
+    }
 
-		const user = await User.scope('withPassword').findOne({
-			where: {
-				username: username
-			},
-			include: {
-				model: Rating, 
-				include: {
-					model: Restaurant
-				}
-			}
-		})
+    if (!bcryptjs.compareSync(password, user.password)) {
+      res.status(401).send({
+        message: "User password incorrect",
+      });
+      return;
+    }
 
-		if (!user) {
-			res.status(401).send({
-				message: "Username not found",
-			})
-			return
-		}
+    req.session.userId = user.userId;
 
-		if (!bcryptjs.compareSync(password, user.password)) {
-			res.status(401).send({
-				message: "User password incorrect"
-			})
-			return
-		}
+    const userReturn = await User.findByPk(user.userId, {
+      include: [
+        {
+          model: Rating,
+          include: {
+            model: Restaurant,
+          },
+        },
+      ],
+    });
 
-		req.session.userId = user.userId
+    res.status(200).send({
+      message: "User logged in!",
+      userId: user.userId,
+      user: userReturn,
+    });
+  },
 
-		const userReturn = await User.findByPk(user.userId, {
-			include: [
-				{ 
-					model: Rating, 
-					include: {
-						model: Restaurant
-					}
-				}
-			]
-		})
+  adminLogin: async (req, res) => {
+    const { username, password } = req.body;
 
-		res.status(200).send({
-			message: "User logged in!",
-			userId: user.userId,
-			user: userReturn
-		})
-	},
+    const admin = await Admin.scope("withPassword").findOne({
+      where: {
+        username: username,
+      },
+    });
 
-	adminLogin: async (req, res) => {
+    if (!admin) {
+      res.status(401).send({
+        message: "Admin username not found",
+      });
+      return;
+    }
 
-		const { username, password } = req.body
+    if (!bcryptjs.compareSync(password, admin.password)) {
+      res.status(401).send({
+        message: "Admin password incorrect",
+      });
+      return;
+    }
 
-		const admin = await Admin.scope('withPassword').findOne({
-			where: {
-				username: username
-			}
-		})
+    req.session.adminId = admin.adminId;
 
-		if (!admin) {
-			res.status(401).send({
-				message: "Admin username not found",
-			})
-			return
-		}
+    const adminReturn = await Admin.findByPk(admin.adminId);
 
-		if (!bcryptjs.compareSync(password, admin.password)) {
-			res.status(401).send({
-				message: "Admin password incorrect"
-			})
-			return
-		}
+    res.status(200).send({
+      message: "Admin logged in!",
+      adminId: admin.adminId,
+      admin: adminReturn,
+    });
+  },
 
-		req.session.adminId = admin.adminId
+  logout: async (req, res) => {
+    req.session.destroy();
+    res.status(200).send({
+      message: "Logged out. Goodbye!",
+    });
+  },
+};
 
-		const adminReturn = await Admin.findByPk(admin.adminId)
-
-		res.status(200).send({
-			message: "Admin logged in!",
-			adminId: admin.adminId,
-			admin: adminReturn
-		})
-	},
-
-	logout: async (req, res) => {
-
-		req.session.destroy()
-		res.status(200).send({
-			message: "Logged out. Goodbye!"
-		})
-	}
-}
-
-export default authHandlers
+export default authHandlers;

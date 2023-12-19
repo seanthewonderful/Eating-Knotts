@@ -132,6 +132,11 @@ Admin.init(
       defaultValue: "/public/proficons/default.png",
       allowNull: false,
     },
+    // clearanceLevel: {
+    //   type: DataTypes.STRING(25),
+    //   defaultValue: "private-first-class",
+    //   allowNull: false,
+    // },
   },
   {
     hooks: {
@@ -215,11 +220,13 @@ Restaurant.init(
     },
     fullService: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false,
     },
     refills: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+      allowNull: false,
     },
     xCoord: {
       type: DataTypes.DECIMAL,

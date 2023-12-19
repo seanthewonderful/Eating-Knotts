@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Profile, { profileLoader } from "./pages/Profile.jsx";
-import ProfileAdmin, { adminLoader } from "./pages/ProfileAdmin.jsx";
+import Profile, { profileLoader } from "./pages/profiles/Profile.jsx";
+import ProfileAdmin, { adminLoader } from "./pages/profiles/ProfileAdmin.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AllRestaurants, { allRestaurantsLoader } from "./pages/Restaurants.jsx";
 import LandRestaurants, {

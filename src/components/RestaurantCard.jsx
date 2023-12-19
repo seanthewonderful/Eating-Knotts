@@ -39,11 +39,14 @@ export default function RestaurantCard({ restaurant }) {
         </Card.Title>
 
         <Card.Text
+          className="mb-0"
           onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
         >
           <StarAvg starAvg={avgStars} />({restaurant.ratings.length})
-          <p id="restaurant-expense">{restaurant.expense}</p>
         </Card.Text>
+        <p className="mb-0" id="restaurant-expense">
+          {restaurant.expense}
+        </p>
 
         <Card.Text className="text-start">
           <i id="rest-server" className="bi bi-person-walking"></i>

@@ -10,9 +10,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const adminId = useSelector((state) => state.adminId);
-
-  console.log(user);
+  const admin = useSelector((state) => state.admin);
 
   const logout = async () => {
     axios.get("/api/logout").then((res) => {
@@ -32,6 +30,11 @@ export default function Navbar() {
       dispatch({
         type: "USER_AUTH",
         payload: data.user,
+      });
+    } else if (data.admin) {
+      dispatch({
+        type: "ADMIN_AUTH",
+        payload: data.admin,
       });
     }
   };
@@ -75,11 +78,13 @@ export default function Navbar() {
             </>
           )}
 
-          {adminId && (
+          {admin && (
             <>
               <Button className="nav-btn">
-                <NavLink to={`/admin/${adminId}`}>Profile</NavLink>
+                <NavLink to={`/admin/${admin.adminId}`}>Admin</NavLink>
               </Button>
+
+              <img src={admin.img} alt="user-icon" id="nav-profile-icon" />
 
               <Button className="nav-btn">
                 <NavLink to={"/"} onClick={logout}>
@@ -89,7 +94,7 @@ export default function Navbar() {
             </>
           )}
 
-          {!user && !adminId && (
+          {!user && !admin && (
             <Button className="nav-btn">
               <NavLink to={"/login"}>Login</NavLink>
             </Button>
