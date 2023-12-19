@@ -11,8 +11,6 @@ import {
 const adminHandlers = {
   getEverything: async (req, res) => {
     const { adminId } = req.params;
-    console.log("adminId: ", adminId);
-    console.log("session adminId: ", req.session.adminId);
 
     if (adminId != req.session.adminId) {
       res.status(401).send({
@@ -29,6 +27,8 @@ const adminHandlers = {
         model: User,
       },
     });
+
+    console.log("All Restaurants", allRestaurants);
 
     res.status(200).send({
       message: "Anything for an administrator",

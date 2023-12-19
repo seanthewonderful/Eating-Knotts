@@ -25,7 +25,9 @@ export default function RestaurantPage() {
 
   const ratings = restaurant.ratings.map((rating) => {
     try {
-      rating.userId === user.userId ?? setNotRated(true);
+      if (rating.userId === user.userId) {
+        setNotRated(true);
+      }
     } catch (error) {
       console.log(error);
     }

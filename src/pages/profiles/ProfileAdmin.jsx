@@ -4,6 +4,7 @@ import { Container, Row, Tabs, Tab } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import AdminTable from "../../components/admins/AdminTable";
 import UserTable from "../../components/admins/UserTable";
+import RestaurantTable from "../../components/admins/RestaurantTable";
 
 export default function ProfileAdmin() {
   const { admin } = useLoaderData();
@@ -13,11 +14,13 @@ export default function ProfileAdmin() {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [allRatings, setAllRatings] = useState([]);
 
+  console.log(allRestaurants);
+
   const loadAllData = () => {
     axios
       .get(`/api/admin/access/${admin.adminId}`)
       .then((res) => {
-        console.log("res.data: ", res.data);
+        console.log("res.data: ", res.data.allRestaurants);
         setAllAdmins(res.data.allAdmins);
         setAllUsers(res.data.allUsers);
         setAllRestaurants(res.data.allRestaurants);
@@ -49,7 +52,7 @@ export default function ProfileAdmin() {
             {<UserTable allUsers={allUsers} />}
           </Tab>
           <Tab eventKey="restaurants" title="All Restaurants">
-            Tab content for all restaurants
+            {<RestaurantTable allRestaurants={allRestaurants} />}
           </Tab>
           <Tab eventKey="ratings" title="All Ratings">
             Tab content for all ratings
