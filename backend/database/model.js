@@ -132,6 +132,11 @@ Admin.init(
       defaultValue: "/public/proficons/default.png",
       allowNull: false,
     },
+    // clearanceLevel: {
+    //   type: DataTypes.STRING(25),
+    //   defaultValue: "private-first-class",
+    //   allowNull: false,
+    // },
   },
   {
     hooks: {

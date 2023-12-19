@@ -73,13 +73,20 @@ const userHandlers = {
     }
 
     await User.create({
-      username,
+      username: username.toLowerCase(),
       password,
       email,
-      firstName: name.fName,
-      lastName: name.lName,
+      firstName: name.fName.toLowerCase(),
+      lastName: name.lName.toLowerCase(),
       img,
     });
+
+    if (req.session.adminId) {
+      res.status(200).send({
+        message: "New user created successfully",
+      });
+      return;
+    }
 
     const user = await User.findOne({
       where: {

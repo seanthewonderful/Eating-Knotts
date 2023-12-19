@@ -45,7 +45,7 @@ export default function AddRestaurantModal() {
   return (
     <Container>
       <Row className="justify-content-center mb-2">
-        <Col xs={1} offset={2}>
+        <Col xs={1}>
           <Button variant="primary" size="sm" onClick={handleShow}>
             New Restaurant
           </Button>

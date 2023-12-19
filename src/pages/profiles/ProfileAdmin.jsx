@@ -7,6 +7,7 @@ import UserTable from "../../components/admins/UserTable";
 import RestaurantTable from "../../components/admins/RestaurantTable";
 import RatingTable from "../../components/admins/RatingTable";
 import AddRestaurantModal from "../../components/admins/AddRestaurantModal";
+import AddUserModal from "../../components/admins/AddUserModal";
 
 export default function ProfileAdmin() {
   const { admin } = useLoaderData();
@@ -45,6 +46,7 @@ export default function ProfileAdmin() {
             {<AdminTable allAdmins={allAdmins} />}
           </Tab>
           <Tab id="admin-tab" eventKey="users" title="All Users">
+            {<AddUserModal />}
             {<UserTable allUsers={allUsers} />}
           </Tab>
           <Tab id="admin-tab" eventKey="restaurants" title="All Restaurants">
