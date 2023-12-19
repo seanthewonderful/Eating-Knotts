@@ -1,4 +1,4 @@
-import { Marker } from "react-leaflet";
+import { Marker, Tooltip } from "react-leaflet";
 import { Icon, setOptions } from "leaflet";
 import MapPopup from "./MapPopup.jsx";
 
@@ -12,7 +12,7 @@ export default function MapMarker({ restaurant }) {
       iconUrl: `https://api.geoapify.com/v1/icon/?type=material&color=%23a404fb&icon=local_bar&noWhiteCircle&apiKey=${
         import.meta.env.VITE_GEOAPIFY_KEY
       }`,
-      iconAnchor: [10, 15],
+      iconAnchor: [12, 40],
       iconSize: [28, 40],
     });
   } else {
@@ -20,7 +20,7 @@ export default function MapMarker({ restaurant }) {
       iconUrl: `https://api.geoapify.com/v1/icon/?type=material&color=%23a404fb&icon=restaurant&noWhiteCircle&apiKey=${
         import.meta.env.VITE_GEOAPIFY_KEY
       }`,
-      iconAnchor: [10, 15],
+      iconAnchor: [12, 40],
       iconSize: [28, 40],
     });
   }
@@ -33,6 +33,7 @@ export default function MapMarker({ restaurant }) {
       riseOnHover={true}
     >
       <MapPopup restaurant={restaurant} />
+      <Tooltip>{restaurant.name}</Tooltip>
     </Marker>
   );
 }

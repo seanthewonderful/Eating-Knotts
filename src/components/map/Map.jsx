@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapMarker from "./MapMarker.jsx";
+import SetViewOnClick from "./SetViewOnClick.jsx";
 
 export default function Map({ allRestaurants }) {
   const markers = allRestaurants.map((rest) => {
@@ -29,6 +30,7 @@ export default function Map({ allRestaurants }) {
         maxZoom={22}
         ext="png"
       />
+      <SetViewOnClick animateRef={true} />
 
       {markers}
     </MapContainer>

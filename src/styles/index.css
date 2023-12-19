@@ -79,6 +79,8 @@ button:focus-visible {
   align-items: center;
   padding-right: 2%;
   padding-left: 2%;
+  /* position: relative; */
+  margin-top: 0;
 }
 .nav-btn {
   color: white;
@@ -108,7 +110,7 @@ button:focus-visible {
 
 /* sizing of map container */
 .leaflet-container {
-  height: 100vh;
+  height: 90vh;
 }
 
 #login-form {
