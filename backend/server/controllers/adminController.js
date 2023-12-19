@@ -82,11 +82,8 @@ const adminHandlers = {
       img,
     });
 
-    req.session.adminId = newAdmin.adminId;
-
     res.status(201).send({
-      message: "New admin created",
-      adminId: newAdmin.adminId,
+      message: `New administrator, ${username} created`,
     });
   },
 

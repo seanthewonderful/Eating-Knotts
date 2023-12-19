@@ -8,6 +8,7 @@ import RestaurantTable from "../../components/admins/RestaurantTable";
 import RatingTable from "../../components/admins/RatingTable";
 import AddRestaurantModal from "../../components/admins/AddRestaurantModal";
 import AddUserModal from "../../components/admins/AddUserModal";
+import AddAdminModal from "../../components/admins/AddAdminModal";
 
 export default function ProfileAdmin() {
   const { admin } = useLoaderData();
@@ -43,6 +44,7 @@ export default function ProfileAdmin() {
       <Row>
         <Tabs defaultActiveKey="admins" className="mb-3 admin-tabs">
           <Tab id="admin-tab" eventKey="admins" title="All Admins">
+            {<AddAdminModal />}
             {<AdminTable allAdmins={allAdmins} />}
           </Tab>
           <Tab id="admin-tab" eventKey="users" title="All Users">
