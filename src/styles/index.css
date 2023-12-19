@@ -246,3 +246,9 @@ td {
 .admin-display {
   font-size: small;
 }
+.nav-item > button {
+  border-top: 1px solid #7f4c7f !important;
+  border-left: 1px solid #7f4c7f !important;
+  border-right: 1px solid #7f4c7f !important;
+  border-radius: 0;
+}

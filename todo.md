@@ -111,11 +111,11 @@ Create Admin page
 - [] What can admins do?
   - [] Create new admin
   - [x] edit admins
-  - [] delete admins
+  - [x] delete admins
   - [] Create new user
   - [x] Edit user info
-  - [] delete user
-  - [] New restaurant
+  - [x] delete user
+  - [x] New restaurant
   - [x] Edit restaurant details
   - [x] Edit user ratings
   - [x] delete user ratings

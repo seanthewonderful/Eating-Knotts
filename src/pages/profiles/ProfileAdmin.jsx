@@ -6,6 +6,7 @@ import AdminTable from "../../components/admins/AdminTable";
 import UserTable from "../../components/admins/UserTable";
 import RestaurantTable from "../../components/admins/RestaurantTable";
 import RatingTable from "../../components/admins/RatingTable";
+import AddRestaurantModal from "../../components/admins/AddRestaurantModal";
 
 export default function ProfileAdmin() {
   const { admin } = useLoaderData();
@@ -39,20 +40,18 @@ export default function ProfileAdmin() {
         <h4>Welcome, administrator {admin.username}</h4>
       </Row>
       <Row>
-        <Tabs defaultActiveKey="profile" id="admin-tabs" className="mb-3">
-          <Tab eventKey="myInfo" title="My Info">
-            Tab content for My Info
-          </Tab>
-          <Tab eventKey="admins" title="All Admins">
+        <Tabs defaultActiveKey="admins" className="mb-3 admin-tabs">
+          <Tab id="admin-tab" eventKey="admins" title="All Admins">
             {<AdminTable allAdmins={allAdmins} />}
           </Tab>
-          <Tab eventKey="users" title="All Users">
+          <Tab id="admin-tab" eventKey="users" title="All Users">
             {<UserTable allUsers={allUsers} />}
           </Tab>
-          <Tab eventKey="restaurants" title="All Restaurants">
+          <Tab id="admin-tab" eventKey="restaurants" title="All Restaurants">
+            {<AddRestaurantModal />}
             {<RestaurantTable allRestaurants={allRestaurants} />}
           </Tab>
-          <Tab eventKey="ratings" title="All Ratings">
+          <Tab id="admin-tab" eventKey="ratings" title="All Ratings">
             {<RatingTable allRatings={allRatings} />}
           </Tab>
         </Tabs>

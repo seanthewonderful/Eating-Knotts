@@ -215,11 +215,13 @@ Restaurant.init(
     },
     fullService: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false,
     },
     refills: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+      allowNull: false,
     },
     xCoord: {
       type: DataTypes.DECIMAL,
