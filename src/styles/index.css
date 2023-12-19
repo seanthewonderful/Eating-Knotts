@@ -108,7 +108,7 @@ button:focus-visible {
 
 /* sizing of map container */
 .leaflet-container {
-  height: 90vh;
+  height: 100vh;
 }
 
 #login-form {
@@ -116,13 +116,11 @@ button:focus-visible {
   background-color: #763076;
   color: white;
 }
-
 #register-form {
   margin-top: 2%;
   background-color: #763076;
   color: white;
 }
-
 .prof-icon-selection {
   height: 10vh;
   margin: 2%;

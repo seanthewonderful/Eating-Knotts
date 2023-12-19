@@ -138,6 +138,7 @@ Advanced map features:
 - [] Collapsible navbar?
 - [] List view of restaurants with map?
 - [] Search bard to flyto map locations and open marker
+  - https://leafletjs.com/plugins.html#basemap-providers:~:text=Nicholas%20Hallahan-,Search%20%26%20popups,-Plugins%20that%20search
 
 Styling
 
