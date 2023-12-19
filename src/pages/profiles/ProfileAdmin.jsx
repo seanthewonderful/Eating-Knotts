@@ -15,13 +15,10 @@ export default function ProfileAdmin() {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [allRatings, setAllRatings] = useState([]);
 
-  console.log(allRestaurants);
-
   const loadAllData = () => {
     axios
       .get(`/api/admin/access/${admin.adminId}`)
       .then((res) => {
-        console.log("res.data: ", res.data.allRestaurants);
         setAllAdmins(res.data.allAdmins);
         setAllUsers(res.data.allUsers);
         setAllRestaurants(res.data.allRestaurants);

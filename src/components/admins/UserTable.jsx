@@ -9,6 +9,7 @@ export default function UserTable({ allUsers }) {
     <table>
       <thead>
         <tr>
+          <th>User ID</th>
           <th>Username</th>
           <th>Email</th>
           <th>First Name</th>

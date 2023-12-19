@@ -117,7 +117,6 @@ Create Admin page
   - [] delete user
   - [] New restaurant
   - [x] Edit restaurant details
-  - [] delete restaurant
   - [x] Edit user ratings
   - [x] delete user ratings
 

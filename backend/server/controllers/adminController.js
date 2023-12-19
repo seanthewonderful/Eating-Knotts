@@ -26,8 +26,6 @@ const adminHandlers = {
       include: [{ model: User }, { model: Restaurant }],
     });
 
-    console.log("All Restaurants", allRestaurants);
-
     res.status(200).send({
       message: "Anything for an administrator",
       allAdmins,

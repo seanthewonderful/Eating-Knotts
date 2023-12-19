@@ -220,6 +220,17 @@ const userHandlers = {
   },
 
   deleteUser: async (req, res) => {
+    if (req.session.adminId) {
+      const user = await User.findByPk(req.params.userId);
+
+      await user.destroy();
+
+      res.status(200).send({
+        message: "User deleted and logged out",
+      });
+      return;
+    }
+
     if (!req.session.userId) {
       res.status(401).send({
         message: "You must be logged in to do this",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { notify } from "../../assets/funx";
 
@@ -10,10 +10,9 @@ export default function UserDisplay({ user }) {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [img, setImg] = useState(user.img);
+  const [show, setShow] = useState(false);
 
-  const editMode = () => {
-    setIsEditing(true);
-  };
+  const editMode = () => setIsEditing(true);
 
   const handleSave = () => {
     const bodyObj = {
@@ -43,8 +42,24 @@ export default function UserDisplay({ user }) {
     setIsEditing(false);
   };
 
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleDelete = () => {
+    axios
+      .delete(`/api/user/delete/${user.userId}`)
+      .then((res) => {
+        notify("success", res.data.message);
+      })
+      .catch((err) => notify("danger", err.response.data.message));
+
+    setShow(false);
+    window.location.reload();
+  };
+
   return isEditing ? (
     <tr className="user-display">
+      <td>{user.userId}</td>
       <td>
         <input
           type="text"
@@ -108,17 +123,41 @@ export default function UserDisplay({ user }) {
       </td>
     </tr>
   ) : (
-    <tr>
-      <td>{username}</td>
-      <td>{email}</td>
-      <td>{firstName}</td>
-      <td>{lastName}</td>
-      <td>{img}</td>
-      <td>
-        <Button variant="secondary" size="sm" onClick={editMode}>
-          Edit
-        </Button>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>{user.userId}</td>
+        <td>{username}</td>
+        <td>{email}</td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{img}</td>
+        <td>
+          <Button variant="secondary" size="sm" onClick={editMode}>
+            Edit
+          </Button>
+          <Button
+            className="ms-2"
+            variant="outline-danger"
+            size="sm"
+            onClick={handleShow}
+          >
+            Delete
+          </Button>
+        </td>
+      </tr>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          Are you sure you want to delete this user? This cannot be undone.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Yes, Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
