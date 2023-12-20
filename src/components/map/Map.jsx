@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapMarker from "./MapMarker.jsx";
 import SetViewOnClick from "./SetViewOnClick.jsx";
+import reactLeaflet from "../../../public/icons/reactLeaflet.svg";
 
 export default function Map({ allRestaurants }) {
   const markers = allRestaurants.map((rest) => {
@@ -17,7 +18,7 @@ export default function Map({ allRestaurants }) {
       zoomControl={false}
     >
       <TileLayer
-        attribution='&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution={`&copy; <img id="react-leaflet-logo" src=${reactLeaflet} alt="" /> <a href="https://react-leaflet.js.org/">React-Leaflet</a>, &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`}
         url={`https://{s}.tile.thunderforest.com/pioneer/{z}/{x}/{y}.png?apikey=${
           import.meta.env.VITE_THUNDERFOREST_API_KEY
         }`}
@@ -25,13 +26,12 @@ export default function Map({ allRestaurants }) {
       />
 
       <TileLayer
-        attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution={`&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`}
         url="https://tiles.stadiamaps.com/tiles/stamen_terrain_labels/{z}/{x}/{y}{r}.{ext}"
         maxZoom={22}
         ext="png"
       />
       <SetViewOnClick animateRef={true} />
-
       {markers}
     </MapContainer>
   );

@@ -79,8 +79,10 @@ button:focus-visible {
   align-items: center;
   padding-right: 2%;
   padding-left: 2%;
-  /* position: relative; */
-  margin-top: 0;
+  position: absolute;
+  top: 0%;
+  z-index: 401;
+  width: 100vw;
 }
 .nav-btn {
   color: white;
@@ -110,9 +112,18 @@ button:focus-visible {
 
 /* sizing of map container */
 .leaflet-container {
-  height: 90vh;
+  height: 100vh;
+}
+#react-leaflet-logo {
+  height: 1.7em;
+  padding: 0;
+  margin: 0;
+}
+.leaflet-control-attribution {
+  font-size: smaller;
 }
 
+/* Login stuff */
 #login-form {
   margin-top: 2%;
   background-color: #763076;
@@ -166,6 +177,7 @@ button:focus-visible {
   font-size: large;
   font-weight: bold;
   font-style: italic;
+  margin: 0;
 }
 #rest-check {
   color: green;
