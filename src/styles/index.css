@@ -69,6 +69,9 @@ button:focus-visible {
     background-color: #763076;
   }
 }
+h4 {
+  color: #363697;
+}
 
 #navbar {
   border: purple 1px solid;
@@ -110,7 +113,7 @@ button:focus-visible {
   margin-left: 2%;
 }
 
-/* sizing of map container */
+/* Map */
 .leaflet-container {
   height: 100vh;
 }
@@ -121,6 +124,23 @@ button:focus-visible {
 }
 .leaflet-control-attribution {
   font-size: smaller;
+}
+#popup-btn {
+  color: white;
+  background-color: #763076;
+  border-color: #763076;
+  transition: 0.25s;
+  height: 2em;
+  padding: 0.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#popup-btn:hover {
+  color: #763076;
+  background: white;
+}
+.leaflet-popup-content-wrapper {
+  background-color: #ffd1ff !important;
 }
 
 /* Login stuff */

@@ -104,7 +104,7 @@ export default function Navbar() {
 
       <ToastContainer
         position="top-center"
-        autoClose={4000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={true}
         closeOnClick

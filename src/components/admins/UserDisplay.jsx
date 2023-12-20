@@ -130,7 +130,7 @@ export default function UserDisplay({ user }) {
         <td>{email}</td>
         <td>{firstName}</td>
         <td>{lastName}</td>
-        <td>{img}</td>
+        <td>{img.split("/")[2]}</td>
         <td>
           <Button variant="secondary" size="sm" onClick={editMode}>
             Edit

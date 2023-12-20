@@ -132,18 +132,19 @@ Create Leaflet map
 
 Advanced map features:
 
-- [] Popup box styling
+- [x] Popup box styling
 - [x] Different layer?
 - [] Unique Icons
 - [] Collapsible navbar?
 - [] List view of restaurants with map?
 - [] Search bard to flyto map locations and open marker
   - https://leafletjs.com/plugins.html#basemap-providers:~:text=Nicholas%20Hallahan-,Search%20%26%20popups,-Plugins%20that%20search
+- [] Add relational data to DB for some of this to be good
 
 Styling
 
 - [] Mobile friendly
-- [] Navbar sticky top
+- [x] Navbar sticky top
 - [] Collapsible edit info
 
 Extra features
@@ -151,3 +152,4 @@ Extra features
 - [] Something offcanvas?
 - [] Remember where user was for login re-route
 - [] Page restrictions
+- [] Admin adding instant update to page

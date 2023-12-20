@@ -18,6 +18,8 @@ export default function ProfileAdmin() {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [allRatings, setAllRatings] = useState([]);
 
+  const [dummy, setDummy] = useState([]);
+
   const loadAllData = () => {
     axios
       .get(`/api/admin/access/${admin.adminId}`)
@@ -34,7 +36,7 @@ export default function ProfileAdmin() {
 
   useEffect(() => {
     loadAllData();
-  }, []);
+  }, [dummy]);
 
   return (
     <Container fluid>
@@ -44,15 +46,15 @@ export default function ProfileAdmin() {
       <Row>
         <Tabs defaultActiveKey="admins" className="mb-3 admin-tabs">
           <Tab id="admin-tab" eventKey="admins" title="All Admins">
-            {<AddAdminModal />}
+            {<AddAdminModal setDummy={setDummy} />}
             {<AdminTable allAdmins={allAdmins} />}
           </Tab>
           <Tab id="admin-tab" eventKey="users" title="All Users">
-            {<AddUserModal />}
+            {<AddUserModal setDummy={setDummy} />}
             {<UserTable allUsers={allUsers} />}
           </Tab>
           <Tab id="admin-tab" eventKey="restaurants" title="All Restaurants">
-            {<AddRestaurantModal />}
+            {<AddRestaurantModal setDummy={setDummy} />}
             {<RestaurantTable allRestaurants={allRestaurants} />}
           </Tab>
           <Tab id="admin-tab" eventKey="ratings" title="All Ratings">

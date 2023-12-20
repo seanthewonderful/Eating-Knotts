@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Popup } from "react-leaflet";
 import { NavLink, useNavigate } from "react-router-dom";
 import StarAvg from "../StarAvg";
@@ -28,11 +28,18 @@ export default function MapPopup({ restaurant }) {
             </Row>
           </NavLink>
 
-          <Row>
-            <p id="restaurant-expense">{restaurant.expense}</p>
+          <Row className="justify-content-between text-center">
+            <Col>
+              <p id="restaurant-expense">{restaurant.expense}</p>
+            </Col>
+            <Col className="align-items-end">
+              <NavLink to={`/restaurant/${restaurant.restaurantId}`}>
+                <button id="popup-btn">Visit</button>
+              </NavLink>
+            </Col>
           </Row>
 
-          <Row>
+          <Row className="text-center">
             <p>
               <StarAvg starAvg={avgStars} />({restaurant.ratings.length})
             </p>
