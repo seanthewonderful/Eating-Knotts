@@ -209,7 +209,7 @@ Restaurant.init(
       unique: false,
     },
     img: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "/restaurants/default.png",
     },

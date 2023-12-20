@@ -21,6 +21,9 @@ const restaurantHandlers = {
         {
           model: Land,
         },
+        {
+          model: Cuisine,
+        },
       ],
     });
 

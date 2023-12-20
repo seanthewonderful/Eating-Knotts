@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   User,
   Admin,
@@ -13,27 +14,7 @@ import {
 const users = ["Carl", "Rory", "Billie", "Pam", "Larry"];
 const admins = ["Sean", "Natalie"];
 const lands = ["Camp Snoopy", "Fiesta Village", "Boardwalk", "Ghost Town"];
-const cuisines = [
-  "American",
-  "Southern",
-  "Mexican",
-  "Italian",
-  "Dessert",
-  "Asian",
-  "Coffee",
-  "Alcohol",
-];
-const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"];
-let rest = {
-  name: "",
-  expense: "",
-  img: "",
-  desciption: "",
-  fullService: false,
-  refills: true,
-  xCoord: 0,
-  yCoord: 0,
-};
+
 const campSnoopyRestaurants = [
   {
     name: "Silver Bullet Dippin' Dots",
@@ -271,6 +252,17 @@ const ghostTownRestaurants = [
     yCoord: -117.9993005286782,
   },
   {
+    name: "Sutter's Grill",
+    expense: "$",
+    img: "/public/restaurants/suttersGrill.jpeg",
+    description:
+      "Right past the entrance of our Famous Ghost Town, come enjoy hamburgers, buffalo style breaded chicken sandwiches, BBQ bacon cheeseburgers, and salads. Sit down in one of our many picnic areas around the restaurant and enjoy the sights and sounds of the Wild West Stunt Shows, Silver Bullet, and our Seasonal Crafters!",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84399247853677,
+    yCoord: -117.99934871711179,
+  },
+  {
     name: "Strictly-On-A-Stick",
     expense: "$",
     img: "https://img.te2.io/unsafe/228x0:1149x690/cf/CF_KBF/client/86312f6b-aeb2-4fb2-965f-2441e40345fa/kbf-banner-image-strictly-stick-23.jpg",
@@ -413,17 +405,7 @@ const ghostTownRestaurants = [
     xCoord: 33.84343305856352,
     yCoord: -118.00018278621083,
   },
-  {
-    name: "Sutter's Grill",
-    expense: "$",
-    img: "/public/restaurants/suttersGrill.jpeg",
-    description:
-      "Right past the entrance of our Famous Ghost Town, come enjoy hamburgers, buffalo style breaded chicken sandwiches, BBQ bacon cheeseburgers, and salads. Sit down in one of our many picnic areas around the restaurant and enjoy the sights and sounds of the Wild West Stunt Shows, Silver Bullet, and our Seasonal Crafters!",
-    fullService: false,
-    refills: true,
-    xCoord: 33.84399247853677,
-    yCoord: -117.99934871711179,
-  },
+
   {
     name: "Wilderness Broiler",
     expense: "$$",
@@ -554,28 +536,28 @@ for (let land of lands) {
 console.log("Seeded Land");
 
 // Create cuisines
-for (let cuisine of cuisines) {
-  await Cuisine.create({
-    name: cuisine,
-  });
-}
-// const americanCuisine = await Cuisine.create({ name: "American" })
-// const southernCuisine = await Cuisine.create({ name: "Southern" })
-// const mexicanCuisine = await Cuisine.create({ name: "Mexican" })
-// const italianCuisine = await Cuisine.create({ name: "Italian" })
-// const dessertCuisine = await Cuisine.create({ name: "Dessert" })
-// const snacksCuisine = await Cuisine.create({ name: "Snacks" })
-// const coffeeCuisine = await Cuisine.create({ name: "Coffee" })
-// const alcoholCuisine = await Cuisine.create({ name: "Alcohol" })
+// for (let cuisine of cuisines) {
+//   await Cuisine.create({
+//     name: cuisine,
+//   });
+// }
+const americanCuisine = await Cuisine.create({ name: "American" });
+const southernCuisine = await Cuisine.create({ name: "Southern" });
+const mexicanCuisine = await Cuisine.create({ name: "Mexican" });
+const italianCuisine = await Cuisine.create({ name: "Italian" });
+const dessertCuisine = await Cuisine.create({ name: "Dessert" });
+const asianCuisine = await Cuisine.create({ name: "Asian" });
+const coffeeCuisine = await Cuisine.create({ name: "Coffee" });
+const alcoholCuisine = await Cuisine.create({ name: "Alcohol" });
 
 console.log("Seeded Cuisine");
 
 // Create MealTypes
-for (let mealType of mealTypes) {
-  await MealType.create({
-    name: mealType,
-  });
-}
+const breakfast = await MealType.create({ name: "Breakfast" });
+const lunch = await MealType.create({ name: "Lunch" });
+const dinner = await MealType.create({ name: "Dinner" });
+const snack = await MealType.create({ name: "Snack" });
+const dessert = await MealType.create({ name: "Dessert" });
 
 console.log("Seeded MealType");
 
@@ -618,6 +600,244 @@ for (let restaurant of ghostTownRestaurants) {
 }
 
 console.log("Seeded Restaurant");
+
+// Connect restaurants to Cuisines
+// Query Restaurants
+const SBDots = await Restaurant.findOne({
+  where: { name: "Silver Bullet Dippin' Dots" },
+});
+const SSDots = await Restaurant.findOne({
+  where: { name: "Supreme Scream Dippin' Dots" },
+});
+const grizzlyCreek = await Restaurant.findOne({
+  where: { name: "Grizzly Creek Lodge" },
+});
+const snoopyRefresh = await Restaurant.findOne({
+  where: { name: "Camp Snoopy Refresh" },
+});
+const caveInn = await Restaurant.findOne({
+  where: { name: "Cave Inn Snacks" },
+});
+const fiestaRefresh = await Restaurant.findOne({
+  where: { name: "Fiesta Refresh" },
+});
+const bajaTaqueria = await Restaurant.findOne({
+  where: { name: "Baja Taqueria" },
+});
+const cantinaDelSur = await Restaurant.findOne({
+  where: { name: "Cantina Del Sur" },
+});
+const papasMexicans = await Restaurant.findOne({
+  where: { name: "Papas Mexicanas" },
+});
+const casaCalifornia = await Restaurant.findOne({
+  where: { name: "Casa California Restaurante" },
+});
+const oaxacaJoes = await Restaurant.findOne({
+  where: { name: "Oaxaca Joe's Limonada" },
+});
+const johnnyRockets = await Restaurant.findOne({
+  where: { name: "Johnny Rockets" },
+});
+const boardwalkBBQ = await Restaurant.findOne({
+  where: { name: "Boardwalk BBQ" },
+});
+const boardwalkPretzels = await Restaurant.findOne({
+  where: { name: "Boardwalk Pretzels & Churros" },
+});
+const charlestonCoffee = await Restaurant.findOne({
+  where: { name: "Charleston Circle Coffee" },
+});
+const coastersDiner = await Restaurant.findOne({
+  where: { name: "Coasters Diner" },
+});
+const memoryLaneRefresh = await Restaurant.findOne({
+  where: { name: "Memory Lane Refresh" },
+});
+const propShopPizza = await Restaurant.findOne({
+  where: { name: "Prop Shop Pizzeria" },
+});
+const mixItIceCream = await Restaurant.findOne({
+  where: { name: "Mix-It-Up Ice Cream Shop" },
+});
+const suttersFunnel = await Restaurant.findOne({
+  where: { name: "Sutter's Funnel Cake" },
+});
+const suttersPizza = await Restaurant.findOne({
+  where: { name: "Sutter's Pizza" },
+});
+const suttersGrill = await Restaurant.findOne({
+  where: { name: "Sutter's Grill" },
+});
+const onAStick = await Restaurant.findOne({
+  where: { name: "Strictly-On-A-Stick" },
+});
+const pemmicanPickle = await Restaurant.findOne({
+  where: { name: "Pemmican Pickle" },
+});
+const panda = await Restaurant.findOne({ where: { name: "Panda Express" } });
+const minersMac = await Restaurant.findOne({
+  where: { name: "Miner's Mac & Spuds" },
+});
+const logRideIcee = await Restaurant.findOne({
+  where: { name: "Log Ride ICEE Mix-It-Up" },
+});
+const logRideFunnel = await Restaurant.findOne({
+  where: { name: "Log Ride Funnel Cake" },
+});
+const gourmetChurro = await Restaurant.findOne({
+  where: { name: "Gourmet Churro Factory" },
+});
+const ghostTownGrub = await Restaurant.findOne({
+  where: { name: "Ghost Town Grub" },
+});
+const ghostTownGrill = await Restaurant.findOne({
+  where: { name: "Ghost Town Grill" },
+});
+const ghostTownBakery = await Restaurant.findOne({
+  where: { name: "Ghost Town Bakery & Coffee Shop" },
+});
+const calicoSaloon = await Restaurant.findOne({
+  where: { name: "Calico Saloon" },
+});
+const calicoTaterBites = await Restaurant.findOne({
+  where: { name: "Calico Tater Bites" },
+});
+const firemansBBQ = await Restaurant.findOne({
+  where: { name: "Fireman's Brigade BBQ" },
+});
+const wildernessBroiler = await Restaurant.findOne({
+  where: { name: "Wilderness Broiler" },
+});
+const wildernessRefresh = await Restaurant.findOne({
+  where: { name: "Wilderness Refresh" },
+});
+
+await americanCuisine.addRestaurants([
+  grizzlyCreek,
+  caveInn,
+  johnnyRockets,
+  boardwalkBBQ,
+  boardwalkPretzels,
+  coastersDiner,
+  propShopPizza,
+  suttersGrill,
+  suttersPizza,
+  onAStick,
+  pemmicanPickle,
+  minersMac,
+  ghostTownGrub,
+  ghostTownGrill,
+  calicoTaterBites,
+  firemansBBQ,
+  wildernessBroiler,
+]);
+await southernCuisine.addRestaurants([
+  boardwalkBBQ,
+  minersMac,
+  calicoTaterBites,
+  firemansBBQ,
+  wildernessBroiler,
+]);
+await mexicanCuisine.addRestaurants([
+  bajaTaqueria,
+  cantinaDelSur,
+  papasMexicans,
+  casaCalifornia,
+  oaxacaJoes,
+]);
+await italianCuisine.addRestaurants([suttersPizza, propShopPizza]);
+await dessertCuisine.addRestaurants([
+  SBDots,
+  SSDots,
+  charlestonCoffee,
+  mixItIceCream,
+  suttersFunnel,
+  onAStick,
+  logRideFunnel,
+  logRideIcee,
+  gourmetChurro,
+  ghostTownBakery,
+]);
+await asianCuisine.addRestaurants([panda]);
+await coffeeCuisine.addRestaurants([charlestonCoffee]);
+await alcoholCuisine.addRestaurants([cantinaDelSur, calicoSaloon]);
+
+console.log("Connected restaurants + cuisines");
+
+// Connect MealTypes with Restaurants
+await breakfast.addRestaurants([grizzlyCreek, ghostTownBakery]);
+await lunch.addRestaurants([
+  grizzlyCreek,
+  bajaTaqueria,
+  papasMexicans,
+  casaCalifornia,
+  johnnyRockets,
+  boardwalkBBQ,
+  coastersDiner,
+  propShopPizza,
+  suttersGrill,
+  suttersPizza,
+  panda,
+  minersMac,
+  ghostTownGrill,
+  calicoTaterBites,
+  firemansBBQ,
+  wildernessBroiler,
+]);
+await dinner.addRestaurants([
+  grizzlyCreek,
+  bajaTaqueria,
+  papasMexicans,
+  casaCalifornia,
+  johnnyRockets,
+  boardwalkBBQ,
+  coastersDiner,
+  propShopPizza,
+  suttersGrill,
+  suttersPizza,
+  panda,
+  minersMac,
+  ghostTownGrill,
+  calicoTaterBites,
+  firemansBBQ,
+  wildernessBroiler,
+]);
+await snack.addRestaurants([
+  snoopyRefresh,
+  caveInn,
+  fiestaRefresh,
+  cantinaDelSur,
+  papasMexicans,
+  oaxacaJoes,
+  onAStick,
+  boardwalkPretzels,
+  charlestonCoffee,
+  memoryLaneRefresh,
+  pemmicanPickle,
+  minersMac,
+  logRideFunnel,
+  logRideIcee,
+  ghostTownGrub,
+  calicoSaloon,
+  calicoTaterBites,
+  wildernessBroiler,
+  wildernessRefresh,
+]);
+await dessert.addRestaurants([
+  SBDots,
+  SSDots,
+  charlestonCoffee,
+  mixItIceCream,
+  suttersFunnel,
+  onAStick,
+  logRideFunnel,
+  logRideIcee,
+  gourmetChurro,
+  ghostTownGrub,
+]);
+
+console.log("Connected MealTypes with Restaurants");
 
 console.log("Finished seeding database. Goodbye");
 
