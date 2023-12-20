@@ -24,7 +24,28 @@ const cuisines = [
   "Alcohol",
 ];
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"];
+let rest = {
+  name: "",
+  expense: "",
+  img: "",
+  desciption: "",
+  fullService: false,
+  refills: true,
+  xCoord: 0,
+  yCoord: 0,
+};
 const campSnoopyRestaurants = [
+  {
+    name: "Silver Bullet Dippin' Dots",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/dp-dippindots-bannerv3.jpg",
+    desciption:
+      "The original and unbeatable flash-frozen ice cream sensation, Dippin’ Dots, comes in a variety of flavors. Including a Boysenberry flavor, only found at Knott’s Berry Farm! This quick service ice cream counter is a scientific and fun take on a classic American favorite. Dippin’ Dots is a fresh and flavorful way to eat this frosty treat. Whether it is a hot summer day or a crisp fall afternoon, Dippin’ Dots will satisfy your sweet tooth.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84466616338294,
+    yCoord: -117.9988737374498,
+  },
   {
     name: "Grizzly Creek Lodge",
     expense: "$$",
@@ -60,6 +81,16 @@ const campSnoopyRestaurants = [
   },
 ];
 const fiestaVillageRestaurants = [
+  {
+    name: "Fiesta Refresh",
+    expense: "$",
+    img: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Mexican_Coke_%2811380037365%29_%28cropped%29.jpg",
+    desciption: "Fiesta Village's refill-refresh station!",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84604054824681,
+    yCoord: -117.99940488297,
+  },
   {
     name: "Baja Taqueria",
     expense: "$$",
@@ -117,6 +148,28 @@ const fiestaVillageRestaurants = [
   },
 ];
 const boardwalkRestaurants = [
+  {
+    name: "Supreme Scream Dippin' Dots",
+    expense: "$",
+    img: "/restaurants/dotsSupreme.jpeg",
+    desciption:
+      "The original and unbeatable flash-frozen ice cream sensation, Dippin’ Dots, comes in a variety of flavors. Including a Boysenberry flavor, only found at Knott’s Berry Farm! This quick service ice cream counter is a scientific and fun take on a classic American favorite. Dippin’ Dots is a fresh and flavorful way to eat this frosty treat. Whether it is a hot summer day or a crisp fall afternoon, Dippin’ Dots will satisfy your sweet tooth.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.845834258855724,
+    yCoord: -118.00069363127315,
+  },
+  {
+    name: "Johnny Rockets",
+    expense: "$$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/johnny-rockets-banner.jpg",
+    desciption:
+      "Knott's Berry Farm's Johnny Rockets holds the distinction of being the largest Johnny Rockets in North America! Johnny Rockets is known for its all-American diner look and feel, offering guests delicious food and upbeat music. This table-service experience offers a large variety of signature burgers, or you can feel free to create your own to your liking.\n You can also dive into a variety of sandwiches, hotdogs, and salads. Fries and onion rings are a recommended addition to every dish. Don't forget to pair your meal with a shake – choose from the collection of original and deluxe flavors, made with premium ice cream and hand-spun! Gluten-free, vegetarian, and vegan options are available upon request.",
+    fullService: true,
+    refills: true,
+    xCoord: 33.84414994569008,
+    yCoord: -118.00176221069097,
+  },
   {
     name: "Boardwalk BBQ",
     expense: "$$",
@@ -185,6 +238,149 @@ const boardwalkRestaurants = [
 ];
 const ghostTownRestaurants = [
   {
+    name: "Mix-It-Up Ice Cream Shop",
+    expense: "$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ice-cream-shop-banner.jpg",
+    desciption:
+      "These refreshing treats are the best in the West! This quick-service snack counter offers all of your favorite sweet treats. Take on the cookiewich challenge - vanilla or boysenberry soft-serve ice cream pressed between two freshly baked cookies. It’s big enough to share but so tasty that you won’t want to.\n Are you looking for something a little smaller? Try a waffle cone or classic cone with boysenberry or vanilla soft-serve ice cream. For an extra treat, dip your soft-serve cone in chocolate! To quench your thirst, take a sip of our freshly squeezed lemonade. Refresh with an ICEE – served in regular, ½ Yard, and Full Yard sizes. There is a wide variety of ICEE flavors, including boysenberry. Top it off with soft-serve ice cream for a tasty ICEE float!",
+    fullService: false,
+    refills: false,
+    xCoord: 33.843944680039925,
+    yCoord: -118.0005069630482,
+  },
+  {
+    name: "Sutter's Funnel Cake",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/sutters-funnel-cake-banner.jpg",
+    desciption:
+      "Mosey on over to the outskirts of Ghost Town for some of the finest funnel cakes this side of the Wild West! The quick-service dessert window, Sutter’s Funnel Cake, is home to Knott’s Berry Farm’s famous freshly made funnel cakes. Fried to perfection, enjoy a classic powdered sugar funnel cake or take on a “Fully Loaded” funnel cake that comes with ice cream and your choice of topping, boysenberry, strawberry, or chocolate.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84407626370309,
+    yCoord: -117.99939478500389,
+  },
+  {
+    name: "Sutter's Pizza",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/sutters-pizza-banner.jpg",
+    desciption:
+      "Are you craving pizza? Look no more! Located near the entrance of Ghost Town, gourmet pizza is sold by-the-pie or by-the-slice. We also offer different styles of pizza throughout our Seasons of Fun!",
+    fullService: false,
+    refills: false,
+    xCoord: 33.843956486865366,
+    yCoord: -117.9993005286782,
+  },
+  {
+    name: "Strictly-On-A-Stick",
+    expense: "$",
+    img: "https://img.te2.io/unsafe/228x0:1149x690/cf/CF_KBF/client/86312f6b-aeb2-4fb2-965f-2441e40345fa/kbf-banner-image-strictly-stick-23.jpg",
+    desciption:
+      "Eat on the go with delicious hand-dipped corn dogs! These golden-brown corn dogs provide a savory solution to any appetite and are a must-try for corn dog lovers. At Strictly-On-A-Stick, you can also find seasonal items that change regularly! Be sure to check out our seasonal event guides for details.\n Pair any corn dog with an order of shoestring fries – the ideal meal for any partner. Strictly on a Stick is a quick-service counter located across from the entrance of Timber Mountain Log Ride in Ghost Town.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84508051053724,
+    yCoord: -118.00083336758328,
+  },
+  {
+    name: "Pemmican Pickle",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/pemmican-pickle-banner.jpg",
+    desciption:
+      "Stop by the entrance of Ghost Town for a quick snack or soda to start your day and find pickles, churros, pretzels, sodas, ICEE, and select beer offerings.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84390111330971,
+    yCoord: -117.99929367262627,
+  },
+  {
+    name: "Panda Express",
+    expense: "$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/panda-express-banner.jpg",
+    desciption:
+      "Located across from Timber Mountain Log Ride, enjoy various gourmet Asian-inspired dishes, wok-tossed with fresh veggies and gourmet sauces. Items include the fan-favorite orange chicken and broccoli beef. Combo meals are served with a choice of either fried rice, steamed rice, chow mein, or mixed vegetables. Add a veggie spring roll, cream cheese rangoons, or chicken egg roll to any order for an extra crunch. This quick-service eatery offers both indoor and outdoor seating for your convenience.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.8448799666862,
+    yCoord: -118.00081375477741,
+  },
+  {
+    name: "Miner's Mac & Spuds",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/kbf-miners-mac-spuds-banner.jpg",
+    desciption:
+      "Transport yourself to the bygone era of mining and adventure with the flavorful offerings of the Old West at Miner's Mac and Spuds.\n Just a stone's throw away from the exhilarating Ghostrider, enjoy hearty servings of loaded potatoes and scrumptious macaroni and cheese. Indulge in the perfect combination of flavors with our signature toppings, such as savory chili and cheese, tender pulled pork, and zesty buffalo chicken.\n To complete your meal, we offer a delightful dessert option: our mini apple pie served hot and fresh. For those seeking an extra touch of indulgence, enjoy it a la mode with a scoop of creamy ice cream. It's the perfect sweet ending to your savory feast.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.843164577100374,
+    yCoord: -117.99949629141645,
+  },
+  {
+    name: "Log Ride ICEE Mix-It-Up",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/icee-mit-it-up-banner.jpg",
+    desciption:
+      "Refresh yourself with an ICEE! There is a huge selection of ICEE flavors, including boysenberry. Top it off with vanilla soft-serve ice cream for a tasty ICEE float!\n Log Ride ICEE Mix-It-Up is open on weekends and select days throughout the season.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84518251555073,
+    yCoord: -118.00084785819482,
+  },
+  {
+    name: "Log Ride Funnel Cake",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/log-ride-funnel-cake-banner.jpg",
+    desciption:
+      "After splashing down the log flume nestled in the mountain range on the Timber Mountain Log Ride, you’ve worked up an appetite for this park favorite. Located right across the way, the Log Ride Funnel Cake is your stop for nothing but funnel cakes!\n Loggers come from miles around to taste these freshly made funnel cakes that are poured and fried daily, served to perfection, and covered with powdered sugar. For some extra flavor, pick a topping of strawberry, boysenberry, or chocolate. The final touch is a dollop of soft-serve ice cream.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84522343614809,
+    yCoord: -118.00084614004743,
+  },
+  {
+    name: "Gourmet Churro Factory",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/the-churro-factory-banner.jpg",
+    desciption:
+      "Come and get 'em! The Gourmet Churro Factory is your one-stop shop for handmade churros. Watch as our specially trained culinary team rolls, cranks, and fry fresh churros from scratch before your very eyes. Get them hot and get them stuffed with boysenberry, strawberry, or Bavarian cream.\n To make your churro extra sweet, try a churro sundae featuring a churro with ice cream and a choice of strawberry or boysenberry topping and whipped cream. Check back regularly as seasonal flavored churros are featured frequently. ",
+    fullService: false,
+    refills: true,
+    xCoord: 33.843913326427334,
+    yCoord: -118.00050077526134,
+  },
+  {
+    name: "Ghost Town Grub",
+    expense: "$",
+    img: "/public/restaurants/ghostTownGrub.jpeg",
+    description:
+      "Folks in these parts can’t resist the satisfying concoctions of Ghost Town Grub. Stop by the log cabin on Main Street for delicious funnel cakes freshly made and topped with boysenberry, strawberry, or chocolate. Order any funnel cake “Fully Loaded,” which includes ice cream and a topping of your choice.\nKeep your eyes out for the ever-changing “Seasonal Surprise,” a new and fun treat offered during our different Seasons of Fun. Including the Boysenberry Fun Bun, deep-fried PB&J, and more! Coca-Cola beverages, milk, coffee, and bottled water are also available at this location.",
+    fullService: false,
+    refills: true,
+    xCoord: 33.84359235017644,
+    yCoord: -117.9999856391515,
+  },
+  {
+    name: "Ghost Town Grill",
+    expense: "$$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ghost-town-grill-banner.jpg",
+    desciption:
+      "We’re open when you’re hungry. This table-service western experience provides both indoor and outdoor patio dining with a view. This Ghost Town setting offers you a view of the blacksmith at work, and you might even catch a glimpse of a Ghost Town cowboy showdown. The action of Main Street will complement your meal as you savor hearty home-cooked favorites and seasonal dishes.\n Enjoy soup and chili served in a bread bowl, hearty sandwiches, fresh salads, and daily chef specials, as well as beer and wine. There’s something for everyone, including a special kid’s meal menu. And don’t forget about the dessert – boysenberry pie, cake, and ice cream are just some of the sweet treats waiting for you. The Sarsaparilla float alone is something you won’t find anywhere else in the park!",
+    fullService: true,
+    refills: true,
+    xCoord: 33.84361565810481,
+    yCoord: -117.99969524912787,
+  },
+  {
+    name: "Ghost Town Bakery & Coffee Shop",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ghost-town-bakery-banner.jpg",
+    desciption:
+      "Your day is not complete without a trip to this hometown-style bakery that serves up something for everyone. Start your day with a cup of hot coffee, latte, or cappuccino and your favorite baked goods, including gooey cinnamon buns, made fresh daily at our Knott's Berry Farm bakery. You can try our sourdough bread bowls with either Knott's Famous Chili or Clam Chowder for a heartier lunch option. Stuffed croissants and sandwiches are other savory options that can satisfy any craving.\n To satisfy that sweet tooth, you'll find everything from Mrs. Knott's Famous Boysenberry or Apple Pies to cookies, cake, fruit tarts, or even chocolate-covered strawberries. Check back regularly for special Seasons of Fun food offerings. Coca-Cola refreshments are also served here. Gluten-free, vegetarian, and vegan options are available upon request.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84305079285959,
+    yCoord: -117.99946522653777,
+  },
+  {
     name: "Calico Saloon",
     expense: "$$",
     img: "/public/restaurants/calicoSaloon.jpeg",
@@ -218,17 +414,6 @@ const ghostTownRestaurants = [
     yCoord: -118.00018278621083,
   },
   {
-    name: "Ghost Town Grub",
-    expense: "$",
-    img: "/public/restaurants/ghostTownGrub.jpeg",
-    description:
-      "Folks in these parts can’t resist the satisfying concoctions of Ghost Town Grub. Stop by the log cabin on Main Street for delicious funnel cakes freshly made and topped with boysenberry, strawberry, or chocolate. Order any funnel cake “Fully Loaded,” which includes ice cream and a topping of your choice.\nKeep your eyes out for the ever-changing “Seasonal Surprise,” a new and fun treat offered during our different Seasons of Fun. Including the Boysenberry Fun Bun, deep-fried PB&J, and more! Coca-Cola beverages, milk, coffee, and bottled water are also available at this location.",
-    fullService: false,
-    refills: true,
-    xCoord: 33.84359235017644,
-    yCoord: -117.9999856391515,
-  },
-  {
     name: "Sutter's Grill",
     expense: "$",
     img: "/public/restaurants/suttersGrill.jpeg",
@@ -259,6 +444,63 @@ const ghostTownRestaurants = [
     refills: true,
     xCoord: 33.842936627453575,
     yCoord: -118.00085048251044,
+  },
+];
+const outsideParkRestaurants = [
+  {
+    name: "Cable Car Kitchen",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/cable-car-kitchen-banner.jpg",
+    desciption:
+      "Top off your amazing day at the park with a delectable funnel cake from Cable Car Kitchen. Enjoy delicious funnel cakes that are covered with boysenberry, apple cinnamon, or strawberry sauce and your choice of ice cream. A variety of ice cream is also available by the scoop, including the Knott’s Berry Farm signature boysenberry sherbet.\n Other sweet treats available at the Cable Car Kitchen include hand-scooped shakes, floats, and a cookiewich, aka ice cream cookie sandwich.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84354474188987,
+    yCoord: -117.99838094420134,
+  },
+  {
+    name: "Mrs. Knott's Chicken Dinner Restaurant",
+    expense: "$$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/mrs-knotts-chicken-dinner-restaurant-banner.jpg",
+    desciption:
+      "Mrs. Knott’s Chicken Dinner Restaurant first opened in 1934 with Mrs. Knott and her children serving the first customers in their tea room. The restaurant has grown over the years into one of the largest in California, but the classic fried chicken dinner is still made the same way today using Mrs. Knott's recipes.",
+    fullService: true,
+    refills: false,
+    xCoord: 33.843013506624004,
+    yCoord: -117.99812879697058,
+  },
+  {
+    name: "Farm Bakery",
+    expense: "$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/farm-bakery-banner.jpg",
+    desciption:
+      "Located in the California Marketplace, you will find your one-stop shop for all baked items.  Satisfy your sweet tooth with fresh pies, bread, and cookies baked on location at Knott's Berry Farm. Daily culinary concoctions include a variety of cookies and cupcakes.\n Having a celebration? The perfect cake makes all the difference. Order a customized cake for your small party, wedding, birthday, or holiday event. Choose from a variety of cake flavors and fillings – including the park favorite Boysenberry.  An array of cake designs and sizes ensures you will find what you are looking for. The Farm Bakery can work with you to bring your cake fantasies to life thanks to the talented Knott's Berry Farm bakers. Custom cake orders must be made in person and require a minimum of 48 hours. For more information, call (714) 220-5094.\n No time to order a cake? No problem. Premade cakes and pies are sold whole or by the slice. The variety of sweets and treats make the perfect complement to any meal.  See our menu selection of showcase and decorated cakes with a variety of flavors, Icings, cream fillings, and fruit fillings.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84259551637073,
+    yCoord: -117.99814892728045,
+  },
+  {
+    name: "Starbucks Coffee",
+    expense: "$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/starbucks-banner.jpg",
+    desciption:
+      "Enjoy Starbucks' world-class coffee drinks and entrees in a welcoming gathering place that evokes themes of the Knott family’s original roadside stand with the familiar, contemporary aesthetic of Starbucks stores.",
+    fullService: false,
+    refills: false,
+    xCoord: 33.84364296556402,
+    yCoord: -117.99866443392239,
+  },
+  {
+    name: "T.G.I. Friday's",
+    expense: "$$$",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/tgi-fridays-banner.jpg",
+    desciption:
+      "T.G.I. Friday's is an All American casual bar and grill restaurant that differentiates itself with a unique point of view, promising to deliver an energizing Friday feeling for every guest every day.\n This recently remodeled casual dining restaurant is located outside the Knott’s Berry Farm main gate in the California Marketplace and is open for outdoor dining. Season Pass discounts do apply to food, alcohol excluded.\n “From burgers to steak, beer to cocktails, learn why in here, it’s always Friday.”",
+    fullService: true,
+    refills: false,
+    xCoord: 33.84255330140951,
+    yCoord: -117.99778549266746,
   },
 ];
 

@@ -62,7 +62,7 @@ export default function Profile() {
     { imgSrc: "/proficons/patty.png", id: 6 },
     { imgSrc: "/proficons/franklin.png", id: 7 },
     { imgSrc: "/proficons/pigpen.png", id: 8 },
-    { imgSrc: "/proficons/rerun.webp", id: 9 },
+    { imgSrc: "/proficons/rerun.png", id: 9 },
     { imgSrc: "/proficons/sally.png", id: 10 },
     { imgSrc: "/proficons/schroeder.png", id: 11 },
     { imgSrc: "/proficons/snoopy.png", id: 12 },

@@ -3,7 +3,6 @@ import AdminDisplay from "./AdminDisplay";
 
 export default function AdminTable({ allAdmins }) {
   const [allAdminsLocal, setAllAdminsLocal] = useState(allAdmins);
-  console.log(allAdmins);
 
   const adminRows = allAdmins.map((admin) => {
     return (

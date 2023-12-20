@@ -152,4 +152,11 @@ Extra features
 - [] Something offcanvas?
 - [] Remember where user was for login re-route
 - [] Page restrictions
-- [] Admin adding instant update to page
+- [x] Admin adding instant update to page
+
+Knott's Site Issues
+
+- "View Map" on Dining page opens pdf of Soak City with no restaurant data
+- Poor image quality (charleston coffee), and photos of guests (pemmican), and generic (Sutters pizza)
+- Restaurant descriptions
+- Should display menu items front and center
