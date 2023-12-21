@@ -59,7 +59,38 @@ const restaurantHandlers = {
 
     res.status(200).send({
       message: `Here are all the restaurants in ${landWithRestaurants.name}`,
-      landWithRestaurants: landWithRestaurants,
+      landWithRestaurants,
+    });
+  },
+
+  getRestaurantsByCuisine: async (req, res) => {
+    const { cuisineName } = req.params;
+
+    console.log(cuisineName);
+
+    const cuisineWithRestaurants = await Cuisine.findOne({
+      where: {
+        name: cuisineName,
+      },
+      include: {
+        model: Restaurant,
+        include: [
+          {
+            model: Rating,
+          },
+          {
+            model: Cuisine,
+          },
+          {
+            model: MealType,
+          },
+        ],
+      },
+    });
+
+    res.status(200).send({
+      message: `Here are all the ${cuisineName} restaurants`,
+      cuisineWithRestaurants,
     });
   },
 

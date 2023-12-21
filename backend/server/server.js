@@ -44,6 +44,7 @@ const { getEverything, getAdminById, createAdmin, updateAdmin, deleteAdmin } =
 const {
   getAllRestaurants,
   getRestaurantsByLand,
+  getRestaurantsByCuisine,
   getRestaurantsByName,
   getRestaurantById,
   createRestaurant,
@@ -84,6 +85,7 @@ app.delete("/api/admin/delete/:adminId", deleteAdmin);
 // Restaurants
 app.get("/api/restaurants/all", getAllRestaurants);
 app.get("/api/restaurants/land/:landId", getRestaurantsByLand);
+app.get("/api/restaurants/cuisine/:cuisineName", getRestaurantsByCuisine);
 app.get("/api/restaurants/name", getRestaurantsByName);
 app.get("/api/restaurant/id/:restaurantId", getRestaurantById);
 app.post("/api/restaurant/create", createRestaurant);
