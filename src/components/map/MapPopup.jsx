@@ -10,7 +10,11 @@ export default function MapPopup({ restaurant }) {
 
   const cuisineLinks = restaurant.cuisines.map((cuisine) => {
     return (
-      <NavLink to={`#`} id="popup-link" key={cuisine.name}>
+      <NavLink
+        to={`cuisine/restaurants/${cuisine.name}`}
+        id="popup-link"
+        key={cuisine.name}
+      >
         {cuisine.name}
         <br />
       </NavLink>

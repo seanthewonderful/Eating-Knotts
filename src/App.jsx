@@ -18,6 +18,9 @@ import RestaurantPage, {
 } from "./pages/RestaurantPage.jsx";
 import Login from "./pages/authPages/Login.jsx";
 import Register from "./pages/authPages/Register.jsx";
+import CuisineRestaurants, {
+  cuisineRestaurantLoader,
+} from "./pages/CuisineRestaurants.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -60,6 +63,12 @@ const router = createBrowserRouter(
         path="land/rest/:landId"
         element={<LandRestaurants />}
         loader={landRestaurantLoader}
+        errorElement={<NotFound />}
+      />
+      <Route
+        path="cuisine/restaurants/:cuisineName"
+        element={<CuisineRestaurants />}
+        loader={cuisineRestaurantLoader}
         errorElement={<NotFound />}
       />
       <Route path="login" element={<Login />} errorElement={<NotFound />} />
