@@ -112,7 +112,8 @@ h4 {
 
 /* Map */
 .leaflet-container {
-  height: 100vh;
+  height: 93vh;
+  margin-top: -12px;
 }
 #react-leaflet-logo {
   height: 1.7em;

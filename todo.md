@@ -57,7 +57,7 @@ Server + endpoints
 Browser Router - what routes?
 
 - [x]"/"
-  - []map
+  - [x]map
 - [x]"/profile/:id"
 - [x]"/restaurants"
   - []search option
@@ -149,6 +149,9 @@ Other routes
 - [] Show all restaurants by cuisine
 - [] Show all restaurants by meal type
 
+- [] Search for restaurants on each page
+- [] Readme include instructions for how to demo an admin/user
+
 Styling
 
 - [] Mobile friendly
@@ -168,3 +171,7 @@ Knott's Site Issues
 - Poor image quality (charleston coffee), and photos of guests (pemmican), and generic (Sutters pizza)
 - Restaurant descriptions
 - Should display menu items front and center
+
+Bugs
+
+- [] When admin updates own IMG, navbar does not recognize the change until page reload
