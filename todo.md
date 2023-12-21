@@ -61,7 +61,7 @@ Browser Router - what routes?
 - [x]"/profile/:id"
 - [x]"/restaurants"
   - []search option
-- []"/restaurant/:restId"
+- [x]"/restaurant/:restId"
 - [x] "/land/restaurants"
 - [x] error handling
 
@@ -108,11 +108,11 @@ Restaurant page(s)
 Create Admin page
 
 - [x] Navbar dynamically render for admin page
-- [] What can admins do?
-  - [] Create new admin
+- [x] What can admins do?
+  - [x] Create new admin
   - [x] edit admins
   - [x] delete admins
-  - [] Create new user
+  - [x] Create new user
   - [x] Edit user info
   - [x] delete user
   - [x] New restaurant
@@ -132,14 +132,39 @@ Create Leaflet map
 
 Advanced map features:
 
-- [] Popup box styling
-- [] Different layer?
-- [] Unique Icons
+- [x] Popup box styling
+- [x] Different layer?
+- [x] Unique Icons
+- [x] Add relational data to DB for some of this to be good
+      Later?
 - [] Collapsible navbar?
 - [] List view of restaurants with map?
+- [] Search bard to flyto map locations and open marker
+  - https://leafletjs.com/plugins.html#basemap-providers:~:text=Nicholas%20Hallahan-,Search%20%26%20popups,-Plugins%20that%20search
+- [] Clickable layers for lands
+
+Other routes
+
+- [] Show all restaurants by land
+- [] Show all restaurants by cuisine
+- [] Show all restaurants by meal type
 
 Styling
 
 - [] Mobile friendly
-- [] Navbar sticky top
+- [x] Navbar sticky top
 - [] Collapsible edit info
+
+Extra features
+
+- [] Something offcanvas?
+- [] Remember where user was for login re-route
+- [] Page restrictions
+- [x] Admin adding instant update to page
+
+Knott's Site Issues
+
+- "View Map" on Dining page opens pdf of Soak City with no restaurant data
+- Poor image quality (charleston coffee), and photos of guests (pemmican), and generic (Sutters pizza)
+- Restaurant descriptions
+- Should display menu items front and center

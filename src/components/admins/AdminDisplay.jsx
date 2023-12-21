@@ -10,11 +10,12 @@ export default function AdminDisplay({ admin }) {
   const [firstName, setFirstName] = useState(admin.firstName);
   const [lastName, setLastName] = useState(admin.lastName);
   const [img, setImg] = useState(admin.img);
+  const [clearance, setClearance] = useState(admin.clearance);
 
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
 
-  console.log(pass);
+  // console.log(adminData.allAdminsLocal);
 
   const editMode = () => setIsEditing(true);
 
@@ -25,6 +26,7 @@ export default function AdminDisplay({ admin }) {
       firstName,
       lastName,
       img,
+      clearance,
     };
     axios
       .put(`/api/admin/update/${admin.adminId}`, bodyObj)
@@ -43,6 +45,7 @@ export default function AdminDisplay({ admin }) {
     setFirstName(admin.firstName);
     setLastName(admin.lastName);
     setImg(admin.img);
+    setClearance(admin.clearance);
     setIsEditing(false);
   };
 
@@ -97,6 +100,15 @@ export default function AdminDisplay({ admin }) {
       </td>
 
       <td>
+        <select onChange={(e) => setClearance(e.target.value)}>
+          <option value="alpha">Alpha</option>
+          <option value="defcon6">DEFCON 6</option>
+          <option value="kremlin">Kremlin</option>
+          <option value="midnight">Midnight</option>
+        </select>
+      </td>
+
+      <td>
         <select onChange={(e) => setImg(e.target.value)}>
           <option value=""></option>
           <option value="/proficons/lucy.png">Lucy</option>
@@ -123,7 +135,8 @@ export default function AdminDisplay({ admin }) {
         <td>{email}</td>
         <td>{firstName}</td>
         <td>{lastName}</td>
-        <td>{img}</td>
+        <td>{clearance}</td>
+        <td>{img.split("/")[2]}</td>
         <td>
           <Button variant="secondary" size="sm" onClick={editMode}>
             Edit

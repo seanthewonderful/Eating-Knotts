@@ -41,7 +41,7 @@ User.init(
     },
     img: {
       type: DataTypes.STRING(50),
-      defaultValue: "/public/proficons/default.png",
+      defaultValue: "/proficons/default.png",
       allowNull: false,
     },
   },
@@ -129,14 +129,14 @@ Admin.init(
     },
     img: {
       type: DataTypes.STRING(50),
-      defaultValue: "/public/proficons/default.png",
+      defaultValue: "/proficons/default.png",
       allowNull: false,
     },
-    // clearanceLevel: {
-    //   type: DataTypes.STRING(25),
-    //   defaultValue: "private-first-class",
-    //   allowNull: false,
-    // },
+    clearance: {
+      type: DataTypes.STRING(25),
+      defaultValue: "private-first-class",
+      allowNull: false,
+    },
   },
   {
     hooks: {
@@ -209,7 +209,7 @@ Restaurant.init(
       unique: false,
     },
     img: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "/restaurants/default.png",
     },

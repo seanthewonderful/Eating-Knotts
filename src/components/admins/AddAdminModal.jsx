@@ -12,7 +12,7 @@ import {
 import { notify } from "../../assets/funx";
 import ProfileIcon from "../ProfileIcon";
 
-export default function AddAdminModal() {
+export default function AddAdminModal({ setDummy }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -33,35 +33,43 @@ export default function AddAdminModal() {
       firstName: name.fName,
       lastName: name.lName,
       img: selectedAvatar,
+      clearance,
     };
 
     axios
       .post(`/api/admin/create`, bodyObj)
       .then((res) => {
         notify("success", res.data.message);
+        setDummy([]);
       })
       .catch((err) => notify("danger", err.response.data.message));
 
     setShow(false);
+    setUsername("");
+    setPassword("");
+    setEmail("");
+    setName({ fName: "", lName: "" });
+    setSelectedAvatar(0);
+    setClearance("");
   };
 
   const avatars = [
-    { imgSrc: "/public/proficons/default.png", id: 1 },
-    { imgSrc: "/public/proficons/charlie.png", id: 2 },
-    { imgSrc: "/public/proficons/linus.png", id: 3 },
-    { imgSrc: "/public/proficons/lucy.png", id: 4 },
-    { imgSrc: "/public/proficons/marcie.png", id: 5 },
-    { imgSrc: "/public/proficons/patty.png", id: 6 },
-    { imgSrc: "/public/proficons/franklin.png", id: 7 },
-    { imgSrc: "/public/proficons/pigpen.png", id: 8 },
-    { imgSrc: "/public/proficons/rerun.png", id: 9 },
-    { imgSrc: "/public/proficons/sally.png", id: 10 },
-    { imgSrc: "/public/proficons/schroeder.png", id: 11 },
-    { imgSrc: "/public/proficons/snoopy.png", id: 12 },
-    { imgSrc: "/public/proficons/olaf.png", id: 13 },
-    { imgSrc: "/public/proficons/belle.png", id: 14 },
-    { imgSrc: "/public/proficons/spike.png", id: 15 },
-    { imgSrc: "/public/proficons/woodstock.png", id: 16 },
+    { imgSrc: "/proficons/default.png", id: 1 },
+    { imgSrc: "/proficons/charlie.png", id: 2 },
+    { imgSrc: "/proficons/linus.png", id: 3 },
+    { imgSrc: "/proficons/lucy.png", id: 4 },
+    { imgSrc: "/proficons/marcie.png", id: 5 },
+    { imgSrc: "/proficons/patty.png", id: 6 },
+    { imgSrc: "/proficons/franklin.png", id: 7 },
+    { imgSrc: "/proficons/pigpen.png", id: 8 },
+    { imgSrc: "/proficons/rerun.png", id: 9 },
+    { imgSrc: "/proficons/sally.png", id: 10 },
+    { imgSrc: "/proficons/schroeder.png", id: 11 },
+    { imgSrc: "/proficons/snoopy.png", id: 12 },
+    { imgSrc: "/proficons/olaf.png", id: 13 },
+    { imgSrc: "/proficons/belle.png", id: 14 },
+    { imgSrc: "/proficons/spike.png", id: 15 },
+    { imgSrc: "/proficons/woodstock.png", id: 16 },
   ];
   const avatarOptions = avatars.map((avatar) => {
     return (

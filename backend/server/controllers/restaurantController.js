@@ -3,7 +3,7 @@ import {
   User,
   Rating,
   Land,
-  db,
+  MealType,
   Cuisine,
 } from "../../database/model.js";
 import { Op, Sequelize } from "sequelize";
@@ -21,6 +21,12 @@ const restaurantHandlers = {
         {
           model: Land,
         },
+        {
+          model: Cuisine,
+        },
+        {
+          model: MealType,
+        },
       ],
     });
 
@@ -37,9 +43,17 @@ const restaurantHandlers = {
     const landWithRestaurants = await Land.findByPk(landId, {
       include: {
         model: Restaurant,
-        include: {
-          model: Rating,
-        },
+        include: [
+          {
+            model: Rating,
+          },
+          {
+            model: Cuisine,
+          },
+          {
+            model: MealType,
+          },
+        ],
       },
     });
 
@@ -60,9 +74,17 @@ const restaurantHandlers = {
           `%${restName.toLowerCase()}%`
         ),
       },
-      include: {
-        model: Rating,
-      },
+      include: [
+        {
+          model: Rating,
+        },
+        {
+          model: Cuisine,
+        },
+        {
+          model: MealType,
+        },
+      ],
     });
 
     res.status(200).send({
@@ -85,6 +107,9 @@ const restaurantHandlers = {
         {
           model: Cuisine,
         },
+        {
+          model: MealType,
+        },
       ],
     });
 
@@ -93,12 +118,6 @@ const restaurantHandlers = {
       restaurant: restaurant,
     });
   },
-
-  getRestaurantRatings: async (req, res) => {},
-
-  getRestaurantRatingAvg: async (req, res) => {},
-
-  getUserRatingOfRestaurant: async (req, res) => {},
 
   createRestaurant: async (req, res) => {
     if (!req.session.adminId) {

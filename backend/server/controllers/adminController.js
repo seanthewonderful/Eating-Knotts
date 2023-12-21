@@ -58,7 +58,8 @@ const adminHandlers = {
       });
     }
 
-    const { username, password, email, firstName, lastName, img } = req.body;
+    const { username, password, email, firstName, lastName, img, clearance } =
+      req.body;
 
     if (
       await Admin.findOne({
@@ -80,10 +81,12 @@ const adminHandlers = {
       firstName,
       lastName,
       img,
+      clearance,
     });
 
     res.status(201).send({
       message: `New administrator, ${username} created`,
+      newAdmin: newAdmin,
     });
   },
 
@@ -96,7 +99,7 @@ const adminHandlers = {
 
     const { adminId } = req.params;
 
-    const { username, email, firstName, lastName, img } = req.body;
+    const { username, email, firstName, lastName, img, clearance } = req.body;
 
     const admin = await Admin.findByPk(adminId);
 
@@ -106,10 +109,14 @@ const adminHandlers = {
       firstName: firstName ?? admin.firstName,
       lastName: lastName ?? admin.lastName,
       img: img ?? admin.img,
+      clearance: clearance ?? admin.clearance,
     });
+
+    await admin.save();
 
     res.status(200).send({
       message: "Admin details updated",
+      admin: admin,
     });
   },
 

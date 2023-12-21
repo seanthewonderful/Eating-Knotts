@@ -1,8 +1,17 @@
+import { useState } from "react";
 import AdminDisplay from "./AdminDisplay";
 
 export default function AdminTable({ allAdmins }) {
+  const [allAdminsLocal, setAllAdminsLocal] = useState(allAdmins);
+
   const adminRows = allAdmins.map((admin) => {
-    return <AdminDisplay key={admin.adminId} admin={admin} />;
+    return (
+      <AdminDisplay
+        key={admin.adminId}
+        admin={admin}
+        adminData={{ allAdminsLocal, setAllAdminsLocal }}
+      />
+    );
   });
 
   return (
@@ -14,6 +23,7 @@ export default function AdminTable({ allAdmins }) {
           <th>Email</th>
           <th>First name</th>
           <th>Last name</th>
+          <th>Clearance lvl</th>
           <th>Img</th>
           <th>Update?</th>
         </tr>

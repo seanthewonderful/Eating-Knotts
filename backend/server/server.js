@@ -46,8 +46,6 @@ const {
   getRestaurantsByLand,
   getRestaurantsByName,
   getRestaurantById,
-  getRestaurantRatingAvg,
-  getRestaurantRatings,
   createRestaurant,
   updateRestaurant,
   deleteRestaurant,
@@ -88,8 +86,6 @@ app.get("/api/restaurants/all", getAllRestaurants);
 app.get("/api/restaurants/land/:landId", getRestaurantsByLand);
 app.get("/api/restaurants/name", getRestaurantsByName);
 app.get("/api/restaurant/id/:restaurantId", getRestaurantById);
-app.get("/api/restaurant/rating/:restaurantId", getRestaurantRatings);
-app.get("/api/restaurant/avg-rating/:restaurantId", getRestaurantRatingAvg);
 app.post("/api/restaurant/create", createRestaurant);
 app.put("/api/restaurant/update/:restaurantId", updateRestaurant);
 app.delete("/api/restaurant/delete/:restaurantId", deleteRestaurant);

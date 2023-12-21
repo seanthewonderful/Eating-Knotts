@@ -3,10 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +15,7 @@
   box-sizing: border-box;
   width: 100vw;
   padding: 0;
+  margin-top: 61px;
 }
 
 a {
@@ -69,6 +66,9 @@ button:focus-visible {
     background-color: #763076;
   }
 }
+h4 {
+  color: #363697;
+}
 
 #navbar {
   border: purple 1px solid;
@@ -79,6 +79,10 @@ button:focus-visible {
   align-items: center;
   padding-right: 2%;
   padding-left: 2%;
+  position: absolute;
+  top: 0%;
+  z-index: 401;
+  width: 100vw;
 }
 .nav-btn {
   color: white;
@@ -106,23 +110,51 @@ button:focus-visible {
   margin-left: 2%;
 }
 
-/* sizing of map container */
+/* Map */
 .leaflet-container {
-  height: 90vh;
+  height: 100vh;
+}
+#react-leaflet-logo {
+  height: 1.7em;
+  padding: 0;
+  margin: 0;
+}
+.leaflet-control-attribution {
+  font-size: smaller;
+}
+#popup-btn {
+  color: white;
+  background-color: #763076;
+  border-color: #763076;
+  transition: 0.25s;
+  height: 2em;
+  padding: 0.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#popup-btn:hover {
+  color: #763076;
+  background: white;
+  border-color: #535bf2;
+}
+.leaflet-popup-content-wrapper {
+  background-color: #ffd1ff !important;
+}
+#popup-link:hover {
+  color: #535bf2;
 }
 
+/* Login stuff */
 #login-form {
   margin-top: 2%;
   background-color: #763076;
   color: white;
 }
-
 #register-form {
   margin-top: 2%;
   background-color: #763076;
   color: white;
 }
-
 .prof-icon-selection {
   height: 10vh;
   margin: 2%;
@@ -166,6 +198,7 @@ button:focus-visible {
   font-size: large;
   font-weight: bold;
   font-style: italic;
+  margin: 0;
 }
 #rest-check {
   color: green;

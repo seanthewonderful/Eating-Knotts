@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Col, Container, Row, Modal, Button, Form } from "react-bootstrap";
 import { notify } from "../../assets/funx";
 
-export default function AddRestaurantModal() {
+export default function AddRestaurantModal({ setDummy }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [expense, setExpense] = useState("$");
@@ -36,10 +36,21 @@ export default function AddRestaurantModal() {
       .post(`/api/restaurant/create`, bodyObj)
       .then((res) => {
         notify("success", res.data.message);
+        setDummy([]);
       })
       .catch((err) => notify("danger", err.response.data.message));
 
     setShow(false);
+    setName("");
+    setDescription("");
+    setExpense("$");
+    setImg("/restaurants/default.png");
+    setFullService(false);
+    setRefills(false);
+    setXCoord(0);
+    setYCoord(0);
+    setLand("");
+    setCuisinse([]);
   };
 
   return (
