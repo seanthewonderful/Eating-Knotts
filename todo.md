@@ -139,7 +139,8 @@ Advanced map features:
 - [] List view of restaurants with map?
 - [] Search bard to flyto map locations and open marker
   - https://leafletjs.com/plugins.html#basemap-providers:~:text=Nicholas%20Hallahan-,Search%20%26%20popups,-Plugins%20that%20search
-- [] Add relational data to DB for some of this to be good
+- [x] Add relational data to DB for some of this to be good
+- [] Clickable layers for lands
 
 Styling
 

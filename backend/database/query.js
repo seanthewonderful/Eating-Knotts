@@ -1,5 +1,12 @@
-import { User, Admin, Restaurant, Rating, Land, db } from "./model.js";
-
-console.log(await Admin.findAll());
+import {
+  User,
+  Admin,
+  Restaurant,
+  Rating,
+  Land,
+  Cuisine,
+  db,
+  MealType,
+} from "./model.js";
 
 await db.close();

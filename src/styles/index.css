@@ -135,9 +135,13 @@ h4 {
 #popup-btn:hover {
   color: #763076;
   background: white;
+  border-color: #535bf2;
 }
 .leaflet-popup-content-wrapper {
   background-color: #ffd1ff !important;
+}
+#popup-link:hover {
+  color: #535bf2;
 }
 
 /* Login stuff */
