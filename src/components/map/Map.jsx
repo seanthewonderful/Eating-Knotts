@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapMarker from "./MapMarker.jsx";
 import SetViewOnClick from "./SetViewOnClick.jsx";
-import reactLeaflet from "../../../public/icons/reactLeaflet.svg";
+import reactLeaflet from "/icons/reactLeaflet.svg";
 
 export default function Map({ allRestaurants }) {
   const markers = allRestaurants.map((rest) => {

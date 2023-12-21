@@ -19,7 +19,7 @@ const campSnoopyRestaurants = [
   {
     name: "Silver Bullet Dippin' Dots",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/dp-dippindots-bannerv3.jpg",
+    img: "https://nyfta.org/wp-content/uploads/2021/07/dippin-dots-event-catering.jpg",
     desciption:
       "The original and unbeatable flash-frozen ice cream sensation, Dippin’ Dots, comes in a variety of flavors. Including a Boysenberry flavor, only found at Knott’s Berry Farm! This quick service ice cream counter is a scientific and fun take on a classic American favorite. Dippin’ Dots is a fresh and flavorful way to eat this frosty treat. Whether it is a hot summer day or a crisp fall afternoon, Dippin’ Dots will satisfy your sweet tooth.",
     fullService: false,
@@ -97,7 +97,7 @@ const fiestaVillageRestaurants = [
   {
     name: "Papas Mexicanas",
     expense: "$$",
-    img: "public/restaurants/default.png",
+    img: "https://www.itsasmallworldblog.com/uploads/5/8/3/9/5839250/published/screenshot-20230713-093502-instagram.jpg?1689261566",
     description:
       "Papas Mexicanas is a culinary must do for French fries’ enthusiasts seeking a tantalizing twist on a classic favorite. In a vibrant corner of Fiesta Village, this loaded fries dining location takes comfort food to new heights with their mouthwatering specialty: carne asada fries.\nPicture a generous bed of perfectly cooked, golden-brown fires, topped with succulent marinated carne asada, melted cheese and a vibrant medley of fresh toppings. Each bite is a symphony of flavors, as the tender beef mingles with the creaminess of the cheese, the tang of salsa and the freshness of guacamole.\nThe aromas of grilled meat and spices waft through the air, creating an irresistible allure. Papas Mexicanas is the go-to destination for those seeking a unique and unforgettable dining experience where loaded fries become a delicious canvas for Mexican flavors to shine.",
     fullService: false,
@@ -143,7 +143,7 @@ const boardwalkRestaurants = [
   {
     name: "Johnny Rockets",
     expense: "$$$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/johnny-rockets-banner.jpg",
+    img: "/restaurants/johnnyRockets.jpeg",
     desciption:
       "Knott's Berry Farm's Johnny Rockets holds the distinction of being the largest Johnny Rockets in North America! Johnny Rockets is known for its all-American diner look and feel, offering guests delicious food and upbeat music. This table-service experience offers a large variety of signature burgers, or you can feel free to create your own to your liking.\n You can also dive into a variety of sandwiches, hotdogs, and salads. Fries and onion rings are a recommended addition to every dish. Don't forget to pair your meal with a shake – choose from the collection of original and deluxe flavors, made with premium ice cream and hand-spun! Gluten-free, vegetarian, and vegan options are available upon request.",
     fullService: true,

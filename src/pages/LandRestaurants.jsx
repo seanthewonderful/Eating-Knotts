@@ -1,35 +1,30 @@
-import axios from "axios"
-import { useLoaderData } from 'react-router-dom'
+import axios from "axios";
+import { useLoaderData } from "react-router-dom";
+import RestaurantCard from "../components/RestaurantCard";
+import { Container, Row } from "react-bootstrap";
 
 export default function LandRestaurants() {
+  const { landWithRestaurants } = useLoaderData();
 
-    const { landWithRestaurants } = useLoaderData()
-
-    console.log(landWithRestaurants)
-
-    const allRestaurants = landWithRestaurants.restaurants.map(restaurant => {
-        return (
-            <>
-            <h5>{restaurant.name}</h5>
-            <ul>
-                <li>{restaurant.expense}</li>
-            </ul>
-            </>
-        )
-    })
+  const allRestaurants = landWithRestaurants.restaurants.map((restaurant) => {
+    return (
+      <RestaurantCard key={restaurant.restaurantId} restaurant={restaurant} />
+    );
+  });
 
   return (
-    <div>
-        <h2>Restaurants of {landWithRestaurants.name}</h2>
+    <Container fluid className="restaurants-div text-center">
+      <Row id="all-restaurants" className="justify-content-center">
+        <h3>Restaurants in {landWithRestaurants.name}</h3>
         {allRestaurants}
-    </div>
-  )
+      </Row>
+    </Container>
+  );
 }
 
 export const landRestaurantLoader = async ({ params }) => {
+  const { landId } = params;
+  const { data } = await axios.get(`/api/restaurants/land/${landId}`);
 
-    const { landId } = params
-    const { data } = await axios.get(`/api/restaurants/land/${landId}`)
-
-    return data
-}
+  return data;
+};
