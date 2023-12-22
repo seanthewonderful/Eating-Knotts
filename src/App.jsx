@@ -25,6 +25,9 @@ import CuisineRestaurants, {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "react-toastify/dist/ReactToastify.css";
+import MealTypeRestaurants, {
+  mealTypeRestaurantLoader,
+} from "./pages/MealTypeRestaurants.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -69,6 +72,12 @@ const router = createBrowserRouter(
         path="cuisine/restaurants/:cuisineName"
         element={<CuisineRestaurants />}
         loader={cuisineRestaurantLoader}
+        errorElement={<NotFound />}
+      />
+      <Route
+        path="mealtype/restaurant/:mealTypeName"
+        element={<MealTypeRestaurants />}
+        loader={mealTypeRestaurantLoader}
         errorElement={<NotFound />}
       />
       <Route path="login" element={<Login />} errorElement={<NotFound />} />

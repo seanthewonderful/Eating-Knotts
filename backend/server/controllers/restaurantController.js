@@ -39,6 +39,7 @@ const restaurantHandlers = {
 
   getRestaurantsByLand: async (req, res) => {
     const { landId } = req.params;
+    // const { landName } = req.params
 
     const landWithRestaurants = await Land.findByPk(landId, {
       include: {
@@ -66,8 +67,6 @@ const restaurantHandlers = {
   getRestaurantsByCuisine: async (req, res) => {
     const { cuisineName } = req.params;
 
-    console.log(cuisineName);
-
     const cuisineWithRestaurants = await Cuisine.findOne({
       where: {
         name: cuisineName,
@@ -91,6 +90,35 @@ const restaurantHandlers = {
     res.status(200).send({
       message: `Here are all the ${cuisineName} restaurants`,
       cuisineWithRestaurants,
+    });
+  },
+
+  getRestaurantsByMealType: async (req, res) => {
+    const { mealTypeName } = req.params;
+
+    const mealTypeWithRestaurants = await MealType.findOne({
+      where: {
+        name: mealTypeName,
+      },
+      include: {
+        model: Restaurant,
+        include: [
+          {
+            model: Rating,
+          },
+          {
+            model: Cuisine,
+          },
+          {
+            model: MealType,
+          },
+        ],
+      },
+    });
+
+    res.status(200).send({
+      message: `Here are all the ${mealTypeName} restaurants`,
+      mealTypeWithRestaurants,
     });
   },
 

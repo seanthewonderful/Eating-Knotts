@@ -24,6 +24,7 @@ export default function LandRestaurants() {
 
 export const landRestaurantLoader = async ({ params }) => {
   const { landId } = params;
+  // const { landName } = params
   const { data } = await axios.get(`/api/restaurants/land/${landId}`);
 
   return data;
