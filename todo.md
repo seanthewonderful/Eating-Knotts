@@ -146,12 +146,10 @@ Advanced map features:
 Other routes
 
 - [x] Show all restaurants by land
-- [] Show all restaurants by cuisine
-  - [] create route
-- [] Show all restaurants by meal type
-
-  - [] create route
-
+- [x] Show all restaurants by cuisine
+  - [x] create route
+- [x] Show all restaurants by meal type
+  - [x] create route
 - [] Search for restaurants on each page
 - [] Readme include instructions for how to demo an admin/user
 
