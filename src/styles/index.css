@@ -14,8 +14,11 @@
 #main {
   box-sizing: border-box;
   width: 100vw;
+  min-height: 100vh;
+  height: 100%;
   padding: 0;
   margin-top: 61px;
+  background-color: rgb(255, 209, 255);
 }
 
 a {
@@ -168,12 +171,12 @@ h4 {
 .bi-star,
 .bi-star-fill,
 .bi-star-half {
-  color: rgb(222, 189, 0);
+  color: rgb(255, 225, 0);
 }
 
 /* rating cards */
 .card {
-  background-color: rgb(255, 209, 255);
+  background-color: #36369763;
   padding: 0;
   overflow: hidden;
   transition: 0.2s;
@@ -191,6 +194,9 @@ h4 {
 }
 
 /* restaurants */
+.restaurants-div {
+  padding-top: 1%;
+}
 .restaurant-a {
   color: black;
 }
@@ -211,7 +217,7 @@ h4 {
   color: #763076;
 }
 #rest-server {
-  color: rgb(213, 154, 77);
+  color: rgb(255, 225, 0);
 }
 #all-restaurants {
   margin-top: 2%;
@@ -232,7 +238,7 @@ h4 {
 }
 .restaurant-page-container {
   background-color: rgb(255, 209, 255);
-  padding: 0;
+  padding-top: 1%;
   overflow: hidden;
   transition: 0.2s;
 }
