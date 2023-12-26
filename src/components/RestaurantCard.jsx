@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import StarAvg from "./StarAvg.jsx";
 import { useEffect, useState } from "react";
@@ -19,20 +19,21 @@ export default function RestaurantCard({ restaurant }) {
 
   return (
     <Card
-      style={{ width: "20em", margin: "1%" }}
       className="restaurant-card"
       // onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
     >
-      <div id="r-c-i">
+      <Container fluid id="r-c-i">
         <Card.Img
           variant="top"
           src={restaurant.img}
           className="restaurant-card-img"
           onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
         />
-      </div>
-      <Card.Body>
+      </Container>
+      <Card.Body id="card-body-rp">
         <Card.Title
+          id="card-title-rp"
+          className="h6"
           onClick={() => navigate(`/restaurant/${restaurant.restaurantId}`)}
         >
           {restaurant.name}
