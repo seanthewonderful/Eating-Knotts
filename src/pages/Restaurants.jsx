@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useLoaderData, NavLink } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import RestaurantCard from "../components/RestaurantCard.jsx";
 import { Container, Row, Col } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { debounce } from "lodash";
 
 export default function AllRestaurants() {
   const { restaurants } = useLoaderData();
@@ -18,16 +19,24 @@ export default function AllRestaurants() {
     );
   });
 
-  const searchFilter = () => {
-    const searchRestaurants = allRestaurants.filter((restaurant) => {
-      return restaurant.props.restaurant.name
-        .toLowerCase()
-        .includes(searchVal.toLowerCase());
-    });
+  const searchFilter = (inputVal) => {
+    if (inputVal === "") {
+      setFilteredRestaurants(allRestaurants);
+    } else {
+      const searchRestaurants = allRestaurants.filter((restaurant) => {
+        return restaurant.props.restaurant.name
+          .toLowerCase()
+          .includes(inputVal.toLowerCase());
+      });
 
-    clear();
-    setFilteredRestaurants(searchRestaurants);
+      clear();
+      setFilteredRestaurants(searchRestaurants);
+    }
   };
+
+  const debounceHandler = useCallback(debounce(searchFilter, 500), [
+    searchFilter,
+  ]);
 
   const cuisineFilter = () => {
     const cuisineRestaurants = filteredRestaurants.filter((restaurant) => {
@@ -59,14 +68,6 @@ export default function AllRestaurants() {
     setMealTypeChoice("");
     setLandChoice("");
   };
-
-  useEffect(() => {
-    if (searchVal === "") {
-      setFilteredRestaurants(allRestaurants);
-    } else {
-      searchFilter();
-    }
-  }, [searchVal]);
 
   useEffect(() => {
     if (cuisineChoice === "") {
@@ -105,7 +106,10 @@ export default function AllRestaurants() {
             placeholder="Search Restaurants"
             style={{ width: "100%" }}
             value={searchVal}
-            onChange={(e) => setSearchVal(e.target.value)}
+            onChange={(e) => {
+              setSearchVal(e.target.value);
+              debounceHandler(e.target.value);
+            }}
           />
         </Col>
         <Col xs={12} sm={6} lg={8} id="filter-col">
