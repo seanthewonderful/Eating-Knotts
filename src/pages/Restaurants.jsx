@@ -9,9 +9,7 @@ export default function AllRestaurants() {
   const { restaurants } = useLoaderData();
   const [searchVal, setSearchVal] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [cuisineChoice, setCuisineChoice] = useState("");
-  const [mealTypeChoice, setMealTypeChoice] = useState("");
-  const [landChoice, setLandChoice] = useState("");
+  const [filters, setFilters] = useState({ cuis: "", meal: "", land: "" });
 
   const allRestaurants = restaurants.map((restaurant) => {
     return (
@@ -29,69 +27,39 @@ export default function AllRestaurants() {
           .includes(inputVal.toLowerCase());
       });
 
-      clear();
       setFilteredRestaurants(searchRestaurants);
     }
+  };
+
+  const filterSearch = () => {
+    const filtered = allRestaurants.filter((restaurant) => {
+      return (
+        (filters.cuis === "" ||
+          restaurant.props.restaurant.cuisines.some(
+            (cuisine) => cuisine.name.toLowerCase() === filters.cuis
+          )) &&
+        (filters.meal === "" ||
+          restaurant.props.restaurant.mealTypes.some(
+            (mealType) => mealType.name.toLowerCase() === filters.meal
+          )) &&
+        (filters.land === "" ||
+          restaurant.props.restaurant.land.name.toLowerCase() === filters.land)
+      );
+    });
+    setFilteredRestaurants(filtered);
   };
 
   const debounceHandler = useCallback(debounce(searchFilter, 500), [
     searchFilter,
   ]);
 
-  const cuisineFilter = () => {
-    const cuisineRestaurants = filteredRestaurants.filter((restaurant) => {
-      return restaurant.props.restaurant.cuisines.some(
-        (cuisine) => cuisine.name.toLowerCase() === cuisineChoice
-      );
-    });
-    setFilteredRestaurants(cuisineRestaurants);
-  };
-
-  const mealTypeFilter = () => {
-    const mealTypeRestaurants = filteredRestaurants.filter((restaurant) => {
-      return restaurant.props.restaurant.mealTypes.some(
-        (mealType) => mealType.name.toLowerCase() === mealTypeChoice
-      );
-    });
-    setFilteredRestaurants(mealTypeRestaurants);
-  };
-
-  const landFilter = () => {
-    const landRestaurants = filteredRestaurants.filter((restaurant) => {
-      return restaurant.props.restaurant.land.name.toLowerCase() === landChoice;
-    });
-    setFilteredRestaurants(landRestaurants);
-  };
-
   const clear = () => {
-    setCuisineChoice("");
-    setMealTypeChoice("");
-    setLandChoice("");
+    setFilters({ cuis: "", meal: "", land: "" });
   };
 
   useEffect(() => {
-    if (cuisineChoice === "") {
-      setFilteredRestaurants(allRestaurants);
-    } else {
-      cuisineFilter();
-    }
-  }, [cuisineChoice]);
-
-  useEffect(() => {
-    if (mealTypeChoice === "") {
-      setFilteredRestaurants(allRestaurants);
-    } else {
-      mealTypeFilter();
-    }
-  }, [mealTypeChoice]);
-
-  useEffect(() => {
-    if (landChoice === "") {
-      setFilteredRestaurants(allRestaurants);
-    } else {
-      landFilter();
-    }
-  }, [landChoice]);
+    filterSearch();
+  }, [filters]);
 
   return (
     <Container fluid className="restaurants-div text-center">
@@ -120,9 +88,9 @@ export default function AllRestaurants() {
             <select
               name="cuisine-select"
               id="cuisine-select"
-              value={cuisineChoice}
+              value={filters.cuis}
               onChange={(e) => {
-                setCuisineChoice(e.target.value);
+                setFilters({ ...filters, cuis: e.target.value });
               }}
             >
               <option value="" disabled></option>
@@ -141,9 +109,9 @@ export default function AllRestaurants() {
             <select
               name="mealType-select"
               id="mealType-select"
-              value={mealTypeChoice}
+              value={filters.meal}
               onChange={(e) => {
-                setMealTypeChoice(e.target.value);
+                setFilters({ ...filters, meal: e.target.value });
               }}
             >
               <option value="" disabled></option>
@@ -160,9 +128,9 @@ export default function AllRestaurants() {
             <select
               name="land-select"
               id="land-select"
-              value={landChoice}
+              value={filters.land}
               onChange={(e) => {
-                setLandChoice(e.target.value);
+                setFilters({ ...filters, land: e.target.value });
               }}
             >
               <option value="" disabled></option>
