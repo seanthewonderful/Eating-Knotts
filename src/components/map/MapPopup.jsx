@@ -23,7 +23,11 @@ export default function MapPopup({ restaurant }) {
 
   const mealTypeLinks = restaurant.mealTypes.map((mealType) => {
     return (
-      <NavLink to={`#`} id="popup-link" key={mealType.mealTypeId}>
+      <NavLink
+        to={`/restaurants?meal=${mealType.name}`}
+        id="popup-link"
+        key={mealType.mealTypeId}
+      >
         {mealType.name}
         <br />
       </NavLink>

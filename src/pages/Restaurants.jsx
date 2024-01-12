@@ -1,19 +1,28 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import RestaurantCard from "../components/RestaurantCard.jsx";
 import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState, useCallback } from "react";
 import { debounce } from "lodash";
 
-export default function AllRestaurants({ cuisineInc, mealInc, landInc }) {
+export default function AllRestaurants() {
   const { restaurants } = useLoaderData();
+  const [incomingFilters] = useSearchParams();
   const [searchVal, setSearchVal] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [filters, setFilters] = useState({
-    cuis: cuisineInc ? cuisineInc : "",
-    meal: mealInc ? mealInc : "",
-    land: landInc ? landInc : "",
+    cuis: incomingFilters.get("cuisine")
+      ? incomingFilters.get("cuisine").toLowerCase()
+      : "",
+    meal: incomingFilters.get("meal")
+      ? incomingFilters.get("meal").toLowerCase()
+      : "",
+    land: incomingFilters.get("land")
+      ? incomingFilters.get("land").toLowerCase()
+      : "",
   });
+
+  console.log(filters);
 
   const allRestaurants = restaurants.map((restaurant) => {
     return (
@@ -45,6 +54,7 @@ export default function AllRestaurants({ cuisineInc, mealInc, landInc }) {
       }
 
       setFilteredRestaurants(searchRestaurants);
+      window.history.replaceState(null, "new", "/restaurants");
     }
   };
 
@@ -64,6 +74,7 @@ export default function AllRestaurants({ cuisineInc, mealInc, landInc }) {
       );
     });
     setFilteredRestaurants(filtered);
+    window.history.replaceState(null, "new", "/restaurants");
   };
 
   const debounceHandler = useCallback(debounce(searchFilter, 500), [
