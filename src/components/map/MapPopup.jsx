@@ -50,7 +50,7 @@ export default function MapPopup({ restaurant }) {
             </Col>
             <Col xs={4} className="align-self-center text-end">
               <NavLink
-                to={`/land/rest/${restaurant.land.landId}`}
+                to={`/land/rest/${restaurant.land.name}`}
                 className="fst-italic "
                 id="popup-link"
               >

@@ -5,11 +5,15 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState, useCallback } from "react";
 import { debounce } from "lodash";
 
-export default function AllRestaurants() {
+export default function AllRestaurants({ cuisineInc, mealInc, landInc }) {
   const { restaurants } = useLoaderData();
   const [searchVal, setSearchVal] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [filters, setFilters] = useState({ cuis: "", meal: "", land: "" });
+  const [filters, setFilters] = useState({
+    cuis: cuisineInc ? cuisineInc : "",
+    meal: mealInc ? mealInc : "",
+    land: landInc ? landInc : "",
+  });
 
   const allRestaurants = restaurants.map((restaurant) => {
     return (
@@ -18,14 +22,27 @@ export default function AllRestaurants() {
   });
 
   const searchFilter = (inputVal) => {
+    let searchRestaurants;
     if (inputVal === "") {
-      setFilteredRestaurants(allRestaurants);
+      if (filters.cuis === "" && filters.meal === "" && filters.land === "") {
+        setFilteredRestaurants(allRestaurants);
+      } else {
+        filterSearch();
+      }
     } else {
-      const searchRestaurants = allRestaurants.filter((restaurant) => {
-        return restaurant.props.restaurant.name
-          .toLowerCase()
-          .includes(inputVal.toLowerCase());
-      });
+      if (filters.cuis === "" && filters.meal === "" && filters.land === "") {
+        searchRestaurants = allRestaurants.filter((restaurant) => {
+          return restaurant.props.restaurant.name
+            .toLowerCase()
+            .includes(inputVal.toLowerCase());
+        });
+      } else {
+        searchRestaurants = filteredRestaurants.filter((restaurant) => {
+          return restaurant.props.restaurant.name
+            .toLowerCase()
+            .includes(inputVal.toLowerCase());
+        });
+      }
 
       setFilteredRestaurants(searchRestaurants);
     }
@@ -55,6 +72,7 @@ export default function AllRestaurants() {
 
   const clear = () => {
     setFilters({ cuis: "", meal: "", land: "" });
+    setSearchVal("");
   };
 
   useEffect(() => {

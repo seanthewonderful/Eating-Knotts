@@ -63,7 +63,7 @@ const router = createBrowserRouter(
         errorElement={<NotFound />}
       />
       <Route
-        path="land/rest/:landId"
+        path="land/rest/:landName"
         element={<LandRestaurants />}
         loader={landRestaurantLoader}
         errorElement={<NotFound />}

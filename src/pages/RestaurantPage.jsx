@@ -63,7 +63,7 @@ export default function RestaurantPage() {
               </NavLink>{" "}
               in{" "}
               <NavLink
-                to={`/land/rest/${restaurant.land.landId}`}
+                to={`/land/rest/${restaurant.land.name}`}
                 id="rest-page-link"
               >
                 {restaurant.land.name}
