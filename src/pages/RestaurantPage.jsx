@@ -16,7 +16,11 @@ export default function RestaurantPage() {
 
   const cuisines = restaurant.cuisines.map((cuisine) => {
     return (
-      <NavLink key={cuisine.cuisineId} to={`#`} id="rest-page-link">
+      <NavLink
+        key={cuisine.cuisineId}
+        to={`/restaurants?cuisine=${cuisine.name}`}
+        id="rest-page-link"
+      >
         {cuisine.name}
       </NavLink>
     );
@@ -63,7 +67,7 @@ export default function RestaurantPage() {
               </NavLink>{" "}
               in{" "}
               <NavLink
-                to={`/land/rest/${restaurant.land.landId}`}
+                to={`/restaurants?land=${restaurant.land.name.toLowerCase()}`}
                 id="rest-page-link"
               >
                 {restaurant.land.name}

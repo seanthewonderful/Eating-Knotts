@@ -52,7 +52,7 @@ const campSnoopyRestaurants = [
   {
     name: "Cave Inn Snacks",
     expense: "$",
-    img: "/public/restaurants/caveInnSnacks.jpeg",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/cave-inn-banner.jpg",
     description:
       "Deep in the wilderness of Camp Snoopy, the Beagle Scout’s hungry friends are invited to take a break from camp activities with some delicious drinks and snacks. There is sure to be something of interest for explorers of all ages. With delicious soft pretzels, churros, soft-serve ice cream, and ICEEs, the Cave Inn is the perfect stop to grab a quick snack before your next adventure. Campers can also purchase or refill their souvenir bottle at Cave Inn Snacks.\nCave Inn Snacks is a quick-service snack counter located in Camp Snoopy along the main trail next to the Linus Launcher.",
     fullService: false,
@@ -75,7 +75,7 @@ const fiestaVillageRestaurants = [
   {
     name: "Baja Taqueria",
     expense: "$$",
-    img: "/public/restaurants/bajaTaqueria.jpeg",
+    img: "https://cache.undercovertourist.com/blog/2023/05/0523-fiesta-village-knotts-berry-farm-taco.jpg",
     description:
       "In the magical Alebrije Gardens, Baja Taqueria stands as a beacon for taco lovers seeking an authentic taste of Mexico. Specializing in the beloved fish taco, this vibrant street taco restaurant captures the essence of Baja California’s coastal charm, offering a delectable fusion of fresh seafood and traditional Mexican flavors.\nThe aroma of sizzling fish and zesty citrus fills the air, instantly whetting your appetite. The menu boasts an array of options, from classic battered fish to birria tacos, expertly seasoned and wrapped in warm corn tortillas. Each taco is adorned with crisp cabbage, a tangy selection of sauces, and salsas, delivering a burst of flavors with every bite.\nThe lively atmosphere is filled with colorful alebrije creatures and ample outdoor seating. Baja Taqueria is the ultimate destination for taco lovers seeking a fiesta of flavors.",
     fullService: false,
@@ -86,7 +86,7 @@ const fiestaVillageRestaurants = [
   {
     name: "Cantina Del Sur",
     expense: "$$",
-    img: "/public/restaurants/cantinaDelSur.jpeg",
+    img: "https://balancingthechaos.com/wp-content/uploads/2023/05/Cantina-Del-Sur-at-Knotts-Berry-Farm.png",
     description:
       "Nestled in the heart of Fiesta Village, this vibrant bar exudes an intoxicating atmosphere that captures the essence of Mexican culture. The rhythmic beats of lively mariachi music reverberate through the air from the nearby Plaza Stage, inviting guests to dance and revel in the joyful ambiance.\nThis one-stop shop for specialty beverages will have plenty of thirst-quenching bebidas. With a selection of alcoholic drinks including beer, margaritas, and tequila tastings you’ll find the perfect pairing for the delectable street food you’ll find in Fiesta Village, like tacos and tamales, bursting with authentic flavors.",
     fullService: false,
@@ -108,7 +108,7 @@ const fiestaVillageRestaurants = [
   {
     name: "Casa California Restaurante",
     expense: "$$",
-    img: "/public/restaurants/casaCalifornia.jpeg",
+    img: "https://www.laughingplace.com/w/wp-content/uploads/2023/05/c7roaimbcvw0v4brllw3ptare2je51rejjbdkzmwllt5ovzgkt.jpg",
     description:
       "Craving delicious Mexican cuisine? In the heart of Fiesta Village, Casa California Restaurante is a colorful and inviting restaurant that promises an unforgettable dining experience.\nAs you enter the colorful courtyard, you’ll be greeted by the enticing aromas of freshly prepared Mexican delicacies. The menu is a treasure trove of favorites, featuring mouth-watering options such as flavorful burritos, bowls, and salads, along with quesadillas and nachos bursting with authentic flavors. Plus, you can enhance your order with chips and salsa, guacamole, or queso.\nEach dish is crafted with care, using high-quality ingredients and traditional recipes that pay homage to the rich culinary heritage of Mexico. To compliment your meal, Casa California Restaurante offers a range of refreshing Coca-Cola fountain drinks, ensuring a perfect pairing for your festive feast.\nWhether you’re seeking a quick bite between thrill rides or a leisurely meal with friends and family, Casa California Restaurante is the go-to destination for satisfying your Mexican food cravings.",
     fullService: false,
@@ -154,7 +154,7 @@ const boardwalkRestaurants = [
   {
     name: "Boardwalk BBQ",
     expense: "$$",
-    img: "/public/restaurants/boardwalkBBQ.jpeg",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/boardwalk-bbq-banner.jpg",
     description:
       "The Boardwalk BBQ features savory smokehouse sausages, pulled pork, rotisserie chicken, and more, paired with classic side dishes like flavored mac and cheese dishes, baked beans, cornbread, and more. Beer and wine are also available at this location. Boardwalk BBQ is open daily. Hours of operation vary and are subject to change without notice.",
     fullService: false,
@@ -221,7 +221,7 @@ const ghostTownRestaurants = [
   {
     name: "Mix-It-Up Ice Cream Shop",
     expense: "$$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ice-cream-shop-banner.jpg",
+    img: "https://www.eatlife.net/knotts-berry-farm/images/knotts-berry-farm-mix-it-up-ice-cream-shop.jpg",
     desciption:
       "These refreshing treats are the best in the West! This quick-service snack counter offers all of your favorite sweet treats. Take on the cookiewich challenge - vanilla or boysenberry soft-serve ice cream pressed between two freshly baked cookies. It’s big enough to share but so tasty that you won’t want to.\n Are you looking for something a little smaller? Try a waffle cone or classic cone with boysenberry or vanilla soft-serve ice cream. For an extra treat, dip your soft-serve cone in chocolate! To quench your thirst, take a sip of our freshly squeezed lemonade. Refresh with an ICEE – served in regular, ½ Yard, and Full Yard sizes. There is a wide variety of ICEE flavors, including boysenberry. Top it off with soft-serve ice cream for a tasty ICEE float!",
     fullService: false,
@@ -232,7 +232,7 @@ const ghostTownRestaurants = [
   {
     name: "Sutter's Funnel Cake",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/sutters-funnel-cake-banner.jpg",
+    img: "https://www.eatlife.net/knotts-berry-farm/images/knotts-berry-farm-sutters-funnel-cakes.jpg",
     desciption:
       "Mosey on over to the outskirts of Ghost Town for some of the finest funnel cakes this side of the Wild West! The quick-service dessert window, Sutter’s Funnel Cake, is home to Knott’s Berry Farm’s famous freshly made funnel cakes. Fried to perfection, enjoy a classic powdered sugar funnel cake or take on a “Fully Loaded” funnel cake that comes with ice cream and your choice of topping, boysenberry, strawberry, or chocolate.",
     fullService: false,
@@ -243,7 +243,7 @@ const ghostTownRestaurants = [
   {
     name: "Sutter's Pizza",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/sutters-pizza-banner.jpg",
+    img: "https://cpfoodblog.com/wp-content/uploads/2014/12/141125-Knotts-Sutters-Pizza.jpg",
     desciption:
       "Are you craving pizza? Look no more! Located near the entrance of Ghost Town, gourmet pizza is sold by-the-pie or by-the-slice. We also offer different styles of pizza throughout our Seasons of Fun!",
     fullService: false,
@@ -276,7 +276,7 @@ const ghostTownRestaurants = [
   {
     name: "Pemmican Pickle",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/pemmican-pickle-banner.jpg",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/pemmican-pickle-tileimage.jpg",
     desciption:
       "Stop by the entrance of Ghost Town for a quick snack or soda to start your day and find pickles, churros, pretzels, sodas, ICEE, and select beer offerings.",
     fullService: false,
@@ -287,7 +287,7 @@ const ghostTownRestaurants = [
   {
     name: "Panda Express",
     expense: "$$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/panda-express-banner.jpg",
+    img: "https://www.eatlife.net/knotts-berry-farm/images/knotts-berry-farm-panda-express.jpg",
     desciption:
       "Located across from Timber Mountain Log Ride, enjoy various gourmet Asian-inspired dishes, wok-tossed with fresh veggies and gourmet sauces. Items include the fan-favorite orange chicken and broccoli beef. Combo meals are served with a choice of either fried rice, steamed rice, chow mein, or mixed vegetables. Add a veggie spring roll, cream cheese rangoons, or chicken egg roll to any order for an extra crunch. This quick-service eatery offers both indoor and outdoor seating for your convenience.",
     fullService: false,
@@ -309,7 +309,7 @@ const ghostTownRestaurants = [
   {
     name: "Log Ride ICEE Mix-It-Up",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/icee-mit-it-up-banner.jpg",
+    img: "https://cpfoodblog.com/wp-content/uploads/2014/12/141125-Knotts-ICEE-Mix-it-Up.jpg",
     desciption:
       "Refresh yourself with an ICEE! There is a huge selection of ICEE flavors, including boysenberry. Top it off with vanilla soft-serve ice cream for a tasty ICEE float!\n Log Ride ICEE Mix-It-Up is open on weekends and select days throughout the season.",
     fullService: false,
@@ -320,7 +320,7 @@ const ghostTownRestaurants = [
   {
     name: "Log Ride Funnel Cake",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/log-ride-funnel-cake-banner.jpg",
+    img: "https://cpfoodblog.com/wp-content/uploads/2014/12/141125-Knotts-Log-Ride-Funnel-Cake.jpg",
     desciption:
       "After splashing down the log flume nestled in the mountain range on the Timber Mountain Log Ride, you’ve worked up an appetite for this park favorite. Located right across the way, the Log Ride Funnel Cake is your stop for nothing but funnel cakes!\n Loggers come from miles around to taste these freshly made funnel cakes that are poured and fried daily, served to perfection, and covered with powdered sugar. For some extra flavor, pick a topping of strawberry, boysenberry, or chocolate. The final touch is a dollop of soft-serve ice cream.",
     fullService: false,
@@ -331,7 +331,7 @@ const ghostTownRestaurants = [
   {
     name: "Gourmet Churro Factory",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/the-churro-factory-banner.jpg",
+    img: "https://www.eatlife.net/knotts-berry-farm/images/knotts-berry-farm-churro-factory.jpg",
     desciption:
       "Come and get 'em! The Gourmet Churro Factory is your one-stop shop for handmade churros. Watch as our specially trained culinary team rolls, cranks, and fry fresh churros from scratch before your very eyes. Get them hot and get them stuffed with boysenberry, strawberry, or Bavarian cream.\n To make your churro extra sweet, try a churro sundae featuring a churro with ice cream and a choice of strawberry or boysenberry topping and whipped cream. Check back regularly as seasonal flavored churros are featured frequently. ",
     fullService: false,
@@ -353,7 +353,7 @@ const ghostTownRestaurants = [
   {
     name: "Ghost Town Grill",
     expense: "$$$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ghost-town-grill-banner.jpg",
+    img: "https://live.staticflickr.com/7178/6872174887_7ab8751f7d_b.jpg",
     desciption:
       "We’re open when you’re hungry. This table-service western experience provides both indoor and outdoor patio dining with a view. This Ghost Town setting offers you a view of the blacksmith at work, and you might even catch a glimpse of a Ghost Town cowboy showdown. The action of Main Street will complement your meal as you savor hearty home-cooked favorites and seasonal dishes.\n Enjoy soup and chili served in a bread bowl, hearty sandwiches, fresh salads, and daily chef specials, as well as beer and wine. There’s something for everyone, including a special kid’s meal menu. And don’t forget about the dessert – boysenberry pie, cake, and ice cream are just some of the sweet treats waiting for you. The Sarsaparilla float alone is something you won’t find anywhere else in the park!",
     fullService: true,
@@ -364,7 +364,7 @@ const ghostTownRestaurants = [
   {
     name: "Ghost Town Bakery & Coffee Shop",
     expense: "$",
-    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/ghost-town-bakery-banner.jpg",
+    img: "https://www.eatlife.net/knotts-berry-farm/images/knotts-berry-farm-ghost-town-bakery.jpg",
     desciption:
       "Your day is not complete without a trip to this hometown-style bakery that serves up something for everyone. Start your day with a cup of hot coffee, latte, or cappuccino and your favorite baked goods, including gooey cinnamon buns, made fresh daily at our Knott's Berry Farm bakery. You can try our sourdough bread bowls with either Knott's Famous Chili or Clam Chowder for a heartier lunch option. Stuffed croissants and sandwiches are other savory options that can satisfy any craving.\n To satisfy that sweet tooth, you'll find everything from Mrs. Knott's Famous Boysenberry or Apple Pies to cookies, cake, fruit tarts, or even chocolate-covered strawberries. Check back regularly for special Seasons of Fun food offerings. Coca-Cola refreshments are also served here. Gluten-free, vegetarian, and vegan options are available upon request.",
     fullService: false,
@@ -375,7 +375,7 @@ const ghostTownRestaurants = [
   {
     name: "Calico Saloon",
     expense: "$$",
-    img: "/public/restaurants/calicoSaloon.jpeg",
+    img: "https://cdn-cloudfront.cfauthx.com/binaries/content/gallery/kb-en-us/poi/dining/v2/calico-saloon-banner.jpg",
     description:
       "This old west saloon has been entertaining guests and wetting whistles at Knott’s Berry Farm since its original opening in the 1940s. Located in the center of the park, the Calico Saloon is home to some of the finest beverages and even finer shows this side of the wild West.\nAfter wandering through the classic swinging saloon doors, mosey on up to the counter where the barkeep can fix you a drink. Adults can find alcoholic beverages including beer and wine, while younger cowpokes may fancy a sarsaparilla or boysenberry punch. Be sure to ask your bartender about any “signature” drinks!\nAvailable exclusively at the Calico Saloon is the Calico Soda. Watch as your bartender handcrafts a boysenberry cream soda right in front of your eyes using a Knott’s Berry Farm secret recipe. Each Calico Soda is served in a souvenir mason jar for you to keep!\nClassic snacks like popcorn and pickles are also available in the Calico Saloon, which opens daily.",
     fullService: false,
@@ -386,7 +386,7 @@ const ghostTownRestaurants = [
   {
     name: "Calico Tater Bites",
     expense: "$",
-    img: "/public/restaurants/calicoTaterBites.jpeg",
+    img: "https://littlegraythread.files.wordpress.com/2020/11/turkey-dinner-tater-tots.jpg",
     description:
       "Are you craving some Tater Tots? Then this is the stop for you! Calico Tater Bites has delicious, loaded tater tots with many different toppings. Enjoy the tastes of the Wild West with the BBQ Pulled Pork Tots, topped with cheddar cheese and crispy fried jalapeno strips. Your taste buds will thank you.\nOther Tot options include the Calico Chili Cheese Tots, Buffalo Chicken Tender Tots, Mac & Cheese Tots, and the seasonal favorite - back by popular demand - Pastrami Tots!",
     fullService: false,

@@ -38,10 +38,12 @@ const restaurantHandlers = {
   },
 
   getRestaurantsByLand: async (req, res) => {
-    const { landId } = req.params;
-    // const { landName } = req.params
+    const { landName } = req.params;
 
-    const landWithRestaurants = await Land.findByPk(landId, {
+    const landWithRestaurants = await Land.findOne({
+      where: {
+        name: landName,
+      },
       include: {
         model: Restaurant,
         include: [

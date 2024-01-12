@@ -11,7 +11,7 @@ export default function MapPopup({ restaurant }) {
   const cuisineLinks = restaurant.cuisines.map((cuisine) => {
     return (
       <NavLink
-        to={`cuisine/restaurants/${cuisine.name}`}
+        to={`/restaurants?cuisine=${cuisine.name}`}
         id="popup-link"
         key={cuisine.name}
       >
@@ -23,7 +23,11 @@ export default function MapPopup({ restaurant }) {
 
   const mealTypeLinks = restaurant.mealTypes.map((mealType) => {
     return (
-      <NavLink to={`#`} id="popup-link" key={mealType.mealTypeId}>
+      <NavLink
+        to={`/restaurants?meal=${mealType.name}`}
+        id="popup-link"
+        key={mealType.mealTypeId}
+      >
         {mealType.name}
         <br />
       </NavLink>
@@ -50,7 +54,7 @@ export default function MapPopup({ restaurant }) {
             </Col>
             <Col xs={4} className="align-self-center text-end">
               <NavLink
-                to={`/land/rest/${restaurant.land.landId}`}
+                to={`/restaurants?land=${restaurant.land.name}`}
                 className="fst-italic "
                 id="popup-link"
               >
