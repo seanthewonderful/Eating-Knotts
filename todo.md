@@ -150,13 +150,13 @@ Other routes
   - [x] create route
 - [x] Show all restaurants by meal type
   - [x] create route
-- [] Search for restaurants on each page
-  - [] by name
-  - [] by land name?
-- [] filters - ? kinda undoes above pages but better
-- [] land
-- [] cuisine
-- [] meal type
+- [x] Search for restaurants on each page
+  - [x] by name
+  - [x] by land name?
+- [x] filters - ? kinda undoes above pages but better
+- [x] land
+- [x] cuisine
+- [x] meal type
 - [] Readme include instructions for how to demo an admin/user
 
 Styling
