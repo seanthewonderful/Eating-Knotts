@@ -102,7 +102,7 @@ Restaurant page(s)
   - [x] display total ratings and avg stars
 - [x] Endpoint to grab all ratings sans user
 - [x] Display user's rating from user obj.
-- [] Remember where user was upon login re-route back
+- [x] Remember where user was upon login re-route back
   - https://stackoverflow.com/questions/72163183/how-can-i-redirect-to-previous-page-after-login-in-react-router
 
 Create Admin page
@@ -150,13 +150,13 @@ Other routes
   - [x] create route
 - [x] Show all restaurants by meal type
   - [x] create route
-- [] Search for restaurants on each page
-  - [] by name
-  - [] by land name?
-- [] filters - ? kinda undoes above pages but better
-- [] land
-- [] cuisine
-- [] meal type
+- [x] Search for restaurants on each page
+  - [x] by name
+  - [x] by land name?
+- [x] filters - ? kinda undoes above pages but better
+- [x] land
+- [x] cuisine
+- [x] meal type
 - [] Readme include instructions for how to demo an admin/user
 
 Styling
