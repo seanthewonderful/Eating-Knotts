@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { notify } from "../assets/funx";
 import axios from "axios";
 
@@ -10,6 +10,8 @@ export default function RestaurantRate({ restaurant }) {
   const [rated, setRated] = useState(true);
   const [starRating, setStarRating] = useState("5");
   const [review, setReview] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSave = () => {
     const bodyObj = {
@@ -38,6 +40,11 @@ export default function RestaurantRate({ restaurant }) {
       }
       setRated(false);
     }
+  };
+
+  const handleLoginRedirect = () => {
+    localStorage.setItem("preLoginPath", window.location.pathname);
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -74,8 +81,9 @@ export default function RestaurantRate({ restaurant }) {
       )}
     </Col>
   ) : (
-    <Button size="sm" style={{ width: "50%" }}>
-      <NavLink to={"/login"}>Log in to rate this restaurant!</NavLink>
+    <Button size="sm" style={{ width: "50%" }} onClick={handleLoginRedirect}>
+      {/* <NavLink to={"/login"}>Log in to rate this restaurant!</NavLink> */}
+      Log in to rate this restaurant!
     </Button>
   );
 }

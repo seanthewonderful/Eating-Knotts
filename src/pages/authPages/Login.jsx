@@ -33,7 +33,10 @@ export default function Login() {
             type: "ADMIN_AUTH",
             payload: res.data.admin,
           });
-          navigate("/");
+          // navigate("/");
+          const preLoginPath = localStorage.getItem("preLoginPath") || "/";
+          localStorage.removeItem("preLoginPath");
+          navigate(preLoginPath);
           notify("success", res.data.message);
         })
         .catch((error) => {
@@ -47,7 +50,10 @@ export default function Login() {
             type: "USER_AUTH",
             payload: res.data.user,
           });
-          navigate("/");
+          // navigate("/");
+          const preLoginPath = localStorage.getItem("preLoginPath") || "/";
+          localStorage.removeItem("preLoginPath");
+          navigate(preLoginPath);
           notify("success", res.data.message);
         })
         .catch((error) => {
