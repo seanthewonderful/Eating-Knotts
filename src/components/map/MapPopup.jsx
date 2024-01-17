@@ -47,12 +47,18 @@ export default function MapPopup({ restaurant }) {
       <Container>
         <Row id="popup-card">
           <Row>
-            <Col xs={8}>
-              <NavLink to={`/restaurant/${restaurant.restaurantId}`}>
-                <h4 id="popup-link">{restaurant.name}</h4>
-              </NavLink>
-            </Col>
-            <Col xs={4} className="align-self-center text-end">
+            <img id="popup-img" src={restaurant.img} alt={restaurant.name} />
+          </Row>
+          {/* <Row> */}
+          <Row className="align-self-center text-center">
+            <NavLink to={`/restaurant/${restaurant.restaurantId}`}>
+              <h4 id="popup-link">{restaurant.name}</h4>
+            </NavLink>
+          </Row>
+
+          <Row>
+            <Col>
+              <h6>Land:</h6>
               <NavLink
                 to={`/restaurants?land=${restaurant.land.name}`}
                 className="fst-italic "
@@ -61,22 +67,22 @@ export default function MapPopup({ restaurant }) {
                 {restaurant.land.name}
               </NavLink>
             </Col>
-          </Row>
-
-          <Row className="d-flex justify-content-between">
-            <Col xs={2}>
+            <Col className="align-self-center text-end">
+              <h6>Expense:</h6>
               <p id="restaurant-expense">{restaurant.expense}</p>
             </Col>
-            <Col xs={3}>
-              <NavLink to={`/restaurant/${restaurant.restaurantId}`}>
-                <button id="popup-btn">Visit</button>
-              </NavLink>
-            </Col>
           </Row>
+          {/* </Row> */}
 
           <Row className="mt-2">
-            <Col>{cuisineLinks}</Col>
-            <Col className="text-end">{mealTypeLinks}</Col>
+            <Col>
+              <h6>Cuisines:</h6>
+              {cuisineLinks}
+            </Col>
+            <Col className="text-end">
+              <h6>Meal Type:</h6>
+              {mealTypeLinks}
+            </Col>
           </Row>
 
           <Row className="text-center">
