@@ -1,9 +1,7 @@
-import { memo } from "react";
 import {
   User,
   Admin,
   Restaurant,
-  Rating,
   Cuisine,
   Land,
   FoodItem,
@@ -13,7 +11,13 @@ import {
 
 const users = ["Carl", "Rory", "Billie", "Pam", "Larry"];
 const admins = ["Sean", "Natalie"];
-const lands = ["Camp Snoopy", "Fiesta Village", "Boardwalk", "Ghost Town"];
+const lands = [
+  "Camp Snoopy",
+  "Fiesta Village",
+  "Boardwalk",
+  "Ghost Town",
+  "Outside Park",
+];
 
 const campSnoopyRestaurants = [
   {
@@ -598,8 +602,17 @@ const ghostTown = await Land.findOne({
 for (let restaurant of ghostTownRestaurants) {
   await ghostTown.createRestaurant(restaurant);
 }
+// Create Outside Park Restaurants
+const outsidePark = await Land.findOne({
+  where: {
+    name: "Outside Park",
+  },
+});
+for (let restaurant of outsideParkRestaurants) {
+  await outsidePark.createRestaurant(restaurant);
+}
 
-console.log("Seeded Restaurant");
+console.log("Seeded Restaurants");
 
 // Connect restaurants to Cuisines
 // Query Restaurants
