@@ -17,7 +17,7 @@
   min-height: 100vh;
   height: 100%;
   padding: 0;
-  margin-top: 61px;
+  margin-top: 58px;
   background-color: rgb(255, 209, 255);
 }
 
@@ -86,6 +86,8 @@ h4 {
   top: 0%;
   z-index: 401;
   width: 100vw;
+  font-family: "Gorditas", serif;
+  font-style: normal;
 }
 .nav-btn {
   color: white;
@@ -95,6 +97,7 @@ h4 {
 #navLinks {
   display: flex;
   flex-direction: row;
+  margin-right: 2%;
 }
 #navLinks a.active {
   color: gold;
@@ -104,6 +107,9 @@ h4 {
   flex-direction: row;
   align-items: center;
 }
+#nav-logo {
+  color: #363697;
+}
 #knotts-nav-logo {
   height: 8vh;
   margin-left: 5%;
@@ -111,6 +117,9 @@ h4 {
 #nav-profile-icon {
   height: 5vh;
   margin-left: 2%;
+}
+.nav-tabs {
+  border-bottom: 1px solid black;
 }
 
 /* Map */

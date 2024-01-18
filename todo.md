@@ -168,7 +168,7 @@ Styling
 Extra features
 
 - [] Something offcanvas?
-- [] Remember where user was for login re-route
+- [x] Remember where user was for login re-route
 - [] Page restrictions
 - [x] Admin adding instant update to page
 - [x] Outside Park restaurants seeded

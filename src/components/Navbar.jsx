@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Button, Container, Navbar, Nav } from "react-bootstrap";
+import { Button, Container, Navbar, Nav, Col } from "react-bootstrap";
 import { notify } from "../assets/funx.js";
 
 export default function NavBar() {
@@ -44,103 +44,82 @@ export default function NavBar() {
   }, []);
 
   return (
-    <>
-      {/* <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="/">
-            Eating
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Knotts_Berry_Farm_Logo.svg/2560px-Knotts_Berry_Farm_Logo.svg.png"
-              alt="knotts-logo"
-              id="knotts-nav-logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/restaurants">Restaurants</NavLink>
-              <NavLink to="/login">Login</NavLink>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
-
-      <div id="main">
-        <div id="navbar">
+    <div id="main">
+      <div id="navbar">
+        <NavLink to="/" id="nav-logo">
           <div id="navTitle">
-            <h1>Eating</h1>
+            <span className="align-self-end">
+              <h1>Eating</h1>
+            </span>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Knotts_Berry_Farm_Logo.svg/2560px-Knotts_Berry_Farm_Logo.svg.png"
               alt="knotts-logo"
               id="knotts-nav-logo"
             />
           </div>
+        </NavLink>
 
-          <div id="navLinks">
-            <Button className="nav-btn">
-              <NavLink to="/">Home</NavLink>
-            </Button>
+        <div id="navLinks">
+          <Button className="nav-btn">
+            <NavLink to="/">Home</NavLink>
+          </Button>
 
-            <Button className="nav-btn">
-              <NavLink to="/restaurants">Restaurants</NavLink>
-            </Button>
+          <Button className="nav-btn">
+            <NavLink to="/restaurants">Restaurants</NavLink>
+          </Button>
 
-            {user && (
-              <>
-                <Button className="nav-btn">
-                  <NavLink to={`/profile/${user.userId}`}>Profile</NavLink>
-                </Button>
-
-                <img src={user.img} alt="user-icon" id="nav-profile-icon" />
-
-                <Button className="nav-btn" onClick={logout}>
-                  Logout
-                </Button>
-              </>
-            )}
-
-            {admin && (
-              <>
-                <Button className="nav-btn">
-                  <NavLink to={`/admin/${admin.adminId}`}>Admin</NavLink>
-                </Button>
-
-                <img src={admin.img} alt="user-icon" id="nav-profile-icon" />
-
-                <Button className="nav-btn">
-                  <NavLink to={"/"} onClick={logout}>
-                    Logout
-                  </NavLink>
-                </Button>
-              </>
-            )}
-
-            {!user && !admin && (
+          {user && (
+            <>
               <Button className="nav-btn">
-                <NavLink to={"/login"}>Login</NavLink>
+                <NavLink to={`/profile/${user.userId}`}>Profile</NavLink>
               </Button>
-            )}
-          </div>
+
+              <img src={user.img} alt="user-icon" id="nav-profile-icon" />
+
+              <Button className="nav-btn" onClick={logout}>
+                Logout
+              </Button>
+            </>
+          )}
+
+          {admin && (
+            <>
+              <Button className="nav-btn">
+                <NavLink to={`/admin/${admin.adminId}`}>Admin</NavLink>
+              </Button>
+
+              <img src={admin.img} alt="user-icon" id="nav-profile-icon" />
+
+              <Button className="nav-btn">
+                <NavLink to={"/"} onClick={logout}>
+                  Logout
+                </NavLink>
+              </Button>
+            </>
+          )}
+
+          {!user && !admin && (
+            <Button className="nav-btn">
+              <NavLink to={"/login"}>Login</NavLink>
+            </Button>
+          )}
         </div>
-
-        <ToastContainer
-          position="top-center"
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={true}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        />
-
-        <Container fluid id="main">
-          <Outlet />
-        </Container>
-      </div>
-    </>
+      </div>{" "}
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
+      <Container fluid id="main">
+        <Outlet />
+      </Container>
+    </div>
   );
 }
