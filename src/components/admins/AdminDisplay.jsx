@@ -15,8 +15,6 @@ export default function AdminDisplay({ admin }) {
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
 
-  // console.log(adminData.allAdminsLocal);
-
   const editMode = () => setIsEditing(true);
 
   const handleSave = () => {

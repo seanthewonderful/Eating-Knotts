@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<NavBar />}>
+      
       <Route
         index
         element={<Home />}

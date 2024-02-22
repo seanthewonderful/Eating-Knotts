@@ -854,4 +854,11 @@ console.log("Connected MealTypes with Restaurants");
 
 console.log("Finished seeding database. Goodbye");
 
+
+
+
+
+
+
+
 await db.close();

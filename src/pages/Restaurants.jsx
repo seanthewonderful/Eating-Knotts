@@ -4,7 +4,6 @@ import RestaurantCard from "../components/RestaurantCard.jsx";
 import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState, useCallback } from "react";
 import { debounce } from "lodash";
-import { toTitleCase } from "../assets/funx.js";
 
 export default function AllRestaurants() {
   const { restaurants } = useLoaderData();
@@ -22,6 +21,8 @@ export default function AllRestaurants() {
       ? incomingFilters.get("land").toLowerCase()
       : "",
   });
+
+  console.log(filteredRestaurants);
 
   const allRestaurants = restaurants.map((restaurant) => {
     return (

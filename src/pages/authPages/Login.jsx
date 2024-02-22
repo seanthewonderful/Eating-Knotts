@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Button, Container, Form, Row, Col, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { notify } from "../../assets/funx.js";
 import Register from "./Register.jsx";
