@@ -82,7 +82,7 @@ export default function Register({ handleRegister }) {
   });
 
   return (
-    <Container fluid>
+    <Container fluid id="register">
       <Row className="justify-content-center">
         <Col id="register-form" xs={12} sm={10} md={9} lg={7} xl={6} xxl={5}>
           <Form onSubmit={handleRegistration}>

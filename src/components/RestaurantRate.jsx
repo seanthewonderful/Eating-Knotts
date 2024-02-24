@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
-import { Button, Form, Col } from "react-bootstrap";
+import { Button, Form, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { notify } from "../assets/funx";
 import axios from "axios";
+import UserRating from "./UserRating";
 
 export default function RestaurantRate({ restaurant }) {
   const user = useSelector((state) => state.user);
   const [rated, setRated] = useState(true);
   const [starRating, setStarRating] = useState("5");
   const [review, setReview] = useState("");
+  const [ratings, setRatings] = useState(restaurant.ratings)
 
   const navigate = useNavigate();
+
+  const userRatings = ratings.map((rating) => {
+    return (
+      <UserRating
+        key={rating.ratingId}
+        rating={rating}
+        restaurant={restaurant}
+        user={user}
+      />
+    )
+  })
 
   const handleSave = () => {
     const bodyObj = {
@@ -23,6 +36,7 @@ export default function RestaurantRate({ restaurant }) {
       .then((res) => {
         notify("success", res.data.message);
         setRated(true);
+        setRatings(res.data.restaurantRatings)
       })
       .catch((err) => {
         notify("warning", err.response.data.message);
@@ -49,11 +63,11 @@ export default function RestaurantRate({ restaurant }) {
 
   useEffect(() => {
     figureIfRated();
-  }, [rated, setRated]);
+  }, []);
 
   return user ? (
     <Col className="">
-      {!rated ? (
+      {!rated && (
         <Form id="restaurant-page-ratings">
           <Form.Label>Rate this place!</Form.Label>
           <Form.Group className="mb-2" controlId="formStars">
@@ -76,9 +90,12 @@ export default function RestaurantRate({ restaurant }) {
             Save
           </Button>
         </Form>
-      ) : (
-        <></>
-      )}
+      ) 
+        }
+        <Row className="justify-content-start text-start" id="ratings-div">
+          {userRatings}
+        </Row>
+        
     </Col>
   ) : (
     <Button size="sm" style={{ width: "50%" }} onClick={handleLoginRedirect}>
