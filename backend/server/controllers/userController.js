@@ -1,4 +1,4 @@
-import { User, Restaurant, Rating, db } from "../../database/model.js";
+import { User, Restaurant, Rating } from "../../database/model.js";
 import bcryptjs from "bcryptjs";
 
 const userHandlers = {
@@ -136,13 +136,6 @@ const userHandlers = {
         return;
       }
     }
-
-    // if (!bcryptjs.compareSync(password, user.password)) {
-    // 	res.status(401).send({
-    // 		message: "Password incorrect"
-    // 	})
-    // 	return
-    // }
 
     await user.update({
       email: email ?? user.email,

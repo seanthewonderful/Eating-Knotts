@@ -34,7 +34,7 @@ const campSnoopyRestaurants = [
   {
     name: "Grizzly Creek Lodge",
     expense: "$$",
-    img: "/public/restaurants/grizzly.jpeg",
+    img: "/restaurants/grizzly.jpeg",
     description:
       "Nestled in the woods of Camp Snoopy, Grizzly Creek Lodge is the spot to have a delicious meal between adventures. You can find hamburgers, hot dogs, pizza (whole and by the slice), chicken tenders, fresh salads, and Snoopy's Kids Meals.\nDine inside or on the patio by Grizzly Creek Falls. Refresh and refill with a variety of ICEE and Coca-Cola fountain beverages. Gluten-friendly, vegetarian, and vegan options are available upon request. Grizzly Creek Lodge is open daily. Hours of operation vary and are subject to change without notice.",
     fullService: false,
@@ -45,7 +45,7 @@ const campSnoopyRestaurants = [
   {
     name: "Camp Snoopy Refresh",
     expense: "$",
-    img: "/public/restaurants/campSnoopyRefresh.jpeg",
+    img: "/restaurants/campSnoopyRefresh.jpeg",
     description:
       "Need a refill? So does every other parent around here. Letting your kids fill up your cup is realllllly cute and all, but frankly, please stop it.",
     fullService: false,
@@ -123,7 +123,7 @@ const fiestaVillageRestaurants = [
   {
     name: "Oaxaca Joe's Limonada",
     expense: "$",
-    img: "/public/restaurants/oaxacaJoes.jpeg",
+    img: "/restaurants/oaxacaJoes.jpeg",
     description:
       "Don't try to make it to Fiesta Village without stopping here first. I'm a temptation to all who wander this way.\nNow, I know you want to get a refill in your affordably-priced refillable drink cup, but I'm gonna save us both a hassle and tell you that I don't do refills. Check around the corner, either direction.\nBut I have some good lemonade!",
     fullService: false,
@@ -169,7 +169,7 @@ const boardwalkRestaurants = [
   {
     name: "Boardwalk Pretzels & Churros",
     expense: "$",
-    img: "/public/restaurants/boardwalkPretzels.jpeg",
+    img: "/restaurants/boardwalkPretzels.jpeg",
     description:
       "Step right up! Come one, come all, to the most amazing pretzel on Earth! It's pretty good, anyway. Actually maybe the churros are better. Try one of each!",
     fullService: false,
@@ -180,7 +180,7 @@ const boardwalkRestaurants = [
   {
     name: "Charleston Circle Coffee",
     expense: "$",
-    img: "/public/restaurants/charlestonCoffee.jpeg",
+    img: "/restaurants/charlestonCoffee.jpeg",
     description:
       "Home of Bumble Bear-y’s Award-Winning Boysenberry Pie!\nThese drink concoctions are the “bee’s knees” of the Boardwalk! Charleston Circle Coffee is a quick service drink counter located across from Charleston Circle water fountain near Johnny Rockets. Charleston Circle Coffee features various farm-fresh pastries, like our famous Snoopy cookies, and proudly serves Starbucks coffee. Try various libations, including brewed coffee, iced lattes, teas, Frappuccinos, and everything in between. Don’t miss an opportunity to try the Boysenberry Latte, only found at Knott's Berry Farm!\nDownload the Knott’s Berry Farm mobile app to order ahead at this location.",
     fullService: false,
@@ -191,7 +191,7 @@ const boardwalkRestaurants = [
   {
     name: "Coasters Diner",
     expense: "$$",
-    img: "/public/restaurants/coastersDiner.jpeg",
+    img: "/restaurants/coastersDiner.jpeg",
     description:
       "This signature eatery combines classic 50s tunes with different types of American classics. Offering up burgers, hot dogs, chicken tenders, French fries, and extra-thick milkshakes, Coasters Diner serves today’s meal with retro-style fun!\nLook out for seasonal specialty milkshakes at Coasters Diner as we celebrate the Knott’s Berry Farm Seasons of Fun throughout the year!\nDon't miss Xcelerator The Burger, a 12-inch patty packed high with bacon, cheese, and fries!\nCoasters Diner is a quick-service counter with indoor and outdoor seating located on the Knott’s Boardwalk between the Xcelerator and Coast Rider.",
     fullService: false,
@@ -202,7 +202,7 @@ const boardwalkRestaurants = [
   {
     name: "Memory Lane Refresh",
     expense: "$",
-    img: "/public/restaurants/memoryLaneRefresh.jpeg",
+    img: "/restaurants/memoryLaneRefresh.jpeg",
     description: "Refills here! Grab your refills!",
     fullService: false,
     refills: true,
@@ -212,7 +212,7 @@ const boardwalkRestaurants = [
   {
     name: "Prop Shop Pizzeria",
     expense: "$$",
-    img: "/public/restaurants/propShopPizza.jpeg",
+    img: "/restaurants/propShopPizza.jpeg",
     description:
       "Take a moment out of the spotlight to satisfy those taste buds at Prop Shop Pizzeria, An Italian Kitchen. This all-new quick service Italian eatery is located right outside the Walter Knott Theater. The Prop Shop Pizzeria, An Italian Kitchen offers several food options for guests, including pasta, salads, garlic “Knotts” and a variety of brick oven pizzas. Served by the slice or whole, it’s sure to satisfy cravings of any size. Pair any meal with a refreshing beer or wine. For the younger guys and dolls, choose from a variety of Coca-Cola fountain drinks.",
     fullService: false,
@@ -258,7 +258,7 @@ const ghostTownRestaurants = [
   {
     name: "Sutter's Grill",
     expense: "$",
-    img: "/public/restaurants/suttersGrill.jpeg",
+    img: "/restaurants/suttersGrill.jpeg",
     description:
       "Right past the entrance of our Famous Ghost Town, come enjoy hamburgers, buffalo style breaded chicken sandwiches, BBQ bacon cheeseburgers, and salads. Sit down in one of our many picnic areas around the restaurant and enjoy the sights and sounds of the Wild West Stunt Shows, Silver Bullet, and our Seasonal Crafters!",
     fullService: false,
@@ -346,7 +346,7 @@ const ghostTownRestaurants = [
   {
     name: "Ghost Town Grub",
     expense: "$",
-    img: "/public/restaurants/ghostTownGrub.jpeg",
+    img: "/restaurants/ghostTownGrub.jpeg",
     description:
       "Folks in these parts can’t resist the satisfying concoctions of Ghost Town Grub. Stop by the log cabin on Main Street for delicious funnel cakes freshly made and topped with boysenberry, strawberry, or chocolate. Order any funnel cake “Fully Loaded,” which includes ice cream and a topping of your choice.\nKeep your eyes out for the ever-changing “Seasonal Surprise,” a new and fun treat offered during our different Seasons of Fun. Including the Boysenberry Fun Bun, deep-fried PB&J, and more! Coca-Cola beverages, milk, coffee, and bottled water are also available at this location.",
     fullService: false,
@@ -401,7 +401,7 @@ const ghostTownRestaurants = [
   {
     name: "Fireman's Brigade BBQ",
     expense: "$$",
-    img: "/public/restaurants/firemansBBQ.jpeg",
+    img: "/restaurants/firemansBBQ.jpeg",
     description:
       "This is not a drill! Fireman’s BBQ is your best bet for the tastiest open-air barbecued chicken, ribs, flank steak sandwiches, giant turkey legs, and baked potatoes. All meat is marinated for hours and grilled to perfection. Try the delicious and unique jalapeno bread, and don’t miss the fan-favorite Fire Roasted Corn on the Cob. If you're thirsty, you can wet your whistle with an ice-cold beer or Coca-Cola product!\nJust follow the savory aromas to Bird Cage Square, located in front of the Bird Cage Theatre. Outside dining is available in the heart of Ghost Town. Fireman’s BBQ is open daily.",
     fullService: false,
@@ -413,7 +413,7 @@ const ghostTownRestaurants = [
   {
     name: "Wilderness Broiler",
     expense: "$$",
-    img: "/public/restaurants/wildernessBroiler.jpeg",
+    img: "/restaurants/wildernessBroiler.jpeg",
     description:
       "After an adventure aboard Calico River Rapids, head across the path to Wilderness Broiler. This quick service counter offers grilled all beef dog combinations for explorers of every age!\nYour tastebuds will go wild for The Sasquatch, loaded with Calico Chili and crispy onions. Indulge in The Chupacabra's nacho delight, featuring Cheese Sauce, Pico de Gallo, Sour Cream, and Fritos.\nTaste classic flavors with The Old Mill Dog's French Fries, Cheese Sauce, Chipotle Mayo, and bacon bits. Ignite your taste buds with the Dynamite Dog, wrapped in bacon, grilled onions, peppers, and mayo.\nPlus, even more unexplored combinations! Plus, you can pair any dog with Coca-Cola Fountain drinks also available. Each bite is an adventure, a fusion of flavor and wilderness spirit that defines Wilderness Dogs and Drinks.",
     fullService: false,
@@ -424,7 +424,7 @@ const ghostTownRestaurants = [
   {
     name: "Wilderness Refresh",
     expense: "$",
-    img: "/public/restaurants/wildernessRefresh.jpeg",
+    img: "/restaurants/wildernessRefresh.jpeg",
     description: "Refills over here! Get your refills here!",
     fullService: false,
     refills: true,

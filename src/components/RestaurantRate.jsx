@@ -98,9 +98,11 @@ export default function RestaurantRate({ restaurant }) {
         
     </Col>
   ) : (
+    <Col>
     <Button size="sm" style={{ width: "50%" }} onClick={handleLoginRedirect}>
       {/* <NavLink to={"/login"}>Log in to rate this restaurant!</NavLink> */}
       Log in to rate this restaurant!
     </Button>
+    </Col>
   );
 }

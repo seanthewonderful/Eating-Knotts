@@ -22,8 +22,6 @@ export default function AllRestaurants() {
       : "",
   });
 
-  console.log(filteredRestaurants);
-
   const allRestaurants = restaurants.map((restaurant) => {
     return (
       <RestaurantCard key={restaurant.restaurantId} restaurant={restaurant} />
