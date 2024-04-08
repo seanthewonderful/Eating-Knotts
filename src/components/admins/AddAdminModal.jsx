@@ -13,6 +13,7 @@ import { notify } from "../../assets/funx";
 import ProfileIcon from "../ProfileIcon";
 
 export default function AddAdminModal({ setDummy }) {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

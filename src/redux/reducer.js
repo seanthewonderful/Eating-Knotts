@@ -3,6 +3,7 @@ const initialState = {
   user: null,
   admin: null,
   restaurantId: null,
+  loading: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         restaurantId: action.payload,
       };
+
+    case "SET_IS_LOADING":
+      return {
+        ...state,
+        loading: true
+      }
+    
+    case "SET_LOADING_COMPLETE":
+      return {
+        ...state,
+        loading: false
+      }
 
     case "LOGOUT":
       return {

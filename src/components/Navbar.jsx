@@ -37,11 +37,15 @@ export default function NavBar() {
         type: "ADMIN_AUTH",
         payload: data.admin,
       });
+    } else {
+      dispatch({
+        type: "SET_LOADING_COMPLETE"
+      })
     }
   };
 
   useEffect(() => {
-    sessionCheck();
+    sessionCheck()
   }, []);
 
   return (

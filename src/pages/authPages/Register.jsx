@@ -18,9 +18,12 @@ import { notify } from "../../assets/funx.js";
 export default function Register({ handleRegister }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("")
   const [email, setEmail] = useState("");
   const [name, setName] = useState({ fName: "", lName: "" });
   const [selectedAvatar, setSelectedAvatar] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
   const [badSubmit, setBadSubmit] = useState(false);
 
   const dispatch = useDispatch();
@@ -28,6 +31,11 @@ export default function Register({ handleRegister }) {
 
   const handleRegistration = (e) => {
     e.preventDefault();
+
+    if (password !== passwordConfirm) {
+      notify("error", "Passwords do not match")
+      return
+    }
 
     const registrationBody = {
       username,
@@ -124,13 +132,57 @@ export default function Register({ handleRegister }) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="formPassword">
+            <Form.Group className="mb-4">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
+              {showPassword ? (
+                <Form.Control
+                  id="passwordShow"
+                  type="text"
+                  placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              ) : (
+                <Form.Control
+                  id="password"
+                  type="password"
+                  placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              )}
+              <Form.Check 
+                type="checkbox"
+                label="Show password"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-4">
+              <Form.Label>Confirm Password</Form.Label>
+              {showPasswordConfirm ? (
+                <Form.Control
+                  id="passwordConfirmShow"
+                  type="text"
+                  placeholder="Confirm password"
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  required
+                />
+                ) : (
+                <Form.Control
+                  id="passwordConfirm"
+                  type="password"
+                  placeholder="Confirm password"
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  required
+                />
+              )}
+              <Form.Check 
+                type="checkbox"
+                label="Show confirmed password"
+                checked={showPasswordConfirm}
+                onChange={() => setShowPasswordConfirm(!showPasswordConfirm)}
               />
             </Form.Group>
 

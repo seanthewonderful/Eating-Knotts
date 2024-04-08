@@ -10,6 +10,7 @@ import RatingCard from "../../components/RatingCard.jsx";
 export default function Profile() {
   const { user } = useLoaderData();
   const userInSession = useSelector(state => state.user)
+  const loading = useSelector(state => state.loading)
 
   const [email, setEmail] = useState(user.email);
   const [name, setName] = useState({
@@ -88,11 +89,11 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    if (!userInSession) {
+    if (!userInSession && !loading) {
       console.log("Hit")
       navigate("/login")
     }
-  }, [])
+  }, [loading, userInSession])
 
   return (
     <Container id="login-f">

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { notify } from "../../assets/funx";
+import { useDispatch } from "react-redux";
 
 export default function AdminDisplay({ admin }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,6 +15,8 @@ export default function AdminDisplay({ admin }) {
 
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch()
 
   const editMode = () => setIsEditing(true);
 
@@ -31,6 +34,10 @@ export default function AdminDisplay({ admin }) {
       .then((res) => {
         notify("success", res.data.message);
         setIsEditing(false);
+        dispatch({
+          type: "ADMIN_AUTH",
+          payload: res.data.admin
+        })
       })
       .catch((err) => {
         notify("danger", err.response.data.message);
@@ -134,7 +141,8 @@ export default function AdminDisplay({ admin }) {
         <td>{firstName}</td>
         <td>{lastName}</td>
         <td>{clearance}</td>
-        <td>{img.split("/")[2]}</td>
+        {/* <td>{img.split("/")[2]}</td> */}
+        <td><img id="admin-table-img" src={admin.img} /></td>
         <td>
           <Button variant="secondary" size="sm" onClick={editMode}>
             Edit

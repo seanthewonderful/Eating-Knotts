@@ -168,7 +168,6 @@ h4 {
 #login {
   padding-top: 5%;
 }
-
 #login-form {
   margin-top: 2%;
   padding: 2%;
@@ -191,6 +190,9 @@ h4 {
   color: white;
   border-radius: 20px;
   border: 1px solid #0d6efd;
+}
+.form-label {
+  font-size: large;
 }
 .prof-icon-selection {
   height: 10vh;
@@ -340,4 +342,11 @@ td {
   border-left: 1px solid #7f4c7f !important;
   border-right: 1px solid #7f4c7f !important;
   border-radius: 0;
+}
+
+#admin-profile {
+  padding-top: 5%;
+}
+#admin-table-img {
+  height: 5vh;
 }

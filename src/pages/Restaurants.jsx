@@ -7,6 +7,7 @@ import { debounce } from "lodash";
 
 export default function AllRestaurants() {
   const { restaurants } = useLoaderData();
+  
   const [incomingFilters] = useSearchParams();
   const [searchVal, setSearchVal] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
