@@ -52,7 +52,7 @@ export default function NavBar() {
     <div id="main">
       <div id="navbar">
         <NavLink to="/" id="nav-logo">
-          <div id="navTitle">
+          <span id="navTitle">
             <span className="align-self-end">
               <h1>Eating</h1>
             </span>
@@ -61,7 +61,7 @@ export default function NavBar() {
               alt="knotts-logo"
               id="knotts-nav-logo"
             />
-          </div>
+          </span>
         </NavLink>
 
         <div id="navLinks">

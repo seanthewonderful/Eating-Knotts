@@ -77,6 +77,7 @@ export default function Profile() {
   const avatarOptions = avatars.map((avatar) => {
     return (
       <ProfileIcon
+        key={avatar.id}
         avatar={avatar}
         selectedAvatar={selectedAvatar}
         setSelectedAvatar={setSelectedAvatar}
@@ -186,7 +187,8 @@ export const profileLoader = async ({ params }) => {
   const { data } = await axios.get(`/api/user/id/${userId}`);
 
   if (data.status == 400) {
-    throw Error("Error loading user profile!");
+    // throw Error("Error loading user profile!");
+    return null
   }
 
   return data;

@@ -11,6 +11,7 @@ export default function RatingCard({ rating }) {
 	const [localRating, setLocalRating] = useState(rating)
 	const [restaurant, setRestaurant] = useState(null)
 	const [avgStars, setAvgStars] = useState(0)
+  const [totalStars, setTotalStars] = useState(0)
 	const [newStarRating, setNewStarRating] = useState(rating.stars)
 	const [newRatingReview, setNewRatingReview] = useState(rating.review)
 
@@ -21,6 +22,7 @@ export default function RatingCard({ rating }) {
 		const { data } = await axios.get(`/api/restaurant/id/${rating.restaurant.restaurantId}`)
 		setRestaurant(data.restaurant)
 		setAvgStars(calculateAvgStars(data.restaurant))
+    setTotalStars(data.restaurant.ratings.length)
 	}
 
 	const handleEditClick = (e) => {
@@ -66,7 +68,7 @@ export default function RatingCard({ rating }) {
 					className="justify-content-between"
 					>
 					<Col>
-					<p><StarAvg starAvg={avgStars} /> <small>({avgStars})</small></p>
+					<p><StarAvg starAvg={avgStars} /> <small>({totalStars})</small></p>
 					</Col>
 					<Col>
 					<Button 
@@ -79,53 +81,50 @@ export default function RatingCard({ rating }) {
 					</Button>
 				</Col>
 				</Row>
-				<Card.Text>
-					<Form>
-						<Form.Group className="mb-2" controlId="formStars" >
-							<Form.Label>You rated {rating.restaurant.name}:</Form.Label>
-							<Form.Select
-								onChange={(e) => setNewStarRating(e.target.value)}>
-								<option value={newStarRating}><Stars stars={newStarRating} /></option>
-								<option value="1">⭐️</option>
-								<option value="2">⭐️⭐️</option>
-								<option value="3">⭐️⭐️⭐️</option>
-								<option value="4">⭐️⭐️⭐️⭐️</option>
-								<option value="5">⭐️⭐️⭐️⭐️⭐️</option>
-							</Form.Select>
+        <Form>
+          <Form.Group className="mb-2" controlId="formStars" >
+            <Form.Label>You rated {rating.restaurant.name}:</Form.Label>
+            <Form.Select
+              onChange={(e) => setNewStarRating(e.target.value)}>
+              <option value={newStarRating}><Stars stars={newStarRating} /></option>
+              <option value="1">⭐️</option>
+              <option value="2">⭐️⭐️</option>
+              <option value="3">⭐️⭐️⭐️</option>
+              <option value="4">⭐️⭐️⭐️⭐️</option>
+              <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+            </Form.Select>
 
-							<Form.Label>Your review:</Form.Label>
-							<Form.Control
-								as="textarea"
-								value={newRatingReview}
-								onChange={(e) => setNewRatingReview(e.target.value)}
-								/>
-							
-							{newStarRating !== localRating.stars || newRatingReview !== localRating.review ?
-							<>
-								<Button
-								variant="primary"
-								size="sm"
-								onClick={handleEditClick}
-								className="mt-3"
-								>
-									Save
-								</Button>
-								<Button
-								variant="warning"
-								size="sm"
-								onClick={handleCancelClick}
-								className="mt-3 ms-2"
-								>
-									Cancel
-								</Button>
-							</>
-								:
-								null
-							}
-						</Form.Group>
-					</Form>
-
-				</Card.Text>
+            <Form.Label>Your review:</Form.Label>
+            <Form.Control
+              as="textarea"
+              value={newRatingReview}
+              onChange={(e) => setNewRatingReview(e.target.value)}
+              />
+            
+            {newStarRating !== localRating.stars || newRatingReview !== localRating.review ?
+            <>
+              <Button
+              variant="primary"
+              size="sm"
+              onClick={handleEditClick}
+              className="mt-3"
+              >
+                Save
+              </Button>
+              <Button
+              variant="warning"
+              size="sm"
+              onClick={handleCancelClick}
+              className="mt-3 ms-2"
+              >
+                Cancel
+              </Button>
+            </>
+              :
+              null
+            }
+          </Form.Group>
+        </Form>
 			</Card.Body>
 		</Card>
 		</Col>

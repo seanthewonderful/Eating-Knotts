@@ -25,17 +25,6 @@ export default function RestaurantPage() {
     );
   });
 
-  // const ratings = restaurant.ratings.map((rating) => {
-  //   return (
-  //     <UserRating
-  //       key={rating.ratingId}
-  //       rating={rating}
-  //       restaurant={restaurant}
-  //       user={user}
-  //     />
-  //   );
-  // });
-
   const calculateStarAvg = () => {
     setAvgStars(calculateAvgStars(restaurant));
   };
@@ -121,11 +110,7 @@ export default function RestaurantPage() {
       </Row>
       <Row className="justify-content-start">
         <RestaurantRate restaurant={restaurant} user={user} />
-        <Col></Col>
       </Row>
-      {/* <Row className="justify-content-start text-start" id="ratings-div">
-        {ratings}
-      </Row> */}
     </Container>
   );
 }

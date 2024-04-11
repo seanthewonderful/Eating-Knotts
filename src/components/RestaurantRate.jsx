@@ -66,7 +66,7 @@ export default function RestaurantRate({ restaurant }) {
   }, []);
 
   return user ? (
-    <Col className="">
+    <Col className="ratings-col">
       {!rated && (
         <Form id="restaurant-page-ratings">
           <Form.Label>Rate this place!</Form.Label>
@@ -90,17 +90,20 @@ export default function RestaurantRate({ restaurant }) {
             Save
           </Button>
         </Form>
-      ) 
-        }
-        <Row className="justify-content-start text-start" id="ratings-div">
+        ) 
+      }
+      <Row 
+        className="justify-content-start text-start" 
+        id="ratings-div"
+        >
+          <h3><i>Reviews for {restaurant.name}</i></h3>
           {userRatings}
-        </Row>
+      </Row>
         
     </Col>
   ) : (
     <Col>
     <Button size="sm" style={{ width: "50%" }} onClick={handleLoginRedirect}>
-      {/* <NavLink to={"/login"}>Log in to rate this restaurant!</NavLink> */}
       Log in to rate this restaurant!
     </Button>
     </Col>

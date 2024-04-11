@@ -231,6 +231,9 @@ h4 {
   height: 10rem;
   width: auto;
 }
+#ratings-div {
+  margin: 2%;
+}
 
 /* restaurants */
 .restaurants-div {
@@ -316,9 +319,9 @@ h4 {
 #rest-page-p {
   font-size: small;
 }
-#restaurant-page-ratings {
+/* #restaurant-page-ratings {
   width: 50%;
-}
+} */
 
 /* admin page */
 table tr {
