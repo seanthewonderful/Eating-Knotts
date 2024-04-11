@@ -64,9 +64,16 @@ const ratingHandlers = {
       review: review,
     });
 
+    const restaurantRatings = await Rating.findAll({
+      where: {
+        restaurantId: restaurantId
+      }
+    })
+
     res.status(200).send({
       message: "Rating created",
       rating: rating,
+      restaurantRatings: restaurantRatings
     });
     return;
   },

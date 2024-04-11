@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Navbar, Nav, Col } from "react-bootstrap";
 import { notify } from "../assets/funx.js";
+import Register from "../pages/authPages/Register.jsx";
 
-export default function Navbar() {
+export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -36,24 +37,32 @@ export default function Navbar() {
         type: "ADMIN_AUTH",
         payload: data.admin,
       });
+    } else {
+      dispatch({
+        type: "SET_LOADING_COMPLETE"
+      })
     }
   };
 
   useEffect(() => {
-    sessionCheck();
+    sessionCheck()
   }, []);
 
   return (
     <div id="main">
       <div id="navbar">
-        <div id="navTitle">
-          <h1>Eating</h1>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Knotts_Berry_Farm_Logo.svg/2560px-Knotts_Berry_Farm_Logo.svg.png"
-            alt="knotts-logo"
-            id="knotts-nav-logo"
-          />
-        </div>
+        <NavLink to="/" id="nav-logo">
+          <span id="navTitle">
+            <span className="align-self-end">
+              <h1>Eating</h1>
+            </span>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Knotts_Berry_Farm_Logo.svg/2560px-Knotts_Berry_Farm_Logo.svg.png"
+              alt="knotts-logo"
+              id="knotts-nav-logo"
+            />
+          </span>
+        </NavLink>
 
         <div id="navLinks">
           <Button className="nav-btn">
@@ -100,8 +109,7 @@ export default function Navbar() {
             </Button>
           )}
         </div>
-      </div>
-
+      </div>{" "}
       <ToastContainer
         position="top-center"
         autoClose={1000}
@@ -114,10 +122,11 @@ export default function Navbar() {
         pauseOnHover={false}
         theme="light"
       />
-
+      
       <Container fluid id="main">
         <Outlet />
       </Container>
+      
     </div>
   );
 }

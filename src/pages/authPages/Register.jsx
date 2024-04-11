@@ -18,9 +18,12 @@ import { notify } from "../../assets/funx.js";
 export default function Register({ handleRegister }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("")
   const [email, setEmail] = useState("");
   const [name, setName] = useState({ fName: "", lName: "" });
   const [selectedAvatar, setSelectedAvatar] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
   const [badSubmit, setBadSubmit] = useState(false);
 
   const dispatch = useDispatch();
@@ -28,6 +31,11 @@ export default function Register({ handleRegister }) {
 
   const handleRegistration = (e) => {
     e.preventDefault();
+
+    if (password !== passwordConfirm) {
+      notify("error", "Passwords do not match")
+      return
+    }
 
     const registrationBody = {
       username,
@@ -53,22 +61,22 @@ export default function Register({ handleRegister }) {
   };
 
   const avatars = [
-    { imgSrc: "/public/proficons/default.png", id: 1 },
-    { imgSrc: "/public/proficons/charlie.png", id: 2 },
-    { imgSrc: "/public/proficons/linus.png", id: 3 },
-    { imgSrc: "/public/proficons/lucy.png", id: 4 },
-    { imgSrc: "/public/proficons/marcie.png", id: 5 },
-    { imgSrc: "/public/proficons/patty.png", id: 6 },
-    { imgSrc: "/public/proficons/franklin.png", id: 7 },
-    { imgSrc: "/public/proficons/pigpen.png", id: 8 },
-    { imgSrc: "/public/proficons/rerun.png", id: 9 },
-    { imgSrc: "/public/proficons/sally.png", id: 10 },
-    { imgSrc: "/public/proficons/schroeder.png", id: 11 },
-    { imgSrc: "/public/proficons/snoopy.png", id: 12 },
-    { imgSrc: "/public/proficons/olaf.png", id: 13 },
-    { imgSrc: "/public/proficons/belle.png", id: 14 },
-    { imgSrc: "/public/proficons/spike.png", id: 15 },
-    { imgSrc: "/public/proficons/woodstock.png", id: 16 },
+    { imgSrc: "/proficons/default.png", id: 1 },
+    { imgSrc: "/proficons/charlie.png", id: 2 },
+    { imgSrc: "/proficons/linus.png", id: 3 },
+    { imgSrc: "/proficons/lucy.png", id: 4 },
+    { imgSrc: "/proficons/marcie.png", id: 5 },
+    { imgSrc: "/proficons/patty.png", id: 6 },
+    { imgSrc: "/proficons/franklin.png", id: 7 },
+    { imgSrc: "/proficons/pigpen.png", id: 8 },
+    { imgSrc: "/proficons/rerun.png", id: 9 },
+    { imgSrc: "/proficons/sally.png", id: 10 },
+    { imgSrc: "/proficons/schroeder.png", id: 11 },
+    { imgSrc: "/proficons/snoopy.png", id: 12 },
+    { imgSrc: "/proficons/olaf.png", id: 13 },
+    { imgSrc: "/proficons/belle.png", id: 14 },
+    { imgSrc: "/proficons/spike.png", id: 15 },
+    { imgSrc: "/proficons/woodstock.png", id: 16 },
   ];
   const avatarOptions = avatars.map((avatar) => {
     return (
@@ -82,7 +90,7 @@ export default function Register({ handleRegister }) {
   });
 
   return (
-    <Container fluid>
+    <Container fluid id="register">
       <Row className="justify-content-center">
         <Col id="register-form" xs={12} sm={10} md={9} lg={7} xl={6} xxl={5}>
           <Form onSubmit={handleRegistration}>
@@ -124,30 +132,78 @@ export default function Register({ handleRegister }) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="formPassword">
+            <Form.Group className="mb-4">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
+              {showPassword ? (
+                <Form.Control
+                  id="passwordShow"
+                  type="text"
+                  placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              ) : (
+                <Form.Control
+                  id="password"
+                  type="password"
+                  placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              )}
+              <Form.Check 
+                type="checkbox"
+                label="Show password"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
               />
             </Form.Group>
 
+            <Form.Group className="mb-4">
+              <Form.Label>Confirm Password</Form.Label>
+              {showPasswordConfirm ? (
+                <Form.Control
+                  id="passwordConfirmShow"
+                  type="text"
+                  placeholder="Confirm password"
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  required
+                />
+                ) : (
+                <Form.Control
+                  id="passwordConfirm"
+                  type="password"
+                  placeholder="Confirm password"
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  required
+                />
+              )}
+              <Form.Check 
+                type="checkbox"
+                label="Show confirmed password"
+                checked={showPasswordConfirm}
+                onChange={() => setShowPasswordConfirm(!showPasswordConfirm)}
+              />
+            </Form.Group>
+
+
+            <Row className="justify-content-between my-3">
+              <Col xs={3}>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Col>
+
+              <Col xs={9}>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Select an avatar</Accordion.Header>
                 <Accordion.Body>{avatarOptions}</Accordion.Body>
               </Accordion.Item>
             </Accordion>
-
-            <Row className="justify-content-between my-3">
-              <Col>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
               </Col>
-
+            </Row>
+            <Row className="justify-content-end my-3">
               <Col>
                 <Stack
                   direction="horizontal"
@@ -162,6 +218,7 @@ export default function Register({ handleRegister }) {
                     Login
                   </Button>
                 </Stack>
+              
               </Col>
             </Row>
           </Form>

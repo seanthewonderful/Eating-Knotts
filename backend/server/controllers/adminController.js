@@ -20,7 +20,9 @@ const adminHandlers = {
       return;
     }
 
-    const allAdmins = await Admin.findAll();
+    const allAdmins = await Admin.findAll({
+      order: [['admin_id', 'ASC']]
+    });
     const allUsers = await User.findAll();
     const allRestaurants = await Restaurant.findAll();
     const allRatings = await Rating.findAll({

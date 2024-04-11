@@ -18,11 +18,11 @@ export default function AdminTable({ allAdmins }) {
     <table>
       <thead>
         <tr>
-          <th>Admin ID</th>
-          <th>Admin name</th>
+          <th>ID</th>
+          <th>Usermame</th>
           <th>Email</th>
-          <th>First name</th>
-          <th>Last name</th>
+          <th>F.Name</th>
+          <th>L.Name</th>
           <th>Clearance lvl</th>
           <th>Img</th>
           <th>Update?</th>

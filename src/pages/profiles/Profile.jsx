@@ -1,14 +1,16 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { notify, toTitleCase } from "../../assets/funx.js";
 import { Button, Col, Container, Form, Row, Accordion } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileIcon from "../../components/ProfileIcon.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RatingCard from "../../components/RatingCard.jsx";
 
 export default function Profile() {
   const { user } = useLoaderData();
+  const userInSession = useSelector(state => state.user)
+  const loading = useSelector(state => state.loading)
 
   const [email, setEmail] = useState(user.email);
   const [name, setName] = useState({
@@ -19,6 +21,7 @@ export default function Profile() {
   const [editMode, setEditMode] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleEditSave = (e) => {
     e.preventDefault();
@@ -74,6 +77,7 @@ export default function Profile() {
   const avatarOptions = avatars.map((avatar) => {
     return (
       <ProfileIcon
+        key={avatar.id}
         avatar={avatar}
         selectedAvatar={selectedAvatar}
         setSelectedAvatar={setSelectedAvatar}
@@ -85,8 +89,15 @@ export default function Profile() {
     return <RatingCard key={rating.ratingId} rating={rating} />;
   });
 
+  useEffect(() => {
+    if (!userInSession && !loading) {
+      console.log("Hit")
+      navigate("/login")
+    }
+  }, [loading, userInSession])
+
   return (
-    <Container>
+    <Container id="login-f">
       <Row className="justify-content-center">
         <Col>
           <h1>Welcome {toTitleCase(user.firstName)}!</h1>
@@ -176,7 +187,8 @@ export const profileLoader = async ({ params }) => {
   const { data } = await axios.get(`/api/user/id/${userId}`);
 
   if (data.status == 400) {
-    throw Error("Error loading user profile!");
+    // throw Error("Error loading user profile!");
+    return null
   }
 
   return data;

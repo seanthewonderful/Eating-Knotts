@@ -8,7 +8,7 @@ import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Profile, { profileLoader } from "./pages/profiles/Profile.jsx";
 import ProfileAdmin, { adminLoader } from "./pages/profiles/ProfileAdmin.jsx";
-import Navbar from "./components/Navbar.jsx";
+import NavBar from "./components/NavBar.jsx";
 import AllRestaurants, { allRestaurantsLoader } from "./pages/Restaurants.jsx";
 import RestaurantPage, {
   restaurantProfileLoader,
@@ -21,7 +21,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Navbar />}>
+    <Route path="/" element={<NavBar />}>
+      
       <Route
         index
         element={<Home />}

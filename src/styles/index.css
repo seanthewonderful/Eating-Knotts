@@ -16,8 +16,9 @@
   width: 100vw;
   min-height: 100vh;
   height: 100%;
-  padding: 0;
-  margin-top: 61px;
+  /* padding-top: 5%; */
+  padding-left: 0;
+  margin-top: 58px;
   background-color: rgb(255, 209, 255);
 }
 
@@ -86,6 +87,8 @@ h4 {
   top: 0%;
   z-index: 401;
   width: 100vw;
+  font-family: "Gorditas", serif;
+  font-style: normal;
 }
 .nav-btn {
   color: white;
@@ -95,6 +98,7 @@ h4 {
 #navLinks {
   display: flex;
   flex-direction: row;
+  margin-right: 2%;
 }
 #navLinks a.active {
   color: gold;
@@ -104,6 +108,9 @@ h4 {
   flex-direction: row;
   align-items: center;
 }
+#nav-logo {
+  color: #363697;
+}
 #knotts-nav-logo {
   height: 8vh;
   margin-left: 5%;
@@ -111,6 +118,9 @@ h4 {
 #nav-profile-icon {
   height: 5vh;
   margin-left: 2%;
+}
+.nav-tabs {
+  border-bottom: 1px solid black;
 }
 
 /* Map */
@@ -155,15 +165,34 @@ h4 {
 }
 
 /* Login stuff */
+#login {
+  padding-top: 5%;
+}
 #login-form {
   margin-top: 2%;
+  padding: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
   background-color: #763076;
   color: white;
+  border-radius: 20px;
+  border: 1px solid #0d6efd;
+}
+#register {
+  padding-top: 5%;
 }
 #register-form {
   margin-top: 2%;
+  padding: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
   background-color: #763076;
   color: white;
+  border-radius: 20px;
+  border: 1px solid #0d6efd;
+}
+.form-label {
+  font-size: large;
 }
 .prof-icon-selection {
   height: 10vh;
@@ -201,6 +230,9 @@ h4 {
 .rating-card-img {
   height: 10rem;
   width: auto;
+}
+#ratings-div {
+  margin: 2%;
 }
 
 /* restaurants */
@@ -287,9 +319,9 @@ h4 {
 #rest-page-p {
   font-size: small;
 }
-#restaurant-page-ratings {
+/* #restaurant-page-ratings {
   width: 50%;
-}
+} */
 
 /* admin page */
 table tr {
@@ -313,4 +345,11 @@ td {
   border-left: 1px solid #7f4c7f !important;
   border-right: 1px solid #7f4c7f !important;
   border-radius: 0;
+}
+
+#admin-profile {
+  padding-top: 5%;
+}
+#admin-table-img {
+  height: 5vh;
 }

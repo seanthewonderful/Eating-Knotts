@@ -39,7 +39,7 @@ export default function ProfileAdmin() {
   }, [dummy]);
 
   return (
-    <Container fluid>
+    <Container fluid id="admin-profile">
       <Row>
         <h4>Welcome, administrator {admin.username}</h4>
       </Row>

@@ -168,9 +168,11 @@ Styling
 Extra features
 
 - [] Something offcanvas?
-- [] Remember where user was for login re-route
+- [x] Remember where user was for login re-route
 - [] Page restrictions
 - [x] Admin adding instant update to page
+- [x] Outside Park restaurants seeded
+- [] Create ratings for each spot
 
 Knott's Site Issues
 
@@ -181,4 +183,8 @@ Knott's Site Issues
 
 Bugs
 
-- [] When admin updates own IMG, navbar does not recognize the change until page reload
+- [x] When admin updates own IMG, navbar does not recognize the change until page reload
+- [] When admin updates different admin IMG, table does not reflect change because admins are being loaded in by ancestor ProfileAdmin component
+- [] No map boundaries - can scroll away. 
+  - [] Limit X/Y boundary scroll
+  - [] 'Re-center' button?

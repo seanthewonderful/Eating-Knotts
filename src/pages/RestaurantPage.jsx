@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { NavLink, useLoaderData } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import axios from "axios";
 import utensilsSolid from "../../public/icons/utensilsSolid.svg";
 import { calculateAvgStars } from "../assets/funx";
 import StarAvg from "../components/StarAvg";
 import RestaurantRate from "../components/RestaurantRate";
-import UserRating from "../components/UserRating";
-import { useSelector } from "react-redux";
 
 export default function RestaurantPage() {
   const [avgStars, setAvgStars] = useState(0);
@@ -21,19 +20,8 @@ export default function RestaurantPage() {
         to={`/restaurants?cuisine=${cuisine.name}`}
         id="rest-page-link"
       >
-        {cuisine.name}
+        {cuisine.name + " "}
       </NavLink>
-    );
-  });
-
-  const ratings = restaurant.ratings.map((rating) => {
-    return (
-      <UserRating
-        key={rating.ratingId}
-        rating={rating}
-        restaurant={restaurant}
-        user={user}
-      />
     );
   });
 
@@ -122,9 +110,6 @@ export default function RestaurantPage() {
       </Row>
       <Row className="justify-content-start">
         <RestaurantRate restaurant={restaurant} user={user} />
-      </Row>
-      <Row className="justify-content-start text-start" id="ratings-div">
-        {ratings}
       </Row>
     </Container>
   );

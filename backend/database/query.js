@@ -9,8 +9,12 @@ import {
   MealType,
 } from "./model.js";
 
-const rest1 = await Restaurant.findOne({ include: { model: Land } });
+const admins = await Admin.findAll({
+  order: [
+    ['admin_id', 'ASC']
+  ]
+})
 
-console.log(rest1);
+console.log(admins);
 
 await db.close();
