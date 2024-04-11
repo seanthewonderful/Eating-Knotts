@@ -5,7 +5,6 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Button, Container, Navbar, Nav, Col } from "react-bootstrap";
 import { notify } from "../assets/funx.js";
-import Register from "../pages/authPages/Register.jsx";
 
 export default function NavBar() {
   const dispatch = useDispatch();
